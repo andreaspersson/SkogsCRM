@@ -25,6 +25,8 @@ namespace SkogsCRM
             InitializeComponent();
 
             //Github?
+
+            //Github!
         }
     }
 }
