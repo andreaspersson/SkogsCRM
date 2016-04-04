@@ -28,5 +28,10 @@ namespace SkogsCRM
 
             //Github!
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
