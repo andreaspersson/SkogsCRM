@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkogsCRM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="395.865" Width="622.814">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="62,118,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="276,118,0,0" VerticalAlignment="Top" Width="100"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="153" Margin="119,104,0,0" VerticalAlignment="Top" Width="360">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

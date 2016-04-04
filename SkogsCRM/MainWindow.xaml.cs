@@ -24,9 +24,34 @@ namespace SkogsCRM
         {
             InitializeComponent();
 
-            //Github?
+            SkogsDBEntities ctx = new SkogsDBEntities();
+            var gridView = new GridView();
+            this.listView.View = gridView;
 
-            //Github!
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Personr",
+                DisplayMemberBinding = new Binding("socialSecurityNbr")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Förnamn",
+                DisplayMemberBinding = new Binding("firstName")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Efternamn",
+                DisplayMemberBinding = new Binding("surname")
+            });
+
+            foreach (Customer c in ctx.Customer)
+            {
+                
+                this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); ;
+            }
+
+            
+            
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
