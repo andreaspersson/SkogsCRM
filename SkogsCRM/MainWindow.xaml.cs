@@ -23,6 +23,8 @@ namespace SkogsCRM
         public MainWindow()
         {
             InitializeComponent();
+
+            //Github?
         }
     }
 }
