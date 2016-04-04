@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="54175f0c8548459a9eeec70283699017" Name="Diagram1">
+        <EntityTypeShape EntityType="SkogsDBModel.Customer" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkogsDBModel.Estate" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkogsDBModel.ForestEstate" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkogsDBModel.Lumbermill" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkogsDBModel.Sales" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkogsDBModel.SalesAgent" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="SkogsDBModel.fk_Customer_SalesAgent" ManuallyRouted="false" />
+        <AssociationConnector Association="SkogsDBModel.fk_Estate_Customer1" ManuallyRouted="false" />
+        <AssociationConnector Association="SkogsDBModel.fk_ForestEstate_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="SkogsDBModel.fk_Lumbermill_ForestEstate" ManuallyRouted="false" />
+        <AssociationConnector Association="SkogsDBModel.fk_Sales_ForestEstate" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

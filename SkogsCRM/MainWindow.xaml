@@ -9,7 +9,6 @@
     <Grid>
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="62,118,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="276,118,0,0" VerticalAlignment="Top" Width="100"/>
-        <Image x:Name="thumbnail_144x144_jpeg" Margin="276,118,97,57" Source="thumbnail_144x144.jpeg" Stretch="Fill"/>
 
     </Grid>
 </Window>
