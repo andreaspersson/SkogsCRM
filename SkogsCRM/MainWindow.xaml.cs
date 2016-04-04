@@ -50,7 +50,7 @@ namespace SkogsCRM
                 this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); ;
             }
 
-            
+            dataGrid.ItemsSource = ctx.Customer.ToList();
             
         }
 

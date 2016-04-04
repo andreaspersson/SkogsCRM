@@ -8,13 +8,14 @@
         Title="MainWindow" Height="395.865" Width="622.814">
     <Grid>
         <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="276,118,0,0" VerticalAlignment="Top" Width="100"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="153" Margin="119,104,0,0" VerticalAlignment="Top" Width="360">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="153" Margin="90,24,0,0" VerticalAlignment="Top" Width="360">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="113" Margin="90,218,0,0" VerticalAlignment="Top" Width="360"/>
 
     </Grid>
 </Window>
