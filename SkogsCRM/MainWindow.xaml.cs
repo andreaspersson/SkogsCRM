@@ -24,6 +24,10 @@ namespace SkogsCRM
         {
             InitializeComponent();
 
+            string appDir = Environment.CurrentDirectory;
+            Uri mapUri = new Uri(appDir + "/map.html");
+            mapsBrowser.Source = mapUri;
+
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
