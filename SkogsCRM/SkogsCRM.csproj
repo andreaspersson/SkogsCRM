@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>SkogsCRM.TestClass</StartupObject>
+    <StartupObject>SkogsCRM.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -108,6 +108,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TestClass.cs" />
+    <Compile Include="ValidationChecker.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

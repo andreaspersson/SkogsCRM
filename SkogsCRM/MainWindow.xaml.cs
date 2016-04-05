@@ -20,6 +20,7 @@ namespace SkogsCRM
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Controller controller = new Controller();
         public MainWindow()
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace SkogsCRM
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            //controller.AddCustomer; och så vidare!
         }
     }
 }

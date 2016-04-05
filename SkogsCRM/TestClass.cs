@@ -12,6 +12,7 @@ namespace SkogsCRM {
         //Ändra också Output type till Console Application om ni pallar.
         public static void Main()
         {
+
             SalesAgent sa = new SalesAgent
             {
                 firstName = "Rolf",
