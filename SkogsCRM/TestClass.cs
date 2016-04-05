@@ -23,8 +23,8 @@ namespace SkogsCRM {
 
             SkogsDBEntities ctx = new SkogsDBEntities();
             SalesAgent s1 = ctx.SalesAgent.Find(2);
-           // Console.WriteLine(s1.firstName);
-           // Console.WriteLine(s1.surname);
+            // Console.WriteLine(s1.firstName);
+            // Console.WriteLine(s1.surname);
             //
             //ctx.SalesAgent.Add(sa);
             //ctx.SaveChanges();
@@ -35,11 +35,6 @@ namespace SkogsCRM {
             {
                // Console.WriteLine(c.firstName);
             }
-
-
-            
-
-            
 
             Console.ReadLine();
 
