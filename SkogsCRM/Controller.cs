@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Data;
+using Microsoft.Maps.MapControl.WPF;
 
 namespace SkogsCRM
 {
@@ -72,6 +75,27 @@ namespace SkogsCRM
                 message = "Error";
             }
             return message;
+        }
+
+        public MapPolygon addNewPolygon()
+        {
+            MapPolygon polygon = new MapPolygon();
+            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+            polygon.StrokeThickness = 5;
+            polygon.Opacity = 0.7;
+
+
+            polygon.Locations = new LocationCollection() {
+            new Location(55.711646,13.164388),
+            new Location(55.712099,13.163648),
+            new Location(55.713368,13.165762),
+            new Location(55.712897,13.166652),
+            new Location(55.711646,13.164388)
+            };
+
+            return polygon;
+            
         }
 
 

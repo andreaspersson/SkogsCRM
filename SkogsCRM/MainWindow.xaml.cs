@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,10 +26,14 @@ namespace SkogsCRM
         {
             InitializeComponent();
             woodMap.Focus();
+            
+            
 
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
+
+            
 
             gridView.Columns.Add(new GridViewColumn
             {
@@ -64,7 +69,9 @@ namespace SkogsCRM
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-           
+            
+
+            woodMap.Children.Add(controller.addNewPolygon());
         }
     }
 }
