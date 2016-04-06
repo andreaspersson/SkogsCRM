@@ -14,9 +14,7 @@ namespace SkogsCRM
         private ValidationChecker vC = new ValidationChecker();
         private SkogsDBEntities em = new SkogsDBEntities();
 
-        
-
-        //Behöver lite säkrare checkar i ValidationChecker-classen, men annars bör något som nedan fungera bra!
+        //Behöver lite säkrare checkar i ValidationChecker-klassen, men annars bör något som nedan fungera bra!
         public string AddCustomer(string socNbr, string firstName, string surname, int employeeId)
         {
             string message;

@@ -10,7 +10,6 @@ namespace SkogsCRM
 {
     class JSON
     {
-
         public static void JsonStringMethod(){
 
             SkogsDBEntities ctx = new SkogsDBEntities();
@@ -169,7 +168,6 @@ namespace SkogsCRM
                 geometryz = value;
             }
         }
-
 
     }
 

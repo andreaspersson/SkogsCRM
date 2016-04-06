@@ -12,7 +12,6 @@ namespace SkogsCRM {
         //Ändra också Output type till Console Application om ni pallar.
         public static void Main()
         {
-
             SalesAgent sa = new SalesAgent
             {
                 firstName = "Rolf",
@@ -23,8 +22,8 @@ namespace SkogsCRM {
 
             SkogsDBEntities ctx = new SkogsDBEntities();
             SalesAgent s1 = ctx.SalesAgent.Find(2);
-            // Console.WriteLine(s1.firstName);
-            // Console.WriteLine(s1.surname);
+            //Console.WriteLine(s1.firstName);
+            //Console.WriteLine(s1.surname);
             //
             //ctx.SalesAgent.Add(sa);
             //ctx.SaveChanges();

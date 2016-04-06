@@ -48,6 +48,5 @@ namespace SkogsCRM
             return success;
         }
 
-
     }
 }
