@@ -10,11 +10,12 @@ namespace SkogsCRM
 {
     class JSONclass
     {
-        public string JsonStringMethod(){
-        
-        
+        public string JsonStringMethod()
+        {
 
-        SkogsDBEntities ctx = new SkogsDBEntities();
+
+
+            SkogsDBEntities ctx = new SkogsDBEntities();
 
             Coordinates xy = new Coordinates();
             Featuresz f = new Featuresz();
@@ -96,7 +97,7 @@ namespace SkogsCRM
                 //Console.WriteLine(v.coordinates.ToString()); 
             }
 
-            
+
 
             xy.type = featureCollectionString;
             xy.features = featureCollection;
@@ -104,11 +105,11 @@ namespace SkogsCRM
             string JSONcoordinates = JsonConvert.SerializeObject(xy);
 
             return JSONcoordinates;
-            
-        
+
+
             //Console.WriteLine(JSONcoordinates);
         }//END OF JSONstringMethod
-        
+
     } //END OF JSON
     public class Coordinates
     {
