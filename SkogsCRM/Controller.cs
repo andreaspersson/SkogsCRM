@@ -8,6 +8,7 @@ namespace SkogsCRM
 {
     public class Controller
     {
+        //Test
         private SalesAgent sA = new SalesAgent();
         private Customer c = new Customer();
         private ForestEstate fE = new ForestEstate();
