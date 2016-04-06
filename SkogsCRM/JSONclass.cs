@@ -13,8 +13,6 @@ namespace SkogsCRM
         public string JsonStringMethod()
         {
 
-
-
             SkogsDBEntities ctx = new SkogsDBEntities();
 
             Coordinates xy = new Coordinates();

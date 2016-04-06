@@ -5,10 +5,9 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkogsCRM"
-        mc:Ignorable="d"
         Title="WoodCRM" Height="632.949" Width="1000.425" Icon="woodicon.ico">
-    <Grid Background="#FF24384F" Margin="0,10,0,0">
-        <m:Map x:Name="map"  Margin="250,10,32,262" Center="55.7084179, 13.1711803" ZoomLevel="15" CredentialsProvider="IQs6NSsZoXElbbAiltYoa~3NZwkbLLDt5xtF3zQPTCaw~ApPFuYSfJWYP5ObfMTyPiecKXkZSar8DG-k-H4qod7FdZTEd_14eOc9jUmqszky9"/>
+    <Grid Background="#FF24384F">
+        <m:Map x:Name="woodMap" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Mode="Aerial" Margin="250,40,32,272" Height="290"/>
         <ListView x:Name="listView" Height="146" Margin="250,360,32,0" VerticalAlignment="Top" Width="auto" Background="#FFF0F0F0">
             <ListView.View>
                 <GridView>
@@ -17,7 +16,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="885,335,0,0" VerticalAlignment="Top" Width="75" Click="button_Click_1"/>
-        <Menu x:Name="menu" Height="19" VerticalAlignment="Top" Background="#FF324F70" Margin="-32,-24,32,0">
+        <Menu x:Name="menu" Height="19" VerticalAlignment="Top" Background="#FF324F70">
             <MenuItem Header="File" Foreground="#FF959595">
                 <MenuItem Header="Exit" HorizontalAlignment="Left" Width="140"/>
                 <MenuItem Header="Edit" HorizontalAlignment="Left" Width="140"/>
