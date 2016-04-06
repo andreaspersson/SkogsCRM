@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:SkogsCRM"
         Title="WoodCRM" Height="632.949" Width="1000.425" Icon="woodicon.ico">
     <Grid Background="#FF24384F">
-        <m:Map x:Name="woodMap" Center="55.711646,13.164388" ZoomLevel="15"  Mode="Aerial" Margin="250,40,32,272" Height="290" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t"/>
+        <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial" Margin="250,40,32,272" Height="290" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t"/>
         <ListView x:Name="listView" Height="146" Margin="250,360,32,0" VerticalAlignment="Top" Width="auto" Background="#FFF0F0F0">
             <ListView.View>
                 <GridView>

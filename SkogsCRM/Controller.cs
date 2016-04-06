@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Microsoft.Maps.MapControl.WPF;
+using System.Collections;
 
 namespace SkogsCRM
 {
@@ -77,25 +78,57 @@ namespace SkogsCRM
             return message;
         }
 
-        public MapPolygon addNewPolygon()
+        public ArrayList DrawPolygons()
         {
-            MapPolygon polygon = new MapPolygon();
-            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
-            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
-            polygon.StrokeThickness = 5;
-            polygon.Opacity = 0.7;
+            Customer c = new Customer();
+            c = em.Customer.Find("1234567890");
+            ArrayList al = new ArrayList();
 
 
-            polygon.Locations = new LocationCollection() {
-            new Location(55.711646,13.164388),
-            new Location(55.712099,13.163648),
-            new Location(55.713368,13.165762),
-            new Location(55.712897,13.166652),
-            new Location(55.711646,13.164388)
-            };
+            foreach (ForestEstate f in c.ForestEstate)
+            {
 
-            return polygon;
-            
+                MapPolygon polygon = new MapPolygon();
+                polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+                polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+                polygon.StrokeThickness = 5;
+                polygon.Opacity = 0.7;
+
+
+
+                polygon.Locations = new LocationCollection()
+                {
+                    //Här läggs Locations in i loopandet nedan
+                };
+
+
+                string cor = f.coordinates.ToString();
+                Array corArray = cor.Split(',');
+
+                for (int i = 0; i < corArray.Length; i++)
+                {
+                    if (i < corArray.Length)
+                    {
+                        double lat;
+                        double longitude;
+
+                        string stringLat = corArray.GetValue(i).ToString();
+                        string stringLongitude = corArray.GetValue(i + 1).ToString();
+
+                        lat = double.Parse(stringLat, System.Globalization.CultureInfo.InvariantCulture);
+                        longitude = double.Parse(stringLongitude, System.Globalization.CultureInfo.InvariantCulture);
+
+                        polygon.Locations.Add(new Location(lat,longitude));
+                    }
+                    i = i + 1;
+                }
+                al.Add(polygon);
+            } //END OF FOREACH
+            return al;
+
+
+
+
         }
 
 

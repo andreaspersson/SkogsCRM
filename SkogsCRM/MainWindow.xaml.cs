@@ -69,9 +69,12 @@ namespace SkogsCRM
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+            foreach (MapPolygon p in controller.DrawPolygons())
+            {
+                woodMap.Children.Add(p);
+            }
 
-            woodMap.Children.Add(controller.addNewPolygon());
+            
         }
     }
 }
