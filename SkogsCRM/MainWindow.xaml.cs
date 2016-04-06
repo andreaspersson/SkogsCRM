@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.Maps.MapControl.WPF;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,16 +21,16 @@ namespace SkogsCRM
     /// </summary>
     public partial class MainWindow : Window
     {
-        string coordinates = "{lat: 55.708038, lng: 13.16853}, {lat: 55.70707, lng: 13.170247}, {lat: 55.706998, lng: 13.168015}, {lat: 55.707627, lng: 13.167973}, {lat: 55.708038, lng: 13.16853}";
+       // string coordinates = "{lat: 55.708038, lng: 13.16853}, {lat: 55.70707, lng: 13.170247}, {lat: 55.706998, lng: 13.168015}, {lat: 55.707627, lng: 13.167973}, {lat: 55.708038, lng: 13.16853}";
         private Controller controller = new Controller();
         public MainWindow()
         {
             InitializeComponent();
 
-            
-            
+            map.Focus();
 
-            SkogsDBEntities ctx = new SkogsDBEntities();
+
+               SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
 
