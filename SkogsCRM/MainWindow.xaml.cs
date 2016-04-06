@@ -24,7 +24,8 @@ namespace SkogsCRM
         public MainWindow()
         {
             InitializeComponent();
-            
+            woodMap.Focus();
+
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
