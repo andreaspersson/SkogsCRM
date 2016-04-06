@@ -100,7 +100,7 @@
     <Compile Include="ForestEstate.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="JSON.cs" />
+    <Compile Include="JSONclass.cs" />
     <Compile Include="Lumbermill.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
