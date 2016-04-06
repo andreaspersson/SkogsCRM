@@ -24,12 +24,7 @@ namespace SkogsCRM
         private Controller controller = new Controller();
         public MainWindow()
         {
-            InitializeComponent();
-
-            string appDir = Environment.CurrentDirectory;
-            Uri mapUri = new Uri(appDir + "/map.html");
-            mapsBrowser.Source = mapUri;
-            
+            InitializeComponent();            
 
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
@@ -69,7 +64,7 @@ namespace SkogsCRM
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            mapsBrowser.InvokeScript("drawPolygon", coordinates);
+
         }
     }
 }

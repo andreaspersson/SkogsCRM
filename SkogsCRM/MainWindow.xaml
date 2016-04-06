@@ -2,11 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkogsCRM"
-        mc:Ignorable="d"
         Title="WoodCRM" Height="632.949" Width="1000.425" Icon="woodicon.ico">
     <Grid Background="#FF24384F">
+        <m:Map x:Name="woodMap" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Mode="Aerial" Margin="250,40,32,272"/>
         <ListView x:Name="listView" Height="146" Margin="250,360,32,0" VerticalAlignment="Top" Width="auto" Background="#FFF0F0F0">
             <ListView.View>
                 <GridView>
