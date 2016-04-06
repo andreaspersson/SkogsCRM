@@ -20,17 +20,11 @@ namespace SkogsCRM
     /// </summary>
     public partial class MainWindow : Window
     {
-        string coordinates = "{lat: 55.708038, lng: 13.16853}, {lat: 55.70707, lng: 13.170247}, {lat: 55.706998, lng: 13.168015}, {lat: 55.707627, lng: 13.167973}, {lat: 55.708038, lng: 13.16853}";
         private Controller controller = new Controller();
         public MainWindow()
         {
             InitializeComponent();
-
-            string appDir = Environment.CurrentDirectory;
-            Uri mapUri = new Uri(appDir + "/map.html");
-            mapsBrowser.Source = mapUri;
             
-
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
