@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace SkogsCRM
 {
-    class JSON
+    class JSONclass
     {
-        public static void JsonStringMethod(){
+        public string JsonStringMethod(){
+        
+        
 
-            SkogsDBEntities ctx = new SkogsDBEntities();
+        SkogsDBEntities ctx = new SkogsDBEntities();
 
             Coordinates xy = new Coordinates();
             Featuresz f = new Featuresz();
@@ -74,13 +76,13 @@ namespace SkogsCRM
 
                 feature.Add(geometry);
 
-                g.Type = geometryString;
-                g.Coordinates = feature;
+                g.type = geometryString;
+                g.coordinates = feature;
 
 
 
-                f.Type = features;
-                f.Geometry = g;
+                f.type = features;
+                f.geometry = g;
 
                 featureCollection.Add(f);
                 //g.Coordinates.Add(feature);
@@ -93,44 +95,50 @@ namespace SkogsCRM
 
                 //Console.WriteLine(v.coordinates.ToString()); 
             }
-            xy.Type = featureCollectionString;
-            xy.Features = featureCollection;
+
+            
+
+            xy.type = featureCollectionString;
+            xy.features = featureCollection;
+            //string JSONcoordinates;
             string JSONcoordinates = JsonConvert.SerializeObject(xy);
-            Console.WriteLine(JSONcoordinates);
-        }
 
-
-
+            return JSONcoordinates;
+            
+        
+            //Console.WriteLine(JSONcoordinates);
+        }//END OF JSONstringMethod
+        
     } //END OF JSON
     public class Coordinates
     {
-        private string type;
-        private ArrayList features;
+        private string Type;
+        private ArrayList Features;
 
         //GETTERS & SETTERS
-        public string Type
+        public string type
         {
             get
             {
-                return type;
+                return Type;
             }
 
             set
             {
-                type = value;
+                Type = value;
             }
         }
 
-        public ArrayList Features
+        public ArrayList features
         {
             get
             {
-                return features;
+                return Features;
             }
 
             set
             {
-                features = value;
+                Features = value;
             }
         }
 
@@ -139,33 +147,33 @@ namespace SkogsCRM
 
     public class Featuresz
     {
-        private string type;
-        private Geometryz geometryz;
+        private string Type;
+        private Geometryz Geometryz;
 
 
         //GETTERS & SETTERS
-        public string Type
+        public string type
         {
             get
             {
-                return type;
+                return Type;
             }
 
             set
             {
-                type = value;
+                Type = value;
             }
         }
-        public Geometryz Geometry
+        public Geometryz geometry
         {
             get
             {
-                return geometryz;
+                return Geometryz;
             }
 
             set
             {
-                geometryz = value;
+                Geometryz = value;
             }
         }
 
@@ -173,32 +181,32 @@ namespace SkogsCRM
 
     public class Geometryz
     {
-        private string type;
-        private ArrayList coordinates;
+        private string Type;
+        private ArrayList Coordinates;
 
         //GETTERS & SETTERS
-        public string Type
+        public string type
         {
             get
             {
-                return type;
+                return Type;
             }
 
             set
             {
-                type = value;
+                Type = value;
             }
         }
-        public ArrayList Coordinates
+        public ArrayList coordinates
         {
             get
             {
-                return coordinates;
+                return Coordinates;
             }
 
             set
             {
-                coordinates = value;
+                Coordinates = value;
             }
         }
     }
