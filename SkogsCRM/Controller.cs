@@ -125,12 +125,7 @@ namespace SkogsCRM
                 al.Add(polygon);
             } //END OF FOREACH
             return al;
-
-
-
-
         }
-
 
     }
 }

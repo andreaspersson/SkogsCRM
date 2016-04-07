@@ -5,51 +5,72 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkogsCRM"
-        Title="WoodCRM" Height="632.949" Width="1000.425" Icon="woodicon.ico">
-    <Grid Background="#FF24384F">
-        <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial" Margin="250,40,32,272" Height="290" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t"/>
-        <ListView x:Name="listView" Height="146" Margin="250,360,32,0" VerticalAlignment="Top" Width="auto" Background="#FFF0F0F0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="885,335,0,0" VerticalAlignment="Top" Width="75" Click="button_Click_1"/>
-        <Menu x:Name="menu" Height="19" VerticalAlignment="Top" Background="#FF324F70">
-            <MenuItem Header="File" Foreground="#FF959595">
-                <MenuItem Header="Exit" HorizontalAlignment="Left" Width="140"/>
-                <MenuItem Header="Edit" HorizontalAlignment="Left" Width="140"/>
-                <MenuItem Header="MenuItem" HorizontalAlignment="Left" Width="140"/>
-            </MenuItem>
-        </Menu>
-        <Canvas HorizontalAlignment="Left" Height="auto" Width="227" Background="#FF324F70" Panel.ZIndex="-1">
+        Title="WoodCRM" Height="632.949" Width="1058.425" Icon="woodicon.ico">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="MenuButtonStyle">
+            <Setter Property="Background" Value="#FF253446" />
+            <Setter Property="Foreground" Value="#FFDADADB" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF335E91" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFC99851" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF24384F" Visibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <Canvas HorizontalAlignment="Left" Height="auto" Width="157" Background="#FF253446" Panel.ZIndex="1">
             <Canvas.Effect>
-                <DropShadowEffect Opacity="0.5" ShadowDepth="3"/>
+                <DropShadowEffect Opacity="0.5" ShadowDepth="7" BlurRadius="15"/>
             </Canvas.Effect>
-            <Button x:Name="button1" Content="Customers" Canvas.Top="160" Width="227" Height="46" Background="#FF5497BD" BorderThickness="0">
+            <Button x:Name="homeButton" Style="{StaticResource MenuButtonStyle}" Content="Home" Canvas.Top="160" Width="157" Height="46" BorderThickness="0" Click="homeButton_Click" Foreground="#FFDADADA" Panel.ZIndex="3" Margin="0">
                 <Button.Effect>
                     <DropShadowEffect Direction="270" Opacity="0.3" ShadowDepth="3"/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="button1_Copy" Content="Add" Canvas.Top="206" Width="227" Height="25" Background="#FF377795" BorderThickness="0" Panel.ZIndex="-1">
-            </Button>
-            <Button x:Name="button1_Copy1" Content="Edit" Canvas.Top="232" Width="227" Height="25" Background="#FF377795" BorderThickness="0" Panel.ZIndex="-1"/>
-            <Button x:Name="button1_Copy2" Content="Sales agents" Canvas.Top="257" Width="227" Height="46" Background="#FF5497BD" BorderThickness="0">
+            <Button x:Name="customersButton" Style="{StaticResource MenuButtonStyle}" Content="Customers" Canvas.Top="206" Width="157" Height="46" BorderThickness="0" Click="customersButton_Click" Panel.ZIndex="2" Foreground="#FFDADADB">
                 <Button.Effect>
                     <DropShadowEffect Direction="270" Opacity="0.3" ShadowDepth="3"/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="button1_Copy3" Content="Add" Canvas.Top="303" Width="227" Height="25" Background="#FF377795" BorderThickness="0" Panel.ZIndex="-1"/>
-            <Button x:Name="button1_Copy4" Content="Edit" Canvas.Top="329" Width="227" Height="25" Background="#FF377795" BorderThickness="0" Panel.ZIndex="-1"/>
-            <Button x:Name="button1_Copy5" Content="Sales agents" Canvas.Top="354" Width="227" Height="46" Background="#FF5497BD" BorderThickness="0">
+            <Button x:Name="forestEstatesButton" Style="{StaticResource MenuButtonStyle}" Content="Forest estates" Canvas.Top="252" Width="157" Height="46" BorderThickness="0" Panel.ZIndex="1" Foreground="#FFDADADA">
                 <Button.Effect>
                     <DropShadowEffect Direction="270" Opacity="0.3" ShadowDepth="3"/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="button1_Copy6" Content="Add" Canvas.Top="400" Width="227" Height="25" Background="#FF377795" BorderThickness="0" Panel.ZIndex="-1"/>
-            <Image x:Name="logo_png" Height="134" Canvas.Left="45" Source="logo.png" Stretch="Fill" Canvas.Top="21" Width="135"/>
+            <Button x:Name="salesAgentButton" Style="{StaticResource MenuButtonStyle}" Content="Sales agents" Canvas.Top="298" Width="157" Height="46" BorderThickness="0" Foreground="#FFDADADA">
+                <Button.Effect>
+                    <DropShadowEffect Direction="270" Opacity="0.3" ShadowDepth="3"/>
+                </Button.Effect>
+            </Button>
+            <Image x:Name="logo_png" Height="134" Canvas.Left="10" Source="logo.png" Stretch="Fill" Canvas.Top="10" Width="135"/>
         </Canvas>
-
+        <Grid x:Name="homeGrid" Margin="157,0,0,0" Background="#FF24384F">
+            <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial" Margin="20" Width="Auto" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="290"/>
+            <ListView x:Name="listView" Margin="20,340,20,20" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="button" Content="Button" Margin="20,315,20,0" VerticalAlignment="Top" Width="75" Click="button_Click_1" HorizontalContentAlignment="Center" HorizontalAlignment="Right"/>
+        </Grid>
     </Grid>
 </Window>

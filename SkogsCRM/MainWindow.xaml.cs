@@ -69,12 +69,23 @@ namespace SkogsCRM
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
+            woodMap.Children.Clear();//Annars skapas polygonerna på nytt över varandra vid varje knapptryck
             foreach (MapPolygon p in controller.DrawPolygons())
             {
                 woodMap.Children.Add(p);
             }
 
             
+        }
+
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            homeGrid.Visibility = Visibility.Visible;
+        }
+
+        private void customersButton_Click(object sender, RoutedEventArgs e)
+        {
+            homeGrid.Visibility = Visibility.Collapsed;
         }
     }
 }
