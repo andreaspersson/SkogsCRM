@@ -78,10 +78,10 @@ namespace SkogsCRM
             return message;
         }
 
-        public ArrayList DrawPolygons()
+        public ArrayList DrawPolygons(string id)
         {
             Customer c = new Customer();
-            c = em.Customer.Find("1234567890");
+            c = em.Customer.Find(id);
             ArrayList al = new ArrayList();
 
 
@@ -127,5 +127,17 @@ namespace SkogsCRM
             return al;
         }
 
-    }
-}
+        public ArrayList GetAllCustomers()
+        {
+            ArrayList al = new ArrayList();
+
+            foreach (Customer c in em.Customer)
+            {
+                al.Add(c);
+            }
+
+            return al;
+        }
+
+    }//END OF CLASS
+}//END OF NAMESPACE

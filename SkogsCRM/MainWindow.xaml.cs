@@ -1,6 +1,7 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,14 +28,10 @@ namespace SkogsCRM
             InitializeComponent();
             woodMap.Focus();
             
-            
-
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
-
             
-
             gridView.Columns.Add(new GridViewColumn
             {
                 Header = "Personr",
@@ -51,15 +48,29 @@ namespace SkogsCRM
                 DisplayMemberBinding = new Binding("surname")
             });
 
-            foreach (Customer c in ctx.Customer)
+            foreach (Customer c in controller.GetAllCustomers())
             {
                 
                 this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); ;
             }
+                        
+        }//END OF MAINWINDOW
 
-            //dataGrid.ItemsSource = ctx.Customer.ToList();
-            
-        }
+        private void ListViewClick(object sender, RoutedEventArgs e)
+        {
+            object obj = listView.SelectedItem;
+            Customer c = obj as Customer;
+            string id = c.socialSecurityNbr;
+
+            woodMap.Children.Clear();//Annars skapas polygonerna på nytt över varandra vid varje knapptryck
+
+            foreach (MapPolygon p in controller.DrawPolygons(id))
+            {
+                woodMap.Children.Add(p);
+
+            }
+
+        }//END OF ListViewClick
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -67,16 +78,7 @@ namespace SkogsCRM
            
         }
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
-        {
-            woodMap.Children.Clear();//Annars skapas polygonerna på nytt över varandra vid varje knapptryck
-            foreach (MapPolygon p in controller.DrawPolygons())
-            {
-                woodMap.Children.Add(p);
-            }
 
-            
-        }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
