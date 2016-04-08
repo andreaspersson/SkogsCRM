@@ -87,18 +87,33 @@
             </Button>
             <Image x:Name="logo_png" Height="134" Canvas.Left="10" Source="/Resources/logo.png" Stretch="Fill" Canvas.Top="10" Width="135"/>
         </Canvas>
-        <Grid x:Name="homeGrid"   Background="#FF24384F">            <!-- Margin="157,0,0,0" -->
-            <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial"  Width="Auto" MouseLeftButtonDown="Map_MouseDown" MouseLeftButtonUp="Map_MouseUp"  HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="290" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" /><!-- Margin="20" -->
-            <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="174,340,20,0" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <Grid x:Name="homeGrid" Background="#FF24384F">
+            <!-- Margin="157,0,0,0" -->
+            <!-- Margin="20" -->
+
+            <Grid Height="314" Margin="174,20,20,0" VerticalAlignment="Top">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
+                <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial"  Width="Auto" MouseLeftButtonDown="Map_MouseDown" MouseLeftButtonUp="Map_MouseUp"  HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="294" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Margin="10" />
+            </Grid>
+            <Grid Height="215" Margin="174,350,20,10" VerticalAlignment="Top">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
+                <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </Grid>
-        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F">
-            <Grid HorizontalAlignment="Left" Height="290" Margin="20,19,0,0" VerticalAlignment="Top" Width="216">
+        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
+            <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>

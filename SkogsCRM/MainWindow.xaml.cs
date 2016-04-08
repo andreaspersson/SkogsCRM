@@ -92,7 +92,7 @@ namespace SkogsCRM
         {
             e.Handled = true;
                         
-            Location lul = woodMap.ViewportPointToLocation(e.GetPosition(this));
+            Location lul = woodMap.ViewportPointToLocation(e.GetPosition(woodMap));
             
             locations.Add(lul);
          
