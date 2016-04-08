@@ -27,6 +27,8 @@ namespace SkogsCRM
         public MainWindow()
         {
             InitializeComponent();
+            homeGrid.Visibility = Visibility.Visible;
+            customersGrid.Visibility = Visibility.Collapsed;
             woodMap.Focus();
             
             SkogsDBEntities ctx = new SkogsDBEntities();
@@ -50,8 +52,7 @@ namespace SkogsCRM
             });
 
             foreach (Customer c in controller.GetAllCustomers())
-            {
-                
+            {                
                 this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); ;
             }
                         
@@ -68,27 +69,20 @@ namespace SkogsCRM
             foreach (MapPolygon p in controller.DrawPolygons(id))
             {
                 woodMap.Children.Add(p);
-
             }
 
         }//END OF ListViewClick
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            //controller.AddCustomer; och så vidare!
-           
-        }
-
-
-
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
+            customersGrid.Visibility = Visibility.Collapsed;
             homeGrid.Visibility = Visibility.Visible;
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
         {
             homeGrid.Visibility = Visibility.Collapsed;
+            customersGrid.Visibility = Visibility.Visible;
         }
 
         
