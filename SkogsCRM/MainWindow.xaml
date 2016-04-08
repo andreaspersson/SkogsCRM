@@ -104,13 +104,14 @@
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
                 <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </Grid>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Button x:Name="button" Content="Återställ manuellt kladd på kartan&#xD;&#xA;" Click="ManualMapReset" HorizontalAlignment="Left" Margin="728,304,0,0" VerticalAlignment="Top" Width="260" Height="23"/>
+        </Grid>
         </Grid>
         <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
