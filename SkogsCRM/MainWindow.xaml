@@ -132,7 +132,7 @@
                 <Button x:Name="button_customersGridAddCustomer" Style="{StaticResource CustomerGridButtonStyle}" Content="Add customer" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483634"/>
                 <Button x:Name="button_customersGridClearNewCFields" Style="{StaticResource CustomerGridButtonStyle}" Content="Clear fields" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483635"/>
             </Grid>
-            <Grid HorizontalAlignment="Left" Height="290" Margin="253,19,0,0" VerticalAlignment="Top" Width="216">
+            <Grid HorizontalAlignment="Left" Height="290" Margin="253,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>

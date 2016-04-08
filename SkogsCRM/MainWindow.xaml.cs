@@ -26,6 +26,7 @@ namespace SkogsCRM
         private Controller controller = new Controller();
         public MainWindow()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
             homeGrid.Visibility = Visibility.Visible;
             customersGrid.Visibility = Visibility.Collapsed;

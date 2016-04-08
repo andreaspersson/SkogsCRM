@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkogsCRM"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300">
+        Title="Login" Height="338.736" Width="315.66">
     <Grid>
-        <Button x:Name="buttonLogin" Content="Login" HorizontalAlignment="Left" Margin="106,121,0,0" VerticalAlignment="Top" Width="75" Click="buttonLogin_Click"/>
-        <Image x:Name="Skogen_png" Margin="54,10,53,61" Source="Skogen.png" Stretch="Fill"/>
+        <Button x:Name="buttonLogin" Content="Login" HorizontalAlignment="Left" Margin="88,269,0,0" VerticalAlignment="Top" Width="120" Click="buttonLogin_Click"/>
+        <Image x:Name="Skogen_png" Margin="54,10,65,114" Source="Skogen.png" Stretch="Fill"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="88,213,0,0" TextWrapping="Wrap" Text="Din" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="88,241,0,0" TextWrapping="Wrap" Text="Mamma" VerticalAlignment="Top" Width="120"/>
     </Grid>

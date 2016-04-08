@@ -20,9 +20,11 @@ namespace SkogsCRM
     public partial class Login : Window
     {
         MainWindow mW = new MainWindow();
+
         private Controller controller = new Controller();
         public Login()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
