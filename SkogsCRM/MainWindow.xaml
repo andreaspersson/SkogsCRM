@@ -62,7 +62,7 @@
             <Image x:Name="logo_png" Height="134" Canvas.Left="10" Source="logo.png" Stretch="Fill" Canvas.Top="10" Width="135"/>
         </Canvas>
         <Grid x:Name="homeGrid" Margin="157,0,0,0" Background="#FF24384F">
-            <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial" Margin="20" Width="Auto" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="290"/>
+            <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial" Margin="20" Width="Auto" MouseLeftButtonDown="Map_MouseDown" MouseLeftButtonUp="Map_MouseUp"  HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="290" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t"/>
             <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="20,340,20,20" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
                 <ListView.View>
                     <GridView>
