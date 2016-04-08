@@ -89,5 +89,47 @@ namespace SkogsCRM
         {
             homeGrid.Visibility = Visibility.Collapsed;
         }
-    }
-}
+
+        PointCollection pointC;
+        private void Map_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            e.Handled = true;
+
+            pointC = new PointCollection();
+            System.Windows.Point pt = e.GetPosition(this);
+            pointC.Add(pt);
+        }
+        
+        private void Map_MouseUp(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            /*
+            e.Handled = true;
+
+            System.Windows.Point pt = e.GetPosition(this);
+            pointC.Add(pt);
+
+            System.Windows.Point pt1 = pointC[0];
+            System.Windows.Point pt3 = pointC[1];
+            System.Windows.Point pt2 = new System.Windows.Point(pt3.X, pt1.Y);
+            System.Windows.Point pt4 = new System.Windows.Point(pt1.X, pt3.Y);
+
+            Microsoft.Maps.MapControl.WPF.Location loc1 = woodMap.ViewportPointToLocation(pt1);
+            Microsoft.Maps.MapControl.WPF.Location loc2 = woodMap.ViewportPointToLocation(pt2);
+            Microsoft.Maps.MapControl.WPF.Location loc3 = woodMap.ViewportPointToLocation(pt3);
+            Microsoft.Maps.MapControl.WPF.Location loc4 = woodMap.ViewportPointToLocation(pt4);
+
+            MapPolygon polygon = new MapPolygon();
+            polygon.Stroke = new SolidColorBrush(Colors.Red);
+            polygon.StrokeThickness = 3;
+            polygon.Locations = new LocationCollection()
+            {
+                loc1, loc2, loc3, loc4
+            };
+
+            woodMap.Children.Add(polygon);
+            */
+        }
+        
+
+    }//END OF MAINWINDOW
+}   //END OF NAMESPACE
