@@ -19,10 +19,17 @@ namespace SkogsCRM
     /// </summary>
     public partial class Login : Window
     {
+        MainWindow mW = new MainWindow();
         private Controller controller = new Controller();
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void buttonLogin_Click(object sender, RoutedEventArgs e)
+        {
+            mW.Show();
+            this.Close();
         }
     }
 }
