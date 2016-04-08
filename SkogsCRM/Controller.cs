@@ -138,6 +138,6 @@ namespace SkogsCRM
 
             return al;
         }
-
+  
     }//END OF CLASS
 }//END OF NAMESPACE

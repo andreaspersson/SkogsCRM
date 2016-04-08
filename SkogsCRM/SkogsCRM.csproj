@@ -101,6 +101,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="JSONclass.cs" />
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lumbermill.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
     </Compile>
     <Compile Include="TestClass.cs" />
     <Compile Include="ValidationChecker.cs" />
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

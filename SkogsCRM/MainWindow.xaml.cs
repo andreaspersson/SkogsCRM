@@ -123,13 +123,13 @@ namespace SkogsCRM
                 woodMap.Children.Add(polygon);
                
             }
-            if (locations.Count > 5)
-            {
-                woodMap.Children.Clear();
-                MessageBox.Show("Endast polygoner, alltså maximalt fem klick..." + "\n"  +"\n" + "Bing maps 4tehWin" + "\n"  + "\n" + "Gör om, gör rätt");
-                locations.Clear();
+            //if (locations.Count > 5)
+            //{
+                //woodMap.Children.Clear();
+                //MessageBox.Show("Endast polygoner, alltså maximalt fem klick..." + "\n"  +"\n" + "Bing maps 4tehWin" + "\n"  + "\n" + "Gör om, gör rätt");
+                //locations.Clear();
                 
-            }
+            //}
 
 
             /*
