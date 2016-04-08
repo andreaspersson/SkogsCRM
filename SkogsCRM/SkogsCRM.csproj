@@ -187,6 +187,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Skogen.png" />
     <SplashScreen Include="Resources\logoSplash.png" />
     <Resource Include="Resources\woodicon.ico" />
     <Resource Include="Resources\logo.png" />
