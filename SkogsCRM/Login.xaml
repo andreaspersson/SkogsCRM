@@ -8,8 +8,10 @@
         Title="Login" Height="338.736" Width="315.66">
     <Grid>
         <Button x:Name="buttonLogin" Content="Login" HorizontalAlignment="Left" Margin="88,269,0,0" VerticalAlignment="Top" Width="120" Click="buttonLogin_Click"/>
-        <Image x:Name="Skogen_png" Margin="54,10,65,114" Source="Skogen.png" Stretch="Fill"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="88,213,0,0" TextWrapping="Wrap" Text="Din" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="88,241,0,0" TextWrapping="Wrap" Text="Mamma" VerticalAlignment="Top" Width="120"/>
+        <Grid HorizontalAlignment="Left" Height="184" Margin="46,10,0,0" VerticalAlignment="Top" Width="233">
+            <Image x:Name="Skogen_png" Margin="10,0,34,0" Source="Skogen.png" Stretch="Fill"/>
+        </Grid>
     </Grid>
 </Window>
