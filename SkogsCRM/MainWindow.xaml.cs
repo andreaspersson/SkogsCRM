@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -90,18 +91,53 @@ namespace SkogsCRM
             homeGrid.Visibility = Visibility.Collapsed;
         }
 
-        PointCollection pointC;
+        
+        ArrayList locations = new ArrayList();
+       
         private void Map_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
         {
             e.Handled = true;
-
-            pointC = new PointCollection();
-            System.Windows.Point pt = e.GetPosition(this);
-            pointC.Add(pt);
+                        
+            Location lul = woodMap.ViewportPointToLocation(e.GetPosition(this));
+            
+            locations.Add(lul);
+         
         }
         
         private void Map_MouseUp(object sender, System.Windows.Input.MouseEventArgs e)
         {
+            MapPolygon polygon = new MapPolygon();
+            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+            polygon.StrokeThickness = 5;
+            polygon.Opacity = 0.7;
+            polygon.Locations = new LocationCollection();
+
+            if (locations.Count >= 3)
+            {
+
+                polygon.Locations.Clear();
+
+                foreach (Location loc in locations)
+                {
+
+                    polygon.Locations.Add(loc);
+
+
+                }
+                woodMap.Children.Clear();
+                woodMap.Children.Add(polygon);
+               
+            }
+            if (locations.Count > 5)
+            {
+                woodMap.Children.Clear();
+                MessageBox.Show("Endast polygoner, alltså maximalt fem klick..." + "\n"  +"\n" + "Bing maps 4tehWin" + "\n"  + "\n" + "Gör om, gör rätt");
+                locations.Clear();
+                
+            }
+
+
             /*
             e.Handled = true;
 
@@ -129,7 +165,12 @@ namespace SkogsCRM
             woodMap.Children.Add(polygon);
             */
         }
-        
+
+        private void ManualMapReset(object sender, RoutedEventArgs e)
+        {
+            locations.Clear();
+            woodMap.Children.Clear();
+        }
 
     }//END OF MAINWINDOW
 }   //END OF NAMESPACE
