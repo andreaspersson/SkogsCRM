@@ -70,6 +70,8 @@ namespace SkogsCRM
             foreach (MapPolygon p in controller.DrawPolygons(id))
             {
                 woodMap.Children.Add(p);
+                woodMap.Center = p.Locations.ElementAt(0);
+                //Flyttar kartvyn till polygonen
             }
 
         }//END OF ListViewClick
@@ -124,13 +126,13 @@ namespace SkogsCRM
                 woodMap.Children.Add(polygon);
                
             }
-            if (locations.Count > 5)
-            {
-                woodMap.Children.Clear();
-                MessageBox.Show("Endast polygoner, alltså maximalt fem klick..." + "\n"  +"\n" + "Bing maps 4tehWin" + "\n"  + "\n" + "Gör om, gör rätt");
-                locations.Clear();
-                
-            }
+            //if (locations.Count > 5)
+            //{
+            //    woodMap.Children.Clear();
+            //    MessageBox.Show("Endast polygoner, alltså maximalt fem klick..." + "\n"  +"\n" + "Bing maps 4tehWin" + "\n"  + "\n" + "Gör om, gör rätt");
+            //    locations.Clear();
+            //    
+            //}
 
 
             /*
