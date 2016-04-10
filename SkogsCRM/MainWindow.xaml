@@ -60,7 +60,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF24384F" Visibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    <Grid Background="#FF24384F" Visibility="Visible">
         <Canvas HorizontalAlignment="Left" Height="auto" Width="157" Background="#FF253446" Panel.ZIndex="1">
             <Canvas.Effect>
                 <DropShadowEffect Opacity="0.5" ShadowDepth="7" BlurRadius="15"/>
@@ -75,12 +75,12 @@
                     <DropShadowEffect Direction="270" Opacity="0.3" ShadowDepth="3"/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="forestEstatesButton" Style="{StaticResource MenuButtonStyle}" Content="Forest estates" Canvas.Top="252" Width="157" Height="46" BorderThickness="0" Panel.ZIndex="1" Foreground="#FFDADADA">
+            <Button x:Name="forestEstatesButton" Style="{StaticResource MenuButtonStyle}" Content="Forest estates" Canvas.Top="252" Width="157" Height="46" BorderThickness="0" Panel.ZIndex="1" Foreground="#FFDADADA" Click="forestEstatesButton_Click">
                 <Button.Effect>
                     <DropShadowEffect Direction="270" Opacity="0.3" ShadowDepth="3"/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="salesAgentButton" Style="{StaticResource MenuButtonStyle}" Content="Sales agents" Canvas.Top="298" Width="157" Height="46" BorderThickness="0" Foreground="#FFDADADA">
+            <Button x:Name="salesAgentButton" Style="{StaticResource MenuButtonStyle}" Content="Sales agents" Canvas.Top="298" Width="157" Height="46" BorderThickness="0" Foreground="#FFDADADA" Click="salesAgentButton_Click">
                 <Button.Effect>
                     <DropShadowEffect Direction="270" Opacity="0.3" ShadowDepth="3"/>
                 </Button.Effect>
@@ -88,17 +88,16 @@
             <Image x:Name="logo_png" Height="134" Canvas.Left="10" Source="/Resources/logo.png" Stretch="Fill" Canvas.Top="10" Width="135"/>
         </Canvas>
         <Grid x:Name="homeGrid" Background="#FF24384F">
-            <!-- Margin="157,0,0,0" -->
-            <!-- Margin="20" -->
-
-            <Grid Height="314" Margin="174,20,20,0" VerticalAlignment="Top">
+            <Grid Height="346" Margin="174,20,20,0" VerticalAlignment="Top">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
-                <m:Map x:Name="woodMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial"  Width="Auto" MouseLeftButtonDown="Map_MouseDown" MouseLeftButtonUp="Map_MouseUp"  HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="294" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Margin="10" />
+                <m:Map x:Name="homeGridMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial"  Width="Auto" MouseLeftButtonDown="Map_MouseDown" MouseLeftButtonUp="Map_MouseUp"  HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="294" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Margin="10" />
+                <Button x:Name="buttonClearMap" Style="{StaticResource CustomerGridButtonStyle}" Content="Ta bort skit från kartan" Click="ManualMapReset" HorizontalAlignment="Left" Margin="10,309,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33"/>
+                <Button x:Name="button" Style="{StaticResource CustomerGridButtonStyle}" Content="Återställ kladd på kartan" Click="ManualMapReset" HorizontalAlignment="Left" Margin="213,309,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33"/>
             </Grid>
-            <Grid Height="181" Margin="174,384,20,0" VerticalAlignment="Top">
+            <Grid Margin="174,380,20,20">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
@@ -110,11 +109,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button x:Name="button" Content="Återställ manuellt kladd på kartan&#xD;&#xA;" Click="ManualMapReset" HorizontalAlignment="Left" Margin="728,304,0,0" VerticalAlignment="Top" Width="260" Height="23"/>
             </Grid>
-            <Button x:Name="buttonClearMap" Content="Ta bort skit från kartan" Click="ManualMapReset" HorizontalAlignment="Left" Margin="668,350,0,0" VerticalAlignment="Top" Width="207"/>
         </Grid>
-        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
+        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
@@ -154,7 +151,7 @@
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
-                <ListView x:Name="listViewCustomersGrid" MouseDoubleClick="ListViewClick" Margin="5,35,5,20" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
+                <ListView x:Name="listViewCustomersGrid" Margin="10,35,10,20" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>
@@ -163,6 +160,92 @@
                 </ListView>
                 <Label x:Name="label_customersGridFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,3,0,0"/>
                 <TextBox x:Name="textBox_customersGridFind" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
+            <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
+                <Label x:Name="label_addForestEstate" Content="Add a forest estate" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="label_newForestEstateSSN" Content="Customer SSN:" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBox_addNewForestEstateCustomerSSN" HorizontalAlignment="Left" Height="23" Margin="86,35,0,0" TextWrapping="Wrap" Text="#" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483633"/>
+                <Button x:Name="button_forestEstatesGridAddForestEstate" Style="{StaticResource CustomerGridButtonStyle}" Content="Add forest estate" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483634"/>
+                <Button x:Name="button_forestEstatesGridClearNewSAFields" Style="{StaticResource CustomerGridButtonStyle}" Content="Clear field" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483635"/>
+            </Grid>
+            <Grid Height="290" Margin="253,20,20,0" VerticalAlignment="Top">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174" Margin="0"/>
+                <m:Map x:Name="forestEstatesGridMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial"  Width="Auto" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="270" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Margin="10" />
+            </Grid>
+            <Grid Margin="20,338,20,20">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
+                <ListView x:Name="listViewForestEstatesGrid" Margin="10,35,10,20" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label x:Name="label_forestEstatesGridFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,3,0,0"/>
+                <TextBox x:Name="textBox_forestEstatesGridFind" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="salesAgentsGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
+            <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
+                <Label x:Name="label_addNewSalesAgent" Content="Add a sales agent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBox_addNewSalesAgentID" HorizontalAlignment="Left" Height="23" Margin="88,87,0,0" TextWrapping="Wrap" Text="#" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483633"/>
+                <Label x:Name="label_newSalesAgentFirstName" Content="First name:" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_newSalesAgentSurname" Content="Surname:" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_newSalesAgentID" Content="Sales agent ID:" HorizontalAlignment="Left" Margin="0,83,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_newSalesAgentTelephoneNbr" Content="Telephone:" HorizontalAlignment="Left" Margin="0,109,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBox_addNewSalesAgentTelephoneNbr" HorizontalAlignment="Left" Height="23" Margin="88,113,0,0" TextWrapping="Wrap" Text="#" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483633"/>
+                <TextBox x:Name="textBox_newSalesAgentSurname" HorizontalAlignment="Left" Height="23" Margin="88,61,0,0" TextWrapping="Wrap" Text="Doe" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483632"/>
+                <TextBox x:Name="textBox_newSalesAgentFirstName" HorizontalAlignment="Left" Height="23" Margin="88,35,0,0" TextWrapping="Wrap" Text="John" VerticalAlignment="Top" Width="120" Foreground="Black" Background="#FFB6BDC9" TabIndex="2147483631"/>
+                <Button x:Name="button_salesAgentGridAddSalesAgent" Style="{StaticResource CustomerGridButtonStyle}" Content="Add Sales agent" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483634"/>
+                <Button x:Name="button_salesAgentGridClearNewSAFields" Style="{StaticResource CustomerGridButtonStyle}" Content="Clear fields" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483635"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" Height="290" Margin="253,20,0,0" VerticalAlignment="Top" Width="216">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
+                <Label x:Name="label_editSalesAgent" Content="Edit existing sales agent" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBox_editSalesAgentId" HorizontalAlignment="Left" Height="23" Margin="86,87,0,0" TextWrapping="Wrap" Text="#" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483639" MaxLines="2147483639"/>
+                <Label x:Name="label_editSalesAgentFirstName" Content="First name:" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_editSalesAgentSurname" Content="Surname:" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_editSalesAgentId" Content="Sales agent ID:" HorizontalAlignment="Left" Margin="0,83,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="label_editSalesAgentTelephoneNbr" Content="Telephone:" HorizontalAlignment="Left" Margin="0,109,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBox_editSalesAgentTelephoneNbr" HorizontalAlignment="Left" Height="23" Margin="86,113,0,0" TextWrapping="Wrap" Text="#" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483639" MaxLines="2147483639"/>
+                <TextBox x:Name="textBox_editSalesAgentSurname" HorizontalAlignment="Left" Height="23" Margin="86,61,0,0" TextWrapping="Wrap" Text="Doe" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483638" MaxLines="2147483638"/>
+                <TextBox x:Name="textBox_editSalesAgentFirstName" HorizontalAlignment="Left" Height="23" Margin="86,35,0,0" TextWrapping="Wrap" Text="John" VerticalAlignment="Top" Width="120" Foreground="Black" Background="#FFB6BDC9" TabIndex="2147483637" MaxLines="2147483637"/>
+                <Button x:Name="button_salesAgentGridEditSalesAgent" Style="{StaticResource CustomerGridButtonStyle}" Content="Save changes" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483640"/>
+                <Button x:Name="button_salesAgentGridClearEditSAFields" Style="{StaticResource CustomerGridButtonStyle}" Content="Clear fields" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483641"/>
+            </Grid>
+            <Grid Margin="20,338,20,20">
+                <Grid.Effect>
+                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+                </Grid.Effect>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="0,8,0,0" Background="#FF2D5174"/>
+                <ListView x:Name="listViewSalesAgentGrid" Margin="10,35,10,20" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Label x:Name="label_salesAgentsGridFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,3,0,0"/>
+                <TextBox x:Name="textBox_salesAgentsGridFind" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
             </Grid>
         </Grid>
     </Grid>

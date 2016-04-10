@@ -30,7 +30,9 @@ namespace SkogsCRM
             InitializeComponent();
             homeGrid.Visibility = Visibility.Visible;
             customersGrid.Visibility = Visibility.Collapsed;
-            woodMap.Focus();
+            forestEstatesGrid.Visibility = Visibility.Collapsed;
+            salesAgentsGrid.Visibility = Visibility.Collapsed;
+            homeGridMap.Focus();
             
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
@@ -114,12 +116,12 @@ namespace SkogsCRM
             Customer c = obj as Customer;
             string id = c.socialSecurityNbr;
 
-            woodMap.Children.Clear();//Annars skapas polygonerna på nytt över varandra vid varje knapptryck
+            homeGridMap.Children.Clear();//Annars skapas polygonerna på nytt över varandra vid varje knapptryck
 
             foreach (MapPolygon p in controller.DrawPolygons(id))
             {
-                woodMap.Children.Add(p);
-                woodMap.Center = p.Locations.ElementAt(0);
+                homeGridMap.Children.Add(p);
+                homeGridMap.Center = p.Locations.ElementAt(0);
                 //Flyttar kartvyn till polygonen
             }
 
@@ -128,23 +130,42 @@ namespace SkogsCRM
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
             customersGrid.Visibility = Visibility.Collapsed;
+            forestEstatesGrid.Visibility = Visibility.Collapsed;
+            salesAgentsGrid.Visibility = Visibility.Collapsed;
             homeGrid.Visibility = Visibility.Visible;
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
         {
             homeGrid.Visibility = Visibility.Collapsed;
+            forestEstatesGrid.Visibility = Visibility.Collapsed;
+            salesAgentsGrid.Visibility = Visibility.Collapsed;
             customersGrid.Visibility = Visibility.Visible;
         }
+        private void forestEstatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            customersGrid.Visibility = Visibility.Collapsed;
+            homeGrid.Visibility = Visibility.Collapsed;
+            salesAgentsGrid.Visibility = Visibility.Collapsed;
+            forestEstatesGrid.Visibility = Visibility.Visible;
+        }
+        private void salesAgentButton_Click(object sender, RoutedEventArgs e)
+        {
+            customersGrid.Visibility = Visibility.Collapsed;
+            forestEstatesGrid.Visibility = Visibility.Collapsed;
+            homeGrid.Visibility = Visibility.Collapsed;
+            salesAgentsGrid.Visibility = Visibility.Visible;
 
-        
+        }
+
+
         ArrayList locations = new ArrayList();
        
         private void Map_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
         {
             e.Handled = true;
                         
-            Location lul = woodMap.ViewportPointToLocation(e.GetPosition(woodMap));
+            Location lul = homeGridMap.ViewportPointToLocation(e.GetPosition(homeGridMap));
             
             locations.Add(lul);
          
@@ -171,8 +192,8 @@ namespace SkogsCRM
 
 
                 }
-                woodMap.Children.Clear();
-                woodMap.Children.Add(polygon);
+                homeGridMap.Children.Clear();
+                homeGridMap.Children.Add(polygon);
                
             }
             //if (locations.Count > 5)
@@ -215,8 +236,9 @@ namespace SkogsCRM
         private void ManualMapReset(object sender, RoutedEventArgs e)
         {
             locations.Clear();
-            woodMap.Children.Clear();
+            homeGridMap.Children.Clear();
         }
+
 
     }//END OF MAINWINDOW
 }   //END OF NAMESPACE
