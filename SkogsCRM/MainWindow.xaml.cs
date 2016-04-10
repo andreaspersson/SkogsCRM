@@ -35,7 +35,9 @@ namespace SkogsCRM
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
-            
+            var gridView1 = new GridView();
+            this.listViewCustomersGrid.View = gridView1;
+
             gridView.Columns.Add(new GridViewColumn
             {
                 Header = "Personr",
@@ -52,9 +54,49 @@ namespace SkogsCRM
                 DisplayMemberBinding = new Binding("surname")
             });
 
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Personr",
+                DisplayMemberBinding = new Binding("socialSecurityNbr")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Förnamn",
+                DisplayMemberBinding = new Binding("firstName")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Efternamn",
+                DisplayMemberBinding = new Binding("surname")
+            });
+           
+            //gridView end
+
+            gridView1.Columns.Add(new GridViewColumn
+            {
+                Header = "Personr",
+                DisplayMemberBinding = new Binding("socialSecurityNbr")
+            });
+            gridView1.Columns.Add(new GridViewColumn
+            {
+                Header = "Förnamn",
+                DisplayMemberBinding = new Binding("firstName")
+            });
+            gridView1.Columns.Add(new GridViewColumn
+            {
+                Header = "Efternamn",
+                DisplayMemberBinding = new Binding("surname")
+            });
+            //gridView1 end
+
             foreach (Customer c in controller.GetAllCustomers())
             {                
-                this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); ;
+                this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); 
+                
+            }
+            foreach(Customer c in controller.GetAllCustomers())
+            {
+                this.listViewCustomersGrid.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); ;
             }
                         
         }//END OF MAINWINDOW
