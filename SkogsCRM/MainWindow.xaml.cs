@@ -87,6 +87,11 @@ namespace SkogsCRM
                 Header = "Efternamn",
                 DisplayMemberBinding = new Binding("surname")
             });
+            gridView1.Columns.Add(new GridViewColumn
+            {
+                Header = "Sales agent ID",
+                DisplayMemberBinding = new Binding("employeeId")
+            });
             //gridView1 end
 
             foreach (Customer c in controller.GetAllCustomers())
@@ -94,9 +99,11 @@ namespace SkogsCRM
                 this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); 
                 
             }
+            //customerGrid ligger i en egen foreach för stunden
+
             foreach(Customer c in controller.GetAllCustomers())
             {
-                this.listViewCustomersGrid.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); ;
+                this.listViewCustomersGrid.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname, employeeId = c.employeeId }); ;
             }
                         
         }//END OF MAINWINDOW
