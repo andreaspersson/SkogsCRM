@@ -80,26 +80,19 @@ namespace SkogsCRM
             });
             //gridView1 end
 
-            foreach (Customer c in controller.GetAllCustomers())
-            {                
-                this.listView.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname }); 
-                
-            }
-            //customerGrid ligger i en egen foreach för stunden
+            //ListView @ Home
+            listView.ItemsSource = controller.GetAllCustomers();
+            //ListView @ CustomerGrid           
             listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
 
+            //För filtreringen med TextBox
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource);
-            view.Filter = UserFilter;
+            view.Filter = CustomerFilter;
 
-            /*
-            foreach(Customer c in controller.GetAllCustomers())
-            {
-                this.listViewCustomersGrid.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname, employeeId = c.employeeId }); ;
-            }
-            */
+            
         }//END OF MAINWINDOW
 
-        private bool UserFilter(object item)
+        private bool CustomerFilter(object item)
         {
             if (String.IsNullOrEmpty(textBox_customersGridFind.Text))
                 return true;
