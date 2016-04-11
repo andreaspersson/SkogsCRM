@@ -239,6 +239,21 @@ namespace SkogsCRM
             homeGridMap.Children.Clear();
         }
 
+        private void button_customersGridClearNewCFields_Click(object sender, RoutedEventArgs e)
+        {
+            textBox_newCustomerSalesAgentID.Clear();
+            textBox_newCustomerSocNbr.Clear();
+            textBox_newCustomerFirstName.Clear();
+            textBox_newCustomerSurname.Clear();
+        }
+
+        private void button_customersGridClearEditCFields_Click(object sender, RoutedEventArgs e)
+        {
+            textBox_editCustomerSocNbr.Clear();
+            textBox_editCustomerFirstName.Clear();
+            textBox_editCustomerSurname.Clear();
+            textBox_editCustomerSalesAgentId.Clear();
+        }
 
     }//END OF MAINWINDOW
 }   //END OF NAMESPACE
