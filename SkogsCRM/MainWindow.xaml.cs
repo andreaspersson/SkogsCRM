@@ -55,23 +55,7 @@ namespace SkogsCRM
                 Header = "Efternamn",
                 DisplayMemberBinding = new Binding("surname")
             });
-
-            gridView.Columns.Add(new GridViewColumn
-            {
-                Header = "Personr",
-                DisplayMemberBinding = new Binding("socialSecurityNbr")
-            });
-            gridView.Columns.Add(new GridViewColumn
-            {
-                Header = "Förnamn",
-                DisplayMemberBinding = new Binding("firstName")
-            });
-            gridView.Columns.Add(new GridViewColumn
-            {
-                Header = "Efternamn",
-                DisplayMemberBinding = new Binding("surname")
-            });
-           
+            
             //gridView end
 
             gridView1.Columns.Add(new GridViewColumn
@@ -102,13 +86,31 @@ namespace SkogsCRM
                 
             }
             //customerGrid ligger i en egen foreach för stunden
+            listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
 
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource);
+            view.Filter = UserFilter;
+
+            /*
             foreach(Customer c in controller.GetAllCustomers())
             {
                 this.listViewCustomersGrid.Items.Add(new Customer { socialSecurityNbr = c.socialSecurityNbr, firstName = c.firstName, surname = c.surname, employeeId = c.employeeId }); ;
             }
-                        
+            */
         }//END OF MAINWINDOW
+
+        private bool UserFilter(object item)
+        {
+            if (String.IsNullOrEmpty(textBox_customersGridFind.Text))
+                return true;
+            else
+                return ((item as Customer).firstName.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void SortListByTextBox(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource).Refresh();
+        }
 
         private void ListViewClick(object sender, RoutedEventArgs e)
         {
@@ -254,6 +256,11 @@ namespace SkogsCRM
             textBox_editCustomerSurname.Clear();
             textBox_editCustomerSalesAgentId.Clear();
         }
+
+
+
+        
+
 
     }//END OF MAINWINDOW
 }   //END OF NAMESPACE

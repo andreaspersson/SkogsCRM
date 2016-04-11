@@ -159,7 +159,7 @@
                     </ListView.View>
                 </ListView>
                 <Label x:Name="label_customersGridFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,3,0,0"/>
-                <TextBox x:Name="textBox_customersGridFind" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
+                <TextBox x:Name="textBox_customersGridFind" TextChanged="SortListByTextBox" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
             </Grid>
         </Grid>
         <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
