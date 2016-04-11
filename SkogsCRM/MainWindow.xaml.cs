@@ -104,7 +104,10 @@ namespace SkogsCRM
             if (String.IsNullOrEmpty(textBox_customersGridFind.Text))
                 return true;
             else
-                return ((item as Customer).firstName.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return ((item as Customer).firstName.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || ((item as Customer).surname.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || ((item as Customer).socialSecurityNbr.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                    //|| ((item as Customer).SalesAgent.employeeId.ToString().IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         private void SortListByTextBox(object sender, System.Windows.Controls.TextChangedEventArgs e)
