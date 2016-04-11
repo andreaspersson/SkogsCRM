@@ -20,6 +20,8 @@ namespace SkogsCRM
     public partial class Login : Window
     {
         MainWindow mW = new MainWindow();
+        string username;
+        string password;
 
         private Controller controller = new Controller();
         public Login()
@@ -32,6 +34,11 @@ namespace SkogsCRM
         {
             mW.Show();
             this.Close();
+        }
+
+        private void buttonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
