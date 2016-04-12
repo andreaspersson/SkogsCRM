@@ -101,12 +101,19 @@
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174"/>
-                <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10" Width="auto" Background="#FFB6BDC9" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
+                <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10" Width="auto" Background="#FFB6BDC9" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top" Foreground="Black">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>
                         </GridView>
+                        
                     </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Edit this customer" Click="MenuItem_Edit_Click" />
+                            <MenuItem Header="Add a new forest estate" Click="MenuItem_NewForestEstate_Click" />
+                        </ContextMenu>
+                    </ListView.ContextMenu>
                 </ListView>
             </Grid>
         </Grid>

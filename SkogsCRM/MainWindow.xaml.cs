@@ -286,10 +286,14 @@ namespace SkogsCRM
             textBox_editCustomerSalesAgentId.Clear();
         }
 
-
-
-        
-
+        private void MenuItem_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+        private void MenuItem_NewForestEstate_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
 
     }//END OF MAINWINDOW
 }   //END OF NAMESPACE
