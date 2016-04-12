@@ -110,7 +110,7 @@
                 </ListView>
             </Grid>
         </Grid>
-        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
+        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
@@ -139,7 +139,7 @@
                 <Label x:Name="label_editCustomerSurname" Content="Surname:" HorizontalAlignment="Left" Margin="0,83,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label_editCustomerSocNbr" Content="SSN:" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="label_editCustomerAgentId" Content="Sales agent ID:" HorizontalAlignment="Left" Margin="-2,109,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="textBox_editCustomerSocNbr" HorizontalAlignment="Left" Height="23" Margin="86,35,0,0" TextWrapping="Wrap" Text="YYMMDD####" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" Foreground="Black" TabIndex="2147483636" MaxLines="2147483636"/>
+                <ComboBox x:Name="comboBox_editCustomerSocNbr" HorizontalAlignment="Left" Height="23" Margin="86,35,0,0"  Text="YYMMDD####" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" Foreground="Black" TabIndex="2147483636" />
                 <TextBox x:Name="textBox_editCustomerSurname" HorizontalAlignment="Left" Height="23" Margin="86,87,0,0" TextWrapping="Wrap" Text="Doe" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483638" MaxLines="2147483638"/>
                 <TextBox x:Name="textBox_editCustomerFirstName" HorizontalAlignment="Left" Height="23" Margin="86,61,0,0" TextWrapping="Wrap" Text="John" VerticalAlignment="Top" Width="120" Foreground="Black" Background="#FFB6BDC9" TabIndex="2147483637" MaxLines="2147483637"/>
                 <Button x:Name="button_customersGridEditCustomer" Style="{StaticResource CustomerGridButtonStyle}" Content="Save changes" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483640"/>
@@ -161,7 +161,7 @@
                 <TextBox x:Name="textBox_customersGridFind" TextChanged="SortListByTextBox" HorizontalAlignment="Left" Height="23" Margin="45,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
             </Grid>
         </Grid>
-        <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0"  Background="#FF24384F" Visibility="Visible">
+        <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0"  Background="#FF24384F" Visibility="Collapsed">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
