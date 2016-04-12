@@ -88,7 +88,9 @@ namespace SkogsCRM
             foreach (Customer c in controller.GetAllCustomers())
             {
                 forestEstateGridcomboBox.Items.Add(c.socialSecurityNbr + " " + c.firstName + " " + c.surname);
+                comboBox_editCustomerSocNbr.Items.Add(c.socialSecurityNbr);
             }
+
 
             
 
@@ -280,7 +282,7 @@ namespace SkogsCRM
 
         private void button_customersGridClearEditCFields_Click(object sender, RoutedEventArgs e)
         {
-            textBox_editCustomerSocNbr.Clear();
+            comboBox_editCustomerSocNbr.SelectedIndex = -1;
             textBox_editCustomerFirstName.Clear();
             textBox_editCustomerSurname.Clear();
             textBox_editCustomerSalesAgentId.Clear();
