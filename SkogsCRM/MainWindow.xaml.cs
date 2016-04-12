@@ -84,6 +84,12 @@ namespace SkogsCRM
             listView.ItemsSource = controller.GetAllCustomers();
             //ListView @ CustomerGrid           
             listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
+
+            foreach (Customer c in controller.GetAllCustomers())
+            {
+                forestEstateGridcomboBox.Items.Add(c.socialSecurityNbr + " " + c.firstName + " " + c.surname);
+            }
+
             
 
             //För filtreringen med TextBox
