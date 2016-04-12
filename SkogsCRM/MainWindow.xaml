@@ -161,7 +161,7 @@
                 <TextBox x:Name="textBox_customersGridFind" TextChanged="SortListByTextBox" HorizontalAlignment="Left" Height="23" Margin="45,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
             </Grid>
         </Grid>
-        <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
+        <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0"  Background="#FF24384F" Visibility="Visible">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
