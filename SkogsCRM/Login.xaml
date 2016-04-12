@@ -42,7 +42,7 @@
     <Grid>
         <Button x:Name="buttonLogin" Style="{StaticResource CustomerGridButtonStyle}" Content="Login" HorizontalAlignment="Left" Margin="127,306,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="buttonLogin_Click"/>
         <Button x:Name="buttonClose" Style="{StaticResource CustomerGridButtonStyle}" Content="Close" HorizontalAlignment="Left" Margin="127,336,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="buttonClose_Click"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="127,250,0,0" TextWrapping="Wrap" Text="Din" VerticalAlignment="Top" Width="120" Background="#FFB0C6D3" BorderBrush="Black"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="127,250,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Width="120" Background="#FFB0C6D3" BorderBrush="Black"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Height="23" Margin="127,278,0,0" VerticalAlignment="Top" Width="120" Background="#FFB0C6D3" BorderBrush="Black" Password="mamma"/>
         <Grid HorizontalAlignment="Left" Height="250" Margin="70,0,0,0" VerticalAlignment="Top" Width="230" Panel.ZIndex="-1">
             <Image x:Name="Skogen_png" Margin="0,0,0,0" Source="skogen.png" Stretch="Fill"/>

@@ -84,12 +84,15 @@ namespace SkogsCRM
             listView.ItemsSource = controller.GetAllCustomers();
             //ListView @ CustomerGrid           
             listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
+            
 
             //För filtreringen med TextBox
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource);
-            view.Filter = CustomerFilter;
-
             
+
+            view.Filter = CustomerFilter;
+            
+
         }//END OF MAINWINDOW
 
         private bool CustomerFilter(object item)
@@ -162,12 +165,18 @@ namespace SkogsCRM
         private void Map_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
         {
             e.Handled = true;
-                        
-            Location lul = homeGridMap.ViewportPointToLocation(e.GetPosition(homeGridMap));
-            
-            locations.Add(lul);
-         
-        }
+
+            if (homeGrid.Visibility == Visibility.Visible)
+            {
+                Location loc = homeGridMap.ViewportPointToLocation(e.GetPosition(homeGridMap));
+                locations.Add(loc);
+            }
+            if (forestEstatesGrid.Visibility == Visibility.Visible)
+            {
+                Location loc = forestEstatesGridMap.ViewportPointToLocation(e.GetPosition(forestEstatesGridMap));
+                locations.Add(loc);
+            }
+         }
         
         private void Map_MouseUp(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -185,19 +194,28 @@ namespace SkogsCRM
 
                 foreach (Location loc in locations)
                 {
-
                     polygon.Locations.Add(loc);
-
-
                 }
-                homeGridMap.Children.Clear();
-                homeGridMap.Children.Add(polygon);
+
+                if (homeGrid.Visibility == Visibility.Visible)
+                {
+                    homeGridMap.Children.Clear();
+                    forestEstatesGridMap.Children.Clear();
+                    homeGridMap.Children.Add(polygon);
+                }
+                if (forestEstatesGrid.Visibility == Visibility.Visible)
+                {
+                    forestEstatesGridMap.Children.Clear();
+                    homeGridMap.Children.Clear();
+                    forestEstatesGridMap.Children.Add(polygon);
+                }
                
             }
             //if (locations.Count > 5)
             //{
-            //    woodMap.Children.Clear();
-            //    MessageBox.Show("Endast polygoner, alltså maximalt fem klick..." + "\n"  +"\n" + "Bing maps 4tehWin" + "\n"  + "\n" + "Gör om, gör rätt");
+            //    homeGridMap.Children.Clear();
+            //    forestEstatesGridMap.Children.Clear();
+            //    MessageBox.Show("Endast polygoner, alltså maximalt fem klick..." + "\n"  +  + "\n" + "Försök igen!");
             //    locations.Clear();
             //    
             //}
