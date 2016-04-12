@@ -252,7 +252,16 @@ namespace SkogsCRM
         private void ManualMapReset(object sender, RoutedEventArgs e)
         {
             locations.Clear();
-            homeGridMap.Children.Clear();
+            
+            if (homeGrid.Visibility == Visibility.Visible)
+            {
+                homeGridMap.Children.Clear();
+            }
+            if (forestEstatesGrid.Visibility == Visibility.Visible)
+            {
+                forestEstatesGridMap.Children.Clear();
+            }
+
         }
 
         private void button_customersGridClearNewCFields_Click(object sender, RoutedEventArgs e)

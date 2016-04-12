@@ -101,7 +101,7 @@
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174"/>
-                <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10" Width="auto" Background="#FFF0F0F0" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
+                <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10" Width="auto" Background="#FFB6BDC9" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>
@@ -110,7 +110,7 @@
                 </ListView>
             </Grid>
         </Grid>
-        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
+        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
@@ -161,7 +161,7 @@
                 <TextBox x:Name="textBox_customersGridFind" TextChanged="SortListByTextBox" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
             </Grid>
         </Grid>
-        <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
+        <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
@@ -177,8 +177,10 @@
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
-                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174" Margin="0"/>
+                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174" Margin="0,0,0,-26"/>
                 <m:Map x:Name="forestEstatesGridMap" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial" MouseLeftButtonDown="Map_MouseDown" MouseLeftButtonUp="Map_MouseUp"  Width="Auto" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" Height="270" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Margin="10" />
+                <Button x:Name="buttonForestEstatesClearMap" Style="{StaticResource CustomerGridButtonStyle}" Content="Ta bort polygoner från kartan" Click="ManualMapReset" HorizontalAlignment="Left" Margin="10,282,0,-25" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33"/>
+
             </Grid>
             <Grid Margin="20,338,20,20">
                 <Grid.Effect>
