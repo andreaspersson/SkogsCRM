@@ -95,7 +95,7 @@ namespace SkogsCRM
             
 
             //För filtreringen med TextBox
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource);
+            CollectionView view = CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource) as CollectionView;
             
 
             view.Filter = CustomerFilter;
