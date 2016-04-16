@@ -290,7 +290,9 @@ namespace SkogsCRM
 
         private void MenuItem_Edit_Click(object sender, RoutedEventArgs e)
         {
-            //
+           Customer c = listView.SelectedItem as Customer;
+            textBox_editCustomerFirstName.Text = c.firstName;
+            customersButton_Click(sender, e);
         }
         private void MenuItem_NewForestEstate_Click(object sender, RoutedEventArgs e)
         {
