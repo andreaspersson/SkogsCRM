@@ -37,8 +37,8 @@ namespace SkogsCRM
             SkogsDBEntities ctx = new SkogsDBEntities();
             var gridView = new GridView();
             this.listView.View = gridView;
-            var gridView1 = new GridView();
-            this.listViewCustomersGrid.View = gridView1;
+           // var gridView1 = new GridView();
+            //this.listViewCustomersGrid.View = gridView1;
 
             gridView.Columns.Add(new GridViewColumn
             {
@@ -57,7 +57,7 @@ namespace SkogsCRM
             });
             
             //gridView end
-
+            /*
             gridView1.Columns.Add(new GridViewColumn
             {
                 Header = "Personr",
@@ -79,11 +79,12 @@ namespace SkogsCRM
                 DisplayMemberBinding = new Binding("employeeId")
             });
             //gridView1 end
+            */
 
             //ListView @ Home
             listView.ItemsSource = controller.GetAllCustomers();
             //ListView @ CustomerGrid           
-            listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
+            //listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
 
             foreach (Customer c in controller.GetAllCustomers())
             {
@@ -95,7 +96,7 @@ namespace SkogsCRM
             
 
             //För filtreringen med TextBox
-            CollectionView view = CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource) as CollectionView;
+            CollectionView view = CollectionViewSource.GetDefaultView(listView.ItemsSource) as CollectionView;
             
 
             view.Filter = CustomerFilter;
@@ -116,7 +117,7 @@ namespace SkogsCRM
 
         private void SortListByTextBox(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(listViewCustomersGrid.ItemsSource).Refresh();
+            CollectionViewSource.GetDefaultView(listView.ItemsSource).Refresh();
         }
 
         private void ListViewClick(object sender, RoutedEventArgs e)

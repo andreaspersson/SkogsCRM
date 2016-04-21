@@ -101,7 +101,7 @@
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174"/>
-                <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10" Width="auto" Background="#FFB6BDC9" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top" Foreground="Black">
+                <ListView x:Name="listView" MouseDoubleClick="ListViewClick"  Margin="10,37,10,0" Width="auto" Background="#FFB6BDC9" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top" Foreground="Black">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>
@@ -115,6 +115,8 @@
                         </ContextMenu>
                     </ListView.ContextMenu>
                 </ListView>
+                <Label x:Name="label_customersGridFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,3,0,0"/>
+                <TextBox x:Name="textBox_customersGridFind" TextChanged="SortListByTextBox" HorizontalAlignment="Left" Height="23" Margin="45,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
             </Grid>
         </Grid>
         <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
@@ -152,21 +154,7 @@
                 <Button x:Name="button_customersGridEditCustomer" Style="{StaticResource CustomerGridButtonStyle}" Content="Save changes" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483640"/>
                 <Button x:Name="button_customersGridClearEditCFields" Style="{StaticResource CustomerGridButtonStyle}" Content="Clear fields" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483641" Click="button_customersGridClearEditCFields_Click"/>
             </Grid>
-            <Grid Margin="20,338,20,20">
-                <Grid.Effect>
-                    <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
-                </Grid.Effect>
-                <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174"/>
-                <ListView x:Name="listViewCustomersGrid" Margin="10,35,10,20" Width="auto" Background="#FFB6BDC9" HorizontalContentAlignment="Center" MaxHeight="290" BorderThickness="0" VerticalContentAlignment="Center" Padding="0" VerticalAlignment="Top">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <Label x:Name="label_customersGridFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,3,0,0"/>
-                <TextBox x:Name="textBox_customersGridFind" TextChanged="SortListByTextBox" HorizontalAlignment="Left" Height="23" Margin="45,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
-            </Grid>
+            
         </Grid>
         <Grid x:Name="forestEstatesGrid" Margin="157,0,0,0"  Background="#FF24384F" Visibility="Collapsed">
             <Grid HorizontalAlignment="Left" Height="290" Margin="20,20,0,0" VerticalAlignment="Top" Width="216">
