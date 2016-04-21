@@ -290,11 +290,26 @@ namespace SkogsCRM
 
         private void MenuItem_Edit_Click(object sender, RoutedEventArgs e)
         {
-            //
+            if (listView.SelectedItem != null)
+            {
+                Customer c = listView.SelectedItem as Customer;
+                comboBox_editCustomerSocNbr.Text = c.socialSecurityNbr;
+                textBox_editCustomerFirstName.Text = c.firstName;
+                textBox_editCustomerSurname.Text = c.surname;
+                textBox_editCustomerSalesAgentId.Text = c.employeeId.ToString();
+                customersButton_Click(sender, e);
+            }
+
         }
         private void MenuItem_NewForestEstate_Click(object sender, RoutedEventArgs e)
         {
-            //
+            if (listView.SelectedItem != null)
+            {
+                Customer c = listView.SelectedItem as Customer;
+                forestEstateGridcomboBox.SelectedItem = c.socialSecurityNbr;
+                forestEstatesButton_Click(sender, e);
+            }
+
         }
 
     }//END OF MAINWINDOW
