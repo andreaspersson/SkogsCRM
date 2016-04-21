@@ -33,6 +33,32 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style TargetType="{x:Type Button}" x:Key="ActiveMenuButtonStyle">
+            <Setter Property="Background" Value="#FF1C4A70" />
+            <Setter Property="Foreground" Value="#FFDADADB" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF335E91" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFC99851" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="{x:Type Button}" x:Key="CustomerGridButtonStyle">
             <Setter Property="Background" Value="#FF253446" />
             <Setter Property="Foreground" Value="#FFDADADB" />
@@ -87,6 +113,7 @@
             </Button>
             <Image x:Name="logo_png" Height="134" Canvas.Left="10" Source="/Resources/logo.png" Stretch="Fill" Canvas.Top="10" Width="135"/>
         </Canvas>
+        
         <Grid x:Name="customerTableGrid" Margin="174,376,20,20" Panel.ZIndex="1">
             <Grid.Effect>
                 <DropShadowEffect Opacity="0.5" BlurRadius="10"/>

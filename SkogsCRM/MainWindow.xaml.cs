@@ -32,6 +32,8 @@ namespace SkogsCRM
             customersGrid.Visibility = Visibility.Collapsed;
             forestEstatesGrid.Visibility = Visibility.Collapsed;
             salesAgentsGrid.Visibility = Visibility.Collapsed;
+            Style styleActive = FindResource("ActiveMenuButtonStyle") as Style;
+            homeButton.Style = styleActive;
             homeGridMap.Focus();
             
             SkogsDBEntities ctx = new SkogsDBEntities();
@@ -188,6 +190,12 @@ namespace SkogsCRM
             salesAgentsGrid.Visibility = Visibility.Collapsed;
             homeGrid.Visibility = Visibility.Visible;
             customerTableGrid.Visibility = Visibility.Visible;
+            Style styleActive = FindResource("ActiveMenuButtonStyle") as Style;
+            Style styleInActive = FindResource("MenuButtonStyle") as Style;
+            customersButton.Style = styleInActive;
+            forestEstatesButton.Style = styleInActive;
+            salesAgentButton.Style = styleInActive;
+            homeButton.Style = styleActive;
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
@@ -197,6 +205,12 @@ namespace SkogsCRM
             salesAgentsGrid.Visibility = Visibility.Collapsed;
             customersGrid.Visibility = Visibility.Visible;
             customerTableGrid.Visibility = Visibility.Visible;
+            Style styleActive = FindResource("ActiveMenuButtonStyle") as Style;
+            Style styleInActive = FindResource("MenuButtonStyle") as Style;
+            homeButton.Style = styleInActive;
+            forestEstatesButton.Style = styleInActive;
+            salesAgentButton.Style = styleInActive;
+            customersButton.Style = styleActive;
         }
         private void forestEstatesButton_Click(object sender, RoutedEventArgs e)
         {
@@ -205,6 +219,12 @@ namespace SkogsCRM
             salesAgentsGrid.Visibility = Visibility.Collapsed;
             forestEstatesGrid.Visibility = Visibility.Visible;
             customerTableGrid.Visibility = Visibility.Visible;
+            Style styleActive = FindResource("ActiveMenuButtonStyle") as Style;
+            Style styleInActive = FindResource("MenuButtonStyle") as Style;
+            homeButton.Style = styleInActive;
+            customersButton.Style = styleInActive;
+            salesAgentButton.Style = styleInActive;
+            forestEstatesButton.Style = styleActive;
         }
         private void salesAgentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -213,6 +233,12 @@ namespace SkogsCRM
             homeGrid.Visibility = Visibility.Collapsed;
             customerTableGrid.Visibility = Visibility.Collapsed;
             salesAgentsGrid.Visibility = Visibility.Visible;
+            Style styleActive = FindResource("ActiveMenuButtonStyle") as Style;
+            Style styleInActive = FindResource("MenuButtonStyle") as Style;
+            homeButton.Style = styleInActive;
+            customersButton.Style = styleInActive;
+            forestEstatesButton.Style = styleInActive;
+            salesAgentButton.Style = styleActive;
         }
 
 
