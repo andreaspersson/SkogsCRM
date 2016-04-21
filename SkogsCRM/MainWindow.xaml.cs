@@ -86,11 +86,11 @@ namespace SkogsCRM
             //ListView @ CustomerGrid           
             //listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
 
-            foreach (Customer c in controller.GetAllCustomers())
-            {
-                forestEstateGridcomboBox.Items.Add(c.socialSecurityNbr + " " + c.firstName + " " + c.surname);
-                comboBox_editCustomerSocNbr.Items.Add(c.socialSecurityNbr);
-            }
+            //foreach (Customer c in controller.GetAllCustomers())
+            //{
+            //    forestEstateGridcomboBox.Items.Add(c.socialSecurityNbr + " " + c.firstName + " " + c.surname);
+            //    comboBox_editCustomerSocNbr.Items.Add(c.socialSecurityNbr);
+            //}
 
 
             
@@ -106,13 +106,13 @@ namespace SkogsCRM
 
         private bool CustomerFilter(object item)
         {
-            if (String.IsNullOrEmpty(textBox_customersGridFind.Text))
+            if (String.IsNullOrEmpty(textBox_customersListViewFind.Text))
                 return true;
             else
-                return ((item as Customer).firstName.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                    || ((item as Customer).surname.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
-                    || ((item as Customer).socialSecurityNbr.IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                    //|| ((item as Customer).SalesAgent.employeeId.ToString().IndexOf(textBox_customersGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return ((item as Customer).firstName.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || ((item as Customer).surname.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || ((item as Customer).socialSecurityNbr.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                  //|| ((item as Customer).SalesAgent.employeeId.ToString().IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         private void SortListByTextBox(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -143,6 +143,7 @@ namespace SkogsCRM
             forestEstatesGrid.Visibility = Visibility.Collapsed;
             salesAgentsGrid.Visibility = Visibility.Collapsed;
             homeGrid.Visibility = Visibility.Visible;
+            customerTableGrid.Visibility = Visibility.Visible;
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
@@ -151,6 +152,7 @@ namespace SkogsCRM
             forestEstatesGrid.Visibility = Visibility.Collapsed;
             salesAgentsGrid.Visibility = Visibility.Collapsed;
             customersGrid.Visibility = Visibility.Visible;
+            customerTableGrid.Visibility = Visibility.Visible;
         }
         private void forestEstatesButton_Click(object sender, RoutedEventArgs e)
         {
@@ -158,14 +160,15 @@ namespace SkogsCRM
             homeGrid.Visibility = Visibility.Collapsed;
             salesAgentsGrid.Visibility = Visibility.Collapsed;
             forestEstatesGrid.Visibility = Visibility.Visible;
+            customerTableGrid.Visibility = Visibility.Visible;
         }
         private void salesAgentButton_Click(object sender, RoutedEventArgs e)
         {
             customersGrid.Visibility = Visibility.Collapsed;
             forestEstatesGrid.Visibility = Visibility.Collapsed;
             homeGrid.Visibility = Visibility.Collapsed;
+            customerTableGrid.Visibility = Visibility.Collapsed;
             salesAgentsGrid.Visibility = Visibility.Visible;
-
         }
 
 
@@ -283,7 +286,7 @@ namespace SkogsCRM
 
         private void button_customersGridClearEditCFields_Click(object sender, RoutedEventArgs e)
         {
-            comboBox_editCustomerSocNbr.SelectedIndex = -1;
+            textBox_editCustomerSSN.Clear();
             textBox_editCustomerFirstName.Clear();
             textBox_editCustomerSurname.Clear();
             textBox_editCustomerSalesAgentId.Clear();
@@ -294,7 +297,7 @@ namespace SkogsCRM
             if (listView.SelectedItem != null)
             {
                 Customer c = listView.SelectedItem as Customer;
-                comboBox_editCustomerSocNbr.Text = c.socialSecurityNbr;
+                textBox_editCustomerSSN.Text = c.socialSecurityNbr;
                 textBox_editCustomerFirstName.Text = c.firstName;
                 textBox_editCustomerSurname.Text = c.surname;
                 textBox_editCustomerSalesAgentId.Text = c.employeeId.ToString();
@@ -307,7 +310,7 @@ namespace SkogsCRM
             if (listView.SelectedItem != null)
             {
                 Customer c = listView.SelectedItem as Customer;
-                forestEstateGridcomboBox.SelectedItem = c.socialSecurityNbr;
+                textBox_addForestEstateSSN.Text = c.socialSecurityNbr;
                 forestEstatesButton_Click(sender, e);
             }
 
