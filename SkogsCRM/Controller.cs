@@ -138,6 +138,17 @@ namespace SkogsCRM
 
             return al;
         }
-  
+        public ArrayList GetAllSalesAgents()
+        {
+            ArrayList al = new ArrayList();
+
+            foreach (SalesAgent sa in em.SalesAgent)
+            {
+                al.Add(sa);
+            }
+
+            return al;
+        }
+
     }//END OF CLASS
 }//END OF NAMESPACE

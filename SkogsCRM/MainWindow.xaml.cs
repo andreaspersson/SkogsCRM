@@ -35,27 +35,57 @@ namespace SkogsCRM
             homeGridMap.Focus();
             
             SkogsDBEntities ctx = new SkogsDBEntities();
-            var gridView = new GridView();
-            this.listView.View = gridView;
-           // var gridView1 = new GridView();
+            var gridViewCustomers = new GridView();
+            var gridViewSalesAgents = new GridView();
+            this.listView.View = gridViewCustomers;
+            this.listViewSalesAgentGrid.View = gridViewSalesAgents;
+            // var gridView1 = new GridView();
             //this.listViewCustomersGrid.View = gridView1;
 
-            gridView.Columns.Add(new GridViewColumn
+            //Customer table
+            gridViewCustomers.Columns.Add(new GridViewColumn
             {
                 Header = "Personr",
                 DisplayMemberBinding = new Binding("socialSecurityNbr")
             });
-            gridView.Columns.Add(new GridViewColumn
+            gridViewCustomers.Columns.Add(new GridViewColumn
             {
                 Header = "Förnamn",
                 DisplayMemberBinding = new Binding("firstName")
             });
-            gridView.Columns.Add(new GridViewColumn
+            gridViewCustomers.Columns.Add(new GridViewColumn
             {
                 Header = "Efternamn",
                 DisplayMemberBinding = new Binding("surname")
             });
-            
+            gridViewCustomers.Columns.Add(new GridViewColumn
+            {
+                Header = "Assigned agent's ID",
+                DisplayMemberBinding = new Binding("employeeId")
+            });
+
+            //Sales agent table
+            gridViewSalesAgents.Columns.Add(new GridViewColumn
+            {
+                Header = "Employee ID",
+                DisplayMemberBinding = new Binding("employeeId")
+            });
+            gridViewSalesAgents.Columns.Add(new GridViewColumn
+            {
+                Header = "First name",
+                DisplayMemberBinding = new Binding("firstName")
+            });
+            gridViewSalesAgents.Columns.Add(new GridViewColumn
+            {
+                Header = "Surname",
+                DisplayMemberBinding = new Binding("surname")
+            });
+            gridViewSalesAgents.Columns.Add(new GridViewColumn
+            {
+                Header = "Telephone Nbr",
+                DisplayMemberBinding = new Binding("telephoneNbr")
+            });
+
             //gridView end
             /*
             gridView1.Columns.Add(new GridViewColumn
@@ -83,23 +113,23 @@ namespace SkogsCRM
 
             //ListView @ Home
             listView.ItemsSource = controller.GetAllCustomers();
-            //ListView @ CustomerGrid           
-            //listViewCustomersGrid.ItemsSource = controller.GetAllCustomers();
+            //ListView @ Sales Agents
+            listViewSalesAgentGrid.ItemsSource = controller.GetAllSalesAgents();
 
+            //Combo boxes
             //foreach (Customer c in controller.GetAllCustomers())
             //{
             //    forestEstateGridcomboBox.Items.Add(c.socialSecurityNbr + " " + c.firstName + " " + c.surname);
             //    comboBox_editCustomerSocNbr.Items.Add(c.socialSecurityNbr);
             //}
 
-
-            
-
             //För filtreringen med TextBox
-            CollectionView view = CollectionViewSource.GetDefaultView(listView.ItemsSource) as CollectionView;
-            
+            CollectionView viewCustomers = CollectionViewSource.GetDefaultView(listView.ItemsSource) as CollectionView;
+            CollectionView viewSalesAgents = CollectionViewSource.GetDefaultView(listViewSalesAgentGrid.ItemsSource) as CollectionView;
 
-            view.Filter = CustomerFilter;
+
+            viewCustomers.Filter = CustomerFilter;
+            viewSalesAgents.Filter = SalesAgentFilter;
             
 
         }//END OF MAINWINDOW
@@ -114,11 +144,25 @@ namespace SkogsCRM
                     || ((item as Customer).socialSecurityNbr.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                   //|| ((item as Customer).SalesAgent.employeeId.ToString().IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
-
-        private void SortListByTextBox(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void SortListByCustomerTextBox(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Refresh();
         }
+        private bool SalesAgentFilter(object item)
+        {
+            if (String.IsNullOrEmpty(textBox_salesAgentsGridFind.Text))
+                return true;
+            else
+                return ((item as SalesAgent).employeeId.ToString().IndexOf(textBox_salesAgentsGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || ((item as SalesAgent).firstName.IndexOf(textBox_salesAgentsGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || ((item as SalesAgent).surname.IndexOf(textBox_salesAgentsGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                    || ((item as SalesAgent).telephoneNbr.IndexOf(textBox_salesAgentsGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+        private void SortListBySalesAgentTextBox(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(listViewSalesAgentGrid.ItemsSource).Refresh();
+        }
+
 
         private void ListViewClick(object sender, RoutedEventArgs e)
         {

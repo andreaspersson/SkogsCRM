@@ -114,7 +114,7 @@
                 </ListView.ContextMenu>
             </ListView>
             <Label x:Name="label_customersListViewFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,7,0,0"/>
-            <TextBox x:Name="textBox_customersListViewFind" TextChanged="SortListByTextBox" Height="23" Margin="45,7,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFB6BDC9" TabIndex="2147483642" Width="120" MinWidth="120" HorizontalAlignment="Left"/>
+            <TextBox x:Name="textBox_customersListViewFind" TextChanged="SortListByCustomerTextBox" Height="23" Margin="45,7,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFB6BDC9" TabIndex="2147483642" Width="120" MinWidth="120" HorizontalAlignment="Left"/>
         </Grid>
 
         <Grid x:Name="homeGrid" Background="#FF24384F" Visibility="Collapsed">
@@ -241,7 +241,7 @@
                     </ListView.View>
                 </ListView>
                 <Label x:Name="label_salesAgentsGridFind" Content="Find:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,3,0,0"/>
-                <TextBox x:Name="textBox_salesAgentsGridFind" TextChanged="SortListByTextBox" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
+                <TextBox x:Name="textBox_salesAgentsGridFind" TextChanged="SortListBySalesAgentTextBox" HorizontalAlignment="Left" Height="23" Margin="40,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483642"/>
             </Grid>
 
         </Grid>
