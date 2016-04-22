@@ -127,6 +127,14 @@ namespace SkogsCRM
             return al;
         }
 
+        /// <summary>
+        /// Vid uppstart utan internetaccess:
+        /// 
+        /// An exception of type 'System.Data.Entity.Core.EntityException' occurred in EntityFramework.dll but was not handled in user code
+        /// Additional information: The underlying provider failed on Open.
+        /// 
+        /// I metoden nedan. Kanske lika bra att skapa en "Model-klass" i vilket vi instansierar våra entiteter och kör med try/catch däri istället
+        /// </summary>
         public ArrayList GetAllCustomers()
         {
             ArrayList al = new ArrayList();
