@@ -37,44 +37,20 @@ namespace SkogsCRM {
                // Console.WriteLine(c.firstName);
             }
             */
-
-
-            //https://blog.oneunicorn.com/2013/05/08/ef6-sql-logging-part-1-simple-logging/
-
-
+            
             using (var context = new SkogsDBEntities())
             {
                 context.Database.Log = Console.WriteLine;
-
-                Console.Write(context.Database.Log);
-
+                
                 context.Customer.Find("*");
 
-                /*
-                var blog = context.Blogs.First(b => b.Title == "One Unicorn");
-
-                blog.Posts.First().Title = "Green Eggs and Ham";
-
-                blog.Posts.Add(new Post { Title = "I do not like them!" });
-                */
                 context.SaveChangesAsync().Wait();
             }
 
-
-            
-
-            
-
-
-            
-
             Console.ReadLine();
 
-        }
-
-       
+        }//END OF MAINMETHOD
 
     } //END OF TESTCLASS
-
-    
+ 
 } //END OF NAMESPACE

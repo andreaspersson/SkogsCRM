@@ -23,6 +23,7 @@ namespace SkogsCRM
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         private Controller controller = new Controller();
         public MainWindow()
         {
@@ -37,12 +38,11 @@ namespace SkogsCRM
             homeGridMap.Focus();
             
             SkogsDBEntities ctx = new SkogsDBEntities();
+            ctx.Database.Log = Console.Write;
             var gridViewCustomers = new GridView();
             var gridViewSalesAgents = new GridView();
             this.listView.View = gridViewCustomers;
             this.listViewSalesAgentGrid.View = gridViewSalesAgents;
-            // var gridView1 = new GridView();
-            //this.listViewCustomersGrid.View = gridView1;
 
             //Customer table
             gridViewCustomers.Columns.Add(new GridViewColumn
@@ -88,51 +88,19 @@ namespace SkogsCRM
                 DisplayMemberBinding = new Binding("telephoneNbr")
             });
 
-            //gridView end
-            /*
-            gridView1.Columns.Add(new GridViewColumn
-            {
-                Header = "Personr",
-                DisplayMemberBinding = new Binding("socialSecurityNbr")
-            });
-            gridView1.Columns.Add(new GridViewColumn
-            {
-                Header = "Förnamn",
-                DisplayMemberBinding = new Binding("firstName")
-            });
-            gridView1.Columns.Add(new GridViewColumn
-            {
-                Header = "Efternamn",
-                DisplayMemberBinding = new Binding("surname")
-            });
-            gridView1.Columns.Add(new GridViewColumn
-            {
-                Header = "Sales agent ID",
-                DisplayMemberBinding = new Binding("employeeId")
-            });
-            //gridView1 end
-            */
-
             //ListView @ Home
             listView.ItemsSource = controller.GetAllCustomers();
             //ListView @ Sales Agents
             listViewSalesAgentGrid.ItemsSource = controller.GetAllSalesAgents();
 
-            //Combo boxes
-            //foreach (Customer c in controller.GetAllCustomers())
-            //{
-            //    forestEstateGridcomboBox.Items.Add(c.socialSecurityNbr + " " + c.firstName + " " + c.surname);
-            //    comboBox_editCustomerSocNbr.Items.Add(c.socialSecurityNbr);
-            //}
-
             //För filtreringen med TextBox
             CollectionView viewCustomers = CollectionViewSource.GetDefaultView(listView.ItemsSource) as CollectionView;
             CollectionView viewSalesAgents = CollectionViewSource.GetDefaultView(listViewSalesAgentGrid.ItemsSource) as CollectionView;
 
-
             viewCustomers.Filter = CustomerFilter;
             viewSalesAgents.Filter = SalesAgentFilter;
             
+            controller.LogSQL();
 
         }//END OF MAINWINDOW
 
@@ -146,10 +114,12 @@ namespace SkogsCRM
                     || ((item as Customer).socialSecurityNbr.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
                   //|| ((item as Customer).SalesAgent.employeeId.ToString().IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
+
         private void SortListByCustomerTextBox(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Refresh();
         }
+
         private bool SalesAgentFilter(object item)
         {
             if (String.IsNullOrEmpty(textBox_salesAgentsGridFind.Text))
@@ -160,11 +130,11 @@ namespace SkogsCRM
                     || ((item as SalesAgent).surname.IndexOf(textBox_salesAgentsGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                     || ((item as SalesAgent).telephoneNbr.IndexOf(textBox_salesAgentsGridFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
+
         private void SortListBySalesAgentTextBox(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listViewSalesAgentGrid.ItemsSource).Refresh();
         }
-
 
         private void ListViewClick(object sender, RoutedEventArgs e)
         {
@@ -177,8 +147,7 @@ namespace SkogsCRM
             foreach (MapPolygon p in controller.DrawPolygons(id))
             {
                 homeGridMap.Children.Add(p);
-                homeGridMap.Center = p.Locations.ElementAt(0);
-                //Flyttar kartvyn till polygonen
+                homeGridMap.Center = p.Locations.ElementAt(0); //Flyttar kartvyn till polygonen
             }
 
         }//END OF ListViewClick
@@ -241,9 +210,7 @@ namespace SkogsCRM
             salesAgentButton.Style = styleActive;
         }
 
-
         ArrayList locations = new ArrayList();
-       
         private void Map_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
         {
             e.Handled = true;
@@ -301,34 +268,6 @@ namespace SkogsCRM
             //    locations.Clear();
             //    
             //}
-
-
-            /*
-            e.Handled = true;
-
-            System.Windows.Point pt = e.GetPosition(this);
-            pointC.Add(pt);
-
-            System.Windows.Point pt1 = pointC[0];
-            System.Windows.Point pt3 = pointC[1];
-            System.Windows.Point pt2 = new System.Windows.Point(pt3.X, pt1.Y);
-            System.Windows.Point pt4 = new System.Windows.Point(pt1.X, pt3.Y);
-
-            Microsoft.Maps.MapControl.WPF.Location loc1 = woodMap.ViewportPointToLocation(pt1);
-            Microsoft.Maps.MapControl.WPF.Location loc2 = woodMap.ViewportPointToLocation(pt2);
-            Microsoft.Maps.MapControl.WPF.Location loc3 = woodMap.ViewportPointToLocation(pt3);
-            Microsoft.Maps.MapControl.WPF.Location loc4 = woodMap.ViewportPointToLocation(pt4);
-
-            MapPolygon polygon = new MapPolygon();
-            polygon.Stroke = new SolidColorBrush(Colors.Red);
-            polygon.StrokeThickness = 3;
-            polygon.Locations = new LocationCollection()
-            {
-                loc1, loc2, loc3, loc4
-            };
-
-            woodMap.Children.Add(polygon);
-            */
         }
 
         private void ManualMapReset(object sender, RoutedEventArgs e)
@@ -343,7 +282,6 @@ namespace SkogsCRM
             {
                 forestEstatesGridMap.Children.Clear();
             }
-
         }
 
         private void button_customersGridClearNewCFields_Click(object sender, RoutedEventArgs e)
@@ -393,7 +331,6 @@ namespace SkogsCRM
                 textBox_editCustomerSalesAgentId.Text = c.employeeId.ToString();
                 customersButton_Click(sender, e);
             }
-        }
         private void MenuItem_NewForestEstate_Click(object sender, RoutedEventArgs e)
         {
             if (listView.SelectedItem != null)
@@ -426,7 +363,4 @@ namespace SkogsCRM
             listView.ItemsSource = controller.GetAllCustomers();
         }
     }//END OF MAINWINDOW
-
-    
-
 }   //END OF NAMESPACE

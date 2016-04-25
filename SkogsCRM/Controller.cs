@@ -12,7 +12,8 @@ namespace SkogsCRM
 {
     public class Controller
     {
-        //Test
+        
+        private SkogsDBEntities ctx = new SkogsDBEntities();
         private SalesAgent sA = new SalesAgent();
         private Customer c = new Customer();
         private ForestEstate fE = new ForestEstate();
@@ -27,16 +28,16 @@ namespace SkogsCRM
             {
                 {
                     c.employeeId = Int32.Parse(employeeId);
-                    c.firstName = firstName;
-                    c.surname = surname;
+                c.firstName = firstName;
+                c.surname = surname;
                     c.socialSecurityNbr = socNbr;
                     try
                     {
                         ctx.Customer.Add(c);
                         ctx.SaveChanges();
-                    }
+            }
                     catch
-                    {
+            {
                         Exception e;
                     }
                     message = "Customer added";
@@ -161,6 +162,17 @@ namespace SkogsCRM
             }
 
             return al;
+        }
+
+        public void LogSQL()
+        {
+            ctx.Database.Log = Console.Write;
+
+            ctx.Customer.Find("");
+            ctx.Estate.Find("");
+            ctx.ForestEstate.Find("");
+
+            ctx.SaveChangesAsync().Wait();
         }
 
 
