@@ -18,26 +18,31 @@ namespace SkogsCRM
         private Customer c = new Customer();
         private ForestEstate fE = new ForestEstate();
         private ValidationChecker vC = new ValidationChecker();
-        
-        //Behöver lite säkrare checkar i ValidationChecker-klassen, men annars bör något som nedan fungera bra!
-        public string AddCustomer(string socNbr, string firstName, string surname, int employeeId)
+        private Utilities utilities = new Utilities();
+
+        public string AddCustomer(string socNbr, string firstName, string surname, string employeeId)
         {
-            string message;
-            bool ok = vC.CheckNewCustomer(socNbr, firstName, surname, employeeId);
-            if (ok = true && ctx.Customer.Find(socNbr) == null)
+            string message = utilities.CheckNewCustomer(firstName, surname, socNbr, employeeId);
+            if (message == null) 
             {
-                c.socialSecurityNbr = socNbr;
+                {
+                    c.employeeId = Int32.Parse(employeeId);
                 c.firstName = firstName;
                 c.surname = surname;
-                c.employeeId = employeeId;
-                ctx.Customer.Add(c);
-                ctx.SaveChanges();
-                message = "Customer added.";
+                    c.socialSecurityNbr = socNbr;
+                    try
+                    {
+                        ctx.Customer.Add(c);
+                        ctx.SaveChanges();
             }
-            else
+                    catch
             {
-                message = "Error";
+                        Exception e;
+                    }
+                    message = "Customer added";
+                }
             }
+
             return message;
         }
         public string AddSalesAgent(string socNbr, string firstName, string surname, int employeeId)
@@ -168,6 +173,7 @@ namespace SkogsCRM
 
             ctx.SaveChangesAsync().Wait();
         }
+
 
 
     }//END OF CLASS
