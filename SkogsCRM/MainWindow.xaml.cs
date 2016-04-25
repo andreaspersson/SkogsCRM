@@ -361,6 +361,26 @@ namespace SkogsCRM
             textBox_editCustomerSurname.Clear();
             textBox_editCustomerSalesAgentId.Clear();
         }
+        private void button_forestEstateGridClearSSNField_Click(object sender, RoutedEventArgs e)
+        {
+            textBox_addForestEstateSSN.Clear();
+        }
+
+        private void button_salesAgentGridClearAddFields_Click(object sender, RoutedEventArgs e)
+        {
+            textBox_newSalesAgentFirstName.Clear();
+            textBox_newSalesAgentSurname.Clear();
+            textBox_addNewSalesAgentID.Clear();
+            textBox_addNewSalesAgentTelephoneNbr.Clear();
+        }
+
+        private void button_salesAgentGridClearEditFields(object sender, RoutedEventArgs e)
+        {
+            textBox_editSalesAgentFirstName.Clear();
+            textBox_editSalesAgentSurname.Clear();
+            textBox_editSalesAgentId.Clear();
+            textBox_editSalesAgentTelephoneNbr.Clear();
+        }
 
         private void MenuItem_Edit_Click(object sender, RoutedEventArgs e)
         {
@@ -373,7 +393,6 @@ namespace SkogsCRM
                 textBox_editCustomerSalesAgentId.Text = c.employeeId.ToString();
                 customersButton_Click(sender, e);
             }
-
         }
         private void MenuItem_NewForestEstate_Click(object sender, RoutedEventArgs e)
         {
@@ -383,10 +402,29 @@ namespace SkogsCRM
                 textBox_addForestEstateSSN.Text = c.socialSecurityNbr;
                 forestEstatesButton_Click(sender, e);
             }
-
+        }
+        private void MenuItem_Edit_SalesAgent_Click(object sender, RoutedEventArgs e)
+        {
+            if (listViewSalesAgentGrid.SelectedItem != null)
+            {
+                SalesAgent sa = listViewSalesAgentGrid.SelectedItem as SalesAgent;
+                textBox_editSalesAgentFirstName.Text = sa.firstName;
+                textBox_editSalesAgentSurname.Text = sa.surname;
+                textBox_editSalesAgentTelephoneNbr.Text = sa.telephoneNbr;
+                textBox_editSalesAgentId.Text = sa.employeeId.ToString();
+            }
         }
 
-
+        private void button_customersGridAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            string employeeId = textBox_newCustomerSalesAgentID.Text;
+            string socialSecurityNbr = textBox_newCustomerSocNbr.Text;
+            string firstName = textBox_newCustomerFirstName.Text;
+            string surname = textBox_newCustomerSurname.Text;
+            string message = controller.AddCustomer(socialSecurityNbr, firstName, surname, employeeId);
+            MessageBox.Show(message);
+            listView.ItemsSource = controller.GetAllCustomers();
+        }
     }//END OF MAINWINDOW
 
     

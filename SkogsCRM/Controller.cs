@@ -17,40 +17,45 @@ namespace SkogsCRM
         private Customer c = new Customer();
         private ForestEstate fE = new ForestEstate();
         private ValidationChecker vC = new ValidationChecker();
-        private SkogsDBEntities em = new SkogsDBEntities();
+        private SkogsDBEntities ctx = new SkogsDBEntities();
+        private Utilities utilities = new Utilities();
 
-        //Behöver lite säkrare checkar i ValidationChecker-klassen, men annars bör något som nedan fungera bra!
-        public string AddCustomer(string socNbr, string firstName, string surname, int employeeId)
+        public string AddCustomer(string socNbr, string firstName, string surname, string employeeId)
         {
-            string message;
-            bool ok = vC.CheckNewCustomer(socNbr, firstName, surname, employeeId);
-            if (ok = true && em.Customer.Find(socNbr) == null)
+            string message = utilities.CheckNewCustomer(firstName, surname, socNbr, employeeId);
+            if (message == null) 
             {
-                c.socialSecurityNbr = socNbr;
-                c.firstName = firstName;
-                c.surname = surname;
-                c.employeeId = employeeId;
-                em.Customer.Add(c);
-                em.SaveChanges();
-                message = "Customer added.";
+                {
+                    c.employeeId = Int32.Parse(employeeId);
+                    c.firstName = firstName;
+                    c.surname = surname;
+                    c.socialSecurityNbr = socNbr;
+                    try
+                    {
+                        ctx.Customer.Add(c);
+                        ctx.SaveChanges();
+                    }
+                    catch
+                    {
+                        Exception e;
+                    }
+                    message = "Customer added";
+                }
             }
-            else
-            {
-                message = "Error";
-            }
+
             return message;
         }
         public string AddSalesAgent(string socNbr, string firstName, string surname, int employeeId)
         {
             string message;
             bool ok = vC.CheckNewSalesAgent(firstName, surname, employeeId);
-            if (ok = true && em.SalesAgent.Find(employeeId) == null)
+            if (ok = true && ctx.SalesAgent.Find(employeeId) == null)
             {
                 sA.firstName = firstName;
                 sA.surname = surname;
                 sA.employeeId = employeeId;
-                em.SalesAgent.Add(sA);
-                em.SaveChanges();
+                ctx.SalesAgent.Add(sA);
+                ctx.SaveChanges();
                 message = "Sales agent added.";
             }
             else
@@ -63,12 +68,12 @@ namespace SkogsCRM
         {
             string message;
             bool ok = vC.CheckNewForestEstate(coordinates, socNbr);
-            if (ok = true && em.ForestEstate.Find(coordinates) == null)
+            if (ok = true && ctx.ForestEstate.Find(coordinates) == null)
             {
                 fE.coordinates = coordinates;
                 fE.socialSecurityNbr = socNbr;
-                em.ForestEstate.Add(fE);
-                em.SaveChanges();
+                ctx.ForestEstate.Add(fE);
+                ctx.SaveChanges();
                 message = "Forest estate added.";
             }
             else
@@ -81,7 +86,7 @@ namespace SkogsCRM
         public ArrayList DrawPolygons(string id)
         {
             Customer c = new Customer();
-            c = em.Customer.Find(id);
+            c = ctx.Customer.Find(id);
             ArrayList al = new ArrayList();
 
 
@@ -139,7 +144,7 @@ namespace SkogsCRM
         {
             ArrayList al = new ArrayList();
 
-            foreach (Customer c in em.Customer)
+            foreach (Customer c in ctx.Customer)
             {
                 al.Add(c);
             }
@@ -150,13 +155,15 @@ namespace SkogsCRM
         {
             ArrayList al = new ArrayList();
 
-            foreach (SalesAgent sa in em.SalesAgent)
+            foreach (SalesAgent sa in ctx.SalesAgent)
             {
                 al.Add(sa);
             }
 
             return al;
         }
+
+
 
     }//END OF CLASS
 
