@@ -22,7 +22,9 @@ namespace SkogsCRM
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {   
+        
+
         private Controller controller = new Controller();
         public MainWindow()
         {
@@ -37,6 +39,7 @@ namespace SkogsCRM
             homeGridMap.Focus();
             
             SkogsDBEntities ctx = new SkogsDBEntities();
+            ctx.Database.Log = Console.Write;
             var gridViewCustomers = new GridView();
             var gridViewSalesAgents = new GridView();
             this.listView.View = gridViewCustomers;
@@ -132,7 +135,9 @@ namespace SkogsCRM
 
             viewCustomers.Filter = CustomerFilter;
             viewSalesAgents.Filter = SalesAgentFilter;
+
             
+            controller.logSQL();
 
         }//END OF MAINWINDOW
 

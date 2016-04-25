@@ -46,7 +46,7 @@ namespace SkogsCRM {
             {
                 context.Database.Log = Console.WriteLine;
 
-                Console.Write(context.Database.Log);
+                //Console.Write(context.Database.Log);
 
                 context.Customer.Find("*");
 
