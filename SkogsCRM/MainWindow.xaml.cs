@@ -331,6 +331,7 @@ namespace SkogsCRM
                 textBox_editCustomerSalesAgentId.Text = c.employeeId.ToString();
                 customersButton_Click(sender, e);
             }
+        }
         private void MenuItem_NewForestEstate_Click(object sender, RoutedEventArgs e)
         {
             if (listView.SelectedItem != null)

@@ -18,7 +18,6 @@ namespace SkogsCRM
         private Customer c = new Customer();
         private ForestEstate fE = new ForestEstate();
         private ValidationChecker vC = new ValidationChecker();
-        private SkogsDBEntities ctx = new SkogsDBEntities();
         private Utilities utilities = new Utilities();
 
         public string AddCustomer(string socNbr, string firstName, string surname, string employeeId)
