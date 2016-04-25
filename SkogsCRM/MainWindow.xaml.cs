@@ -143,11 +143,20 @@ namespace SkogsCRM
             string id = c.socialSecurityNbr;
 
             homeGridMap.Children.Clear();//Annars skapas polygonerna på nytt över varandra vid varje knapptryck
+            forestEstatesGridMap.Children.Clear();
 
             foreach (MapPolygon p in controller.DrawPolygons(id))
             {
-                homeGridMap.Children.Add(p);
-                homeGridMap.Center = p.Locations.ElementAt(0); //Flyttar kartvyn till polygonen
+                if (homeGrid.Visibility == Visibility.Visible)
+                {
+                    homeGridMap.Children.Add(p);
+                    homeGridMap.Center = p.Locations.ElementAt(0); //Flyttar kartvyn till polygonen
+                }
+                if (forestEstatesGrid.Visibility == Visibility.Visible)
+                {
+                    forestEstatesGridMap.Children.Add(p);
+                    forestEstatesGridMap.Center = p.Locations.ElementAt(0); //Flyttar kartvyn till polygonen
+                }
             }
 
         }//END OF ListViewClick
@@ -165,6 +174,7 @@ namespace SkogsCRM
             forestEstatesButton.Style = styleInActive;
             salesAgentButton.Style = styleInActive;
             homeButton.Style = styleActive;
+            homeGridMap.Children.Clear();
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
@@ -194,6 +204,7 @@ namespace SkogsCRM
             customersButton.Style = styleInActive;
             salesAgentButton.Style = styleInActive;
             forestEstatesButton.Style = styleActive;
+            forestEstatesGridMap.Children.Clear();
         }
         private void salesAgentButton_Click(object sender, RoutedEventArgs e)
         {
