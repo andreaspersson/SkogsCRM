@@ -98,15 +98,12 @@ namespace SkogsCRM
                 polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
                 polygon.StrokeThickness = 5;
                 polygon.Opacity = 0.7;
-
-
-
+                
                 polygon.Locations = new LocationCollection()
                 {
                     //Här läggs Locations in i loopandet nedan
                 };
-
-
+                
                 string cor = f.coordinates.ToString();
                 Array corArray = cor.Split(',');
 

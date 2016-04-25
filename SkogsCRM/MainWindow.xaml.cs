@@ -23,7 +23,6 @@ namespace SkogsCRM
     /// </summary>
     public partial class MainWindow : Window
     {
-        
         private Controller controller = new Controller();
         public MainWindow()
         {
@@ -269,8 +268,7 @@ namespace SkogsCRM
                     homeGridMap.Children.Clear();
                     forestEstatesGridMap.Children.Add(polygon);
                 }
-               
-            }
+             }
             //if (locations.Count > 5)
             //{
             //    homeGridMap.Children.Clear();
