@@ -158,7 +158,7 @@ namespace SkogsCRM
             return al;
         }
 
-        public void logSQL()
+        public void LogSQL()
         {
             ctx.Database.Log = Console.Write;
 

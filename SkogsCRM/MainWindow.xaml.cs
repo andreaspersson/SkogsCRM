@@ -100,7 +100,7 @@ namespace SkogsCRM
             viewCustomers.Filter = CustomerFilter;
             viewSalesAgents.Filter = SalesAgentFilter;
                         
-            controller.logSQL();
+            controller.LogSQL();
 
         }//END OF MAINWINDOW
 
