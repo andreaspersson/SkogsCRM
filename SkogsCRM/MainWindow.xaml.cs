@@ -61,6 +61,11 @@ namespace SkogsCRM
             });
             gridViewCustomers.Columns.Add(new GridViewColumn
             {
+                Header = "Nbr of forest estates",
+                DisplayMemberBinding = new Binding("ForestEstate.Count")
+            });
+            gridViewCustomers.Columns.Add(new GridViewColumn
+            {
                 Header = "Assigned agent's ID",
                 DisplayMemberBinding = new Binding("employeeId")
             });
@@ -290,6 +295,30 @@ namespace SkogsCRM
             if (forestEstatesGrid.Visibility == Visibility.Visible)
             {
                 forestEstatesGridMap.Children.Clear();
+            }
+        }
+
+        private void MapAerialView(object sender, RoutedEventArgs e)
+        {
+            if (homeGrid.Visibility == Visibility.Visible)
+            {
+                homeGridMap.Mode = new AerialMode();
+            }
+            else
+            {
+                forestEstatesGridMap.Mode = new AerialMode();
+            }
+        }
+
+        private void MapRoadView(object sender, RoutedEventArgs e)
+        {
+            if (homeGrid.Visibility == Visibility.Visible)
+            {
+                homeGridMap.Mode = new RoadMode();
+            }
+            else
+            {
+                forestEstatesGridMap.Mode = new RoadMode();
             }
         }
 

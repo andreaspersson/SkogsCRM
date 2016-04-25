@@ -94,8 +94,8 @@ namespace SkogsCRM
             {
 
                 MapPolygon polygon = new MapPolygon();
-                polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
-                polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+                polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.CornflowerBlue);
+                polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
                 polygon.StrokeThickness = 5;
                 polygon.Opacity = 0.7;
                 
