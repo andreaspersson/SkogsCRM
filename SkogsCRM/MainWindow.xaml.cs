@@ -245,8 +245,8 @@ namespace SkogsCRM
         private void Map_MouseUp(object sender, System.Windows.Input.MouseEventArgs e)
         {
             MapPolygon polygon = new MapPolygon();
-            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
-            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+            polygon.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.CornflowerBlue);
+            polygon.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
             polygon.StrokeThickness = 5;
             polygon.Opacity = 0.7;
             polygon.Locations = new LocationCollection();
@@ -402,4 +402,4 @@ namespace SkogsCRM
             listView.ItemsSource = controller.GetAllCustomers();
         }
     }//END OF MAINWINDOW
-}   //END OF NAMESPACE
+}//END OF NAMESPACE

@@ -22,27 +22,24 @@ namespace SkogsCRM
 
         public string AddCustomer(string socNbr, string firstName, string surname, string employeeId)
         {
-            string message = utilities.CheckNewCustomer(firstName, surname, socNbr, employeeId);
-            if (message == null) 
+            string message = utilities.CheckCustomerFieldsFormatting(firstName, surname, socNbr, employeeId);
+            if (message == null)
             {
-                {
-                    c.employeeId = Int32.Parse(employeeId);
+                c.employeeId = Int32.Parse(employeeId);
                 c.firstName = firstName;
                 c.surname = surname;
-                    c.socialSecurityNbr = socNbr;
-                    try
-                    {
-                        ctx.Customer.Add(c);
-                        ctx.SaveChanges();
-            }
-                    catch
-            {
-                        Exception e;
-                    }
+                c.socialSecurityNbr = socNbr;
+                try
+                {
+                    ctx.Customer.Add(c);
+                    ctx.SaveChanges();
                     message = "Customer added";
                 }
+                catch (Exception e)
+                {
+                    message = e.ToString();
+                }
             }
-
             return message;
         }
         public string AddSalesAgent(string socNbr, string firstName, string surname, int employeeId)

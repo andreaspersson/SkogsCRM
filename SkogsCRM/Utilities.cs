@@ -2,48 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SkogsCRM
 {
     class Utilities
     {
-        public string CheckNewCustomer(string firstName, string surname, string socialSecurityNbr, string employeeId)
+        static string socialSecurityNbrPattern = "^[0-9]{10}$";
+        static string employeeIdPattern = "^[0-9]{1,5}$";
+        static string namePattern = "^[a-zA-ZåäöÅÄÖ]{2,30}$";
+
+        Regex socialSecurityNbrRegex = new Regex(socialSecurityNbrPattern);
+        Regex employeeIdRegex = new Regex(employeeIdPattern);
+        Regex nameRegex = new Regex(namePattern);
+        public string CheckCustomerFieldsFormatting(string firstName, string surname, string socialSecurityNbr, string employeeId)
         {
             string message = null;
-            if (socialSecurityNbr.Length == 10)
-            {
-                try
-                {
-                    double ssn = double.Parse(socialSecurityNbr);
-                }
-                catch
-                {
-                    FormatException e;
-                    message = "Incorrect input: Social security number. ";
-                }
-            }
+            Match socialSecurityNbrMatch = socialSecurityNbrRegex.Match(socialSecurityNbr);
+            Match firstNameMatch = nameRegex.Match(firstName);
+            Match surnameMatch = nameRegex.Match(surname);
+            Match employeeIdMatch = employeeIdRegex.Match(employeeId);
 
-            if (firstName.Length < 2)
-            {
-                message = "Incorrect input: First name. ";
+            if (!socialSecurityNbrMatch.Success){
+                message = "Incorrect SSN format";
             }
-
-            if (surname.Length < 2)
+            if (!firstNameMatch.Success)
             {
-                message = "Incorrect input: surname. ";
+                message = "Incorrect first name format";
             }
-            if (employeeId.Length > 0)
+            if (!surnameMatch.Success)
             {
-                try
-                {
-                    int empId = Int32.Parse(employeeId);
-                }
-                catch
-                {
-                    FormatException e;
-                    message = "Incorrect input: Sales agent ID. ";
-                }
+                message = "Incorrect surname format";
+            }
+            if (!employeeIdMatch.Success)
+            {
+                message = "Incorrect sales agent ID format";
             }
 
             return message;
