@@ -14,7 +14,7 @@ namespace SkogsCRM
         static string employeeIdPattern = "^[0-9]{1,5}$";
         static string namePattern = "^[a-zA-ZåäöÅÄÖ]{2,30}$";
         static string telephonePattern = "^[0-9]{10}$";
-        static string coordinatesPattern = "[0-9.,]{50,255}";
+        static string coordinatesPattern = "^[0-9.,]{100,255}$";
 
         static Regex socialSecurityNbrRegex = new Regex(socialSecurityNbrPattern);
         static Regex employeeIdRegex = new Regex(employeeIdPattern);
@@ -93,16 +93,31 @@ namespace SkogsCRM
         public static string CheckForestEstateFieldsFormatting(string coordinates, string socialSecurityNbr)
         {
             string message = null;
-            Match socialSecurityNbrMatch = socialSecurityNbrRegex.Match(socialSecurityNbr);
-            Match coordinatesMatch = coordinatesRegex.Match(coordinates);
 
-            if (!socialSecurityNbrMatch.Success)
+            if (coordinates == null)
             {
-                message = "Incorrect SSN format.";
+                message = "Please draw an area on the map.";
             }
-            if (!coordinatesMatch.Success)
+            else
             {
-                message = "Incorrect coordinates format.";
+                Match coordinatesMatch = coordinatesRegex.Match(coordinates);
+                if (!coordinatesMatch.Success)
+                {
+                    message = "The shape drawn is either incomplete or contains too many points.";
+                }
+            }
+
+            if (socialSecurityNbr == "")
+            {
+                message = "Please choose a customer from the table below.";
+            }
+            else
+            {
+                Match socialSecurityNbrMatch = socialSecurityNbrRegex.Match(socialSecurityNbr);
+                if (!socialSecurityNbrMatch.Success)
+                {
+                    message = "Incorrect SSN format.";
+                }
             }
 
             return message;
