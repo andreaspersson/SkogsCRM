@@ -120,7 +120,6 @@
     </Compile>
     <Compile Include="TestClass.cs" />
     <Compile Include="Utilities.cs" />
-    <Compile Include="ValidationChecker.cs" />
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

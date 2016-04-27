@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +8,36 @@ using System.Threading.Tasks;
 
 namespace SkogsCRM
 {
-    class Utilities
+    public static class Utilities
     {
         static string socialSecurityNbrPattern = "^[0-9]{10}$";
         static string employeeIdPattern = "^[0-9]{1,5}$";
         static string namePattern = "^[a-zA-ZåäöÅÄÖ]{2,30}$";
+        static string telephonePattern = "^[0-9]{10}$";
+        static string coordinatesPattern = "[0-9.,]{50,255}";
 
-        Regex socialSecurityNbrRegex = new Regex(socialSecurityNbrPattern);
-        Regex employeeIdRegex = new Regex(employeeIdPattern);
-        Regex nameRegex = new Regex(namePattern);
-        public string CheckCustomerFieldsFormatting(string firstName, string surname, string socialSecurityNbr, string employeeId)
+        static Regex socialSecurityNbrRegex = new Regex(socialSecurityNbrPattern);
+        static Regex employeeIdRegex = new Regex(employeeIdPattern);
+        static Regex nameRegex = new Regex(namePattern);
+        static Regex telephoneRegex = new Regex(telephonePattern);
+        static Regex coordinatesRegex = new Regex(coordinatesPattern);
+
+        static string coordinates = null;
+
+        public static string Coordinates
+        {
+            get
+            {
+                return coordinates;
+            }
+
+            set
+            {
+                coordinates = value;
+            }
+        }
+
+        public static string CheckCustomerFieldsFormatting(string socialSecurityNbr, string firstName, string surname, string employeeId)
         {
             string message = null;
             Match socialSecurityNbrMatch = socialSecurityNbrRegex.Match(socialSecurityNbr);
@@ -25,22 +46,80 @@ namespace SkogsCRM
             Match employeeIdMatch = employeeIdRegex.Match(employeeId);
 
             if (!socialSecurityNbrMatch.Success){
-                message = "Incorrect SSN format";
+                message = "Incorrect SSN format.";
             }
             if (!firstNameMatch.Success)
             {
-                message = "Incorrect first name format";
+                message = "Incorrect first name format.";
             }
             if (!surnameMatch.Success)
             {
-                message = "Incorrect surname format";
+                message = "Incorrect surname format.";
             }
             if (!employeeIdMatch.Success)
             {
-                message = "Incorrect sales agent ID format";
+                message = "Incorrect sales agent ID format.";
             }
 
             return message;
+        }
+        public static string CheckSalesAgentFieldsFormatting(string firstName, string surname, string employeeId, string telephoneNbr)
+        {
+            string message = null;
+            Match firstNameMatch = nameRegex.Match(firstName);
+            Match surnameMatch = nameRegex.Match(surname);
+            Match employeeIdMatch = employeeIdRegex.Match(employeeId);
+            Match telephoneNbrMatch = telephoneRegex.Match(telephoneNbr);
+
+            if (!firstNameMatch.Success)
+            {
+                message = "Incorrect first name format.";
+            }
+            if (!surnameMatch.Success)
+            {
+                message = "Incorrect surname format.";
+            }
+            if (!employeeIdMatch.Success)
+            {
+                message = "Incorrect sales agent ID format.";
+            }
+            if (!telephoneNbrMatch.Success)
+            {
+                message = "Incorrect telephone number format.";
+            }
+
+            return message;
+        }
+        public static string CheckForestEstateFieldsFormatting(string coordinates, string socialSecurityNbr)
+        {
+            string message = null;
+            Match socialSecurityNbrMatch = socialSecurityNbrRegex.Match(socialSecurityNbr);
+            Match coordinatesMatch = coordinatesRegex.Match(coordinates);
+
+            if (!socialSecurityNbrMatch.Success)
+            {
+                message = "Incorrect SSN format.";
+            }
+            if (!coordinatesMatch.Success)
+            {
+                message = "Incorrect coordinates format.";
+            }
+
+            return message;
+        }
+
+        public static string CoordinatesFormatter(LocationCollection polygon)
+        {
+            string coordinates = null;
+            if (polygon != null)
+            {
+                foreach (Location l in polygon)
+                {
+                    coordinates = String.Join(",", l.ToString());
+                }
+            }
+
+            return coordinates;
         }
     }
 }

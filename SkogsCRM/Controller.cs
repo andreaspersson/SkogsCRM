@@ -14,26 +14,23 @@ namespace SkogsCRM
     {
         
         private SkogsDBEntities ctx = new SkogsDBEntities();
-        private SalesAgent sA = new SalesAgent();
-        private Customer c = new Customer();
-        private ForestEstate fE = new ForestEstate();
-        private ValidationChecker vC = new ValidationChecker();
-        private Utilities utilities = new Utilities();
 
-        public string AddCustomer(string socNbr, string firstName, string surname, string employeeId)
+        public string AddCustomer(string socialSecurityNbr, string firstName, string surname, string employeeId)
         {
-            string message = utilities.CheckCustomerFieldsFormatting(firstName, surname, socNbr, employeeId);
+            string message = Utilities.CheckCustomerFieldsFormatting(socialSecurityNbr, firstName, surname, employeeId);
             if (message == null)
             {
-                c.employeeId = Int32.Parse(employeeId);
+                Customer c = new Customer();
+                c.socialSecurityNbr = socialSecurityNbr;
                 c.firstName = firstName;
                 c.surname = surname;
-                c.socialSecurityNbr = socNbr;
+                c.employeeId = Int32.Parse(employeeId);
+                
                 try
                 {
                     ctx.Customer.Add(c);
                     ctx.SaveChanges();
-                    message = "Customer added";
+                    message = "Customer added.";
                 }
                 catch (Exception e)
                 {
@@ -42,50 +39,34 @@ namespace SkogsCRM
             }
             return message;
         }
-        public string AddSalesAgent(string socNbr, string firstName, string surname, int employeeId)
-        {
-            string message;
-            bool ok = vC.CheckNewSalesAgent(firstName, surname, employeeId);
-            if (ok = true && ctx.SalesAgent.Find(employeeId) == null)
-            {
-                sA.firstName = firstName;
-                sA.surname = surname;
-                sA.employeeId = employeeId;
-                ctx.SalesAgent.Add(sA);
-                ctx.SaveChanges();
-                message = "Sales agent added.";
-            }
-            else
-            {
-                message = "Error";
-            }
-            return message;
-        }
-        public string AddForestEstate(string coordinates, string socNbr)
-        {
-            string message;
-            bool ok = vC.CheckNewForestEstate(coordinates, socNbr);
-            if (ok = true && ctx.ForestEstate.Find(coordinates) == null)
-            {
-                fE.coordinates = coordinates;
-                fE.socialSecurityNbr = socNbr;
-                ctx.ForestEstate.Add(fE);
-                ctx.SaveChanges();
-                message = "Forest estate added.";
-            }
-            else
-            {
-                message = "Error";
-            }
-            return message;
-        }
 
+        public string AddForestEstate(string coordinates, string socialSecurityNbr)
+        {
+            string message = Utilities.CheckForestEstateFieldsFormatting(coordinates, socialSecurityNbr);
+            if (message == null)
+            {
+                ForestEstate fE = new ForestEstate();
+                fE.coordinates = coordinates;
+                fE.socialSecurityNbr = socialSecurityNbr;
+
+                try
+                {
+                    ctx.ForestEstate.Add(fE);
+                    ctx.SaveChanges();
+                    message = "Forest estate added.";
+                }
+                catch (Exception e)
+                {
+                    message = e.ToString();
+                }
+            }
+            return message;
+        }
         public ArrayList DrawPolygons(string id)
         {
             Customer c = new Customer();
             c = ctx.Customer.Find(id);
             ArrayList al = new ArrayList();
-
 
             foreach (ForestEstate f in c.ForestEstate)
             {

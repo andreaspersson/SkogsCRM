@@ -107,7 +107,6 @@ namespace SkogsCRM
             controller.LogSQL();
 
         }//END OF MAINWINDOW
-
         private bool CustomerFilter(object item)
         {
             if (String.IsNullOrEmpty(textBox_customersListViewFind.Text))
@@ -179,6 +178,7 @@ namespace SkogsCRM
             salesAgentButton.Style = styleInActive;
             homeButton.Style = styleActive;
             homeGridMap.Children.Clear();
+            locations.Clear();
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
@@ -209,6 +209,7 @@ namespace SkogsCRM
             salesAgentButton.Style = styleInActive;
             forestEstatesButton.Style = styleActive;
             forestEstatesGridMap.Children.Clear();
+            locations.Clear();
         }
         private void salesAgentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -259,6 +260,9 @@ namespace SkogsCRM
                 foreach (Location loc in locations)
                 {
                     polygon.Locations.Add(loc);
+                    //coordinates += loc.Latitude.ToString().Replace(',', '.') + "," + loc.Longitude.ToString().Replace(',', '.') + ",";
+                    //Console.WriteLine(coordinates);
+
                 }
 
                 if (homeGrid.Visibility == Visibility.Visible)
@@ -266,6 +270,7 @@ namespace SkogsCRM
                     homeGridMap.Children.Clear();
                     forestEstatesGridMap.Children.Clear();
                     homeGridMap.Children.Add(polygon);
+
                 }
                 if (forestEstatesGrid.Visibility == Visibility.Visible)
                 {
@@ -273,7 +278,9 @@ namespace SkogsCRM
                     homeGridMap.Children.Clear();
                     forestEstatesGridMap.Children.Add(polygon);
                 }
+                
              }
+
             //if (locations.Count > 5)
             //{
             //    homeGridMap.Children.Clear();
@@ -282,6 +289,7 @@ namespace SkogsCRM
             //    locations.Clear();
             //    
             //}
+            
         }
 
         private void ManualMapReset(object sender, RoutedEventArgs e)
@@ -393,11 +401,33 @@ namespace SkogsCRM
 
         private void button_customersGridAddCustomer_Click(object sender, RoutedEventArgs e)
         {
-            string employeeId = textBox_newCustomerSalesAgentID.Text;
             string socialSecurityNbr = textBox_newCustomerSocNbr.Text;
             string firstName = textBox_newCustomerFirstName.Text;
             string surname = textBox_newCustomerSurname.Text;
+            string employeeId = textBox_newCustomerSalesAgentID.Text;
             string message = controller.AddCustomer(socialSecurityNbr, firstName, surname, employeeId);
+            MessageBox.Show(message);
+            listView.ItemsSource = controller.GetAllCustomers();
+        }
+
+        private void button_forestEstateGridAddForestEstate_Click(object sender, RoutedEventArgs e)
+        {
+            string socialSecurityNbr = textBox_addForestEstateSSN.Text;
+            string coordinates = null;
+            if (locations != null)
+            {
+                string tempCoords = null;
+                foreach (Location loc in locations)
+                {
+                    tempCoords += loc.Latitude.ToString().Replace(',', '.') + "," + loc.Longitude.ToString().Replace(',', '.') + ",";
+                }
+                if (tempCoords != null)
+                {
+                    coordinates = tempCoords.Remove(tempCoords.Length - 1);
+                }
+            }
+            Console.WriteLine(coordinates);
+            string message = controller.AddForestEstate(coordinates, socialSecurityNbr);
             MessageBox.Show(message);
             listView.ItemsSource = controller.GetAllCustomers();
         }
