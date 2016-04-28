@@ -426,7 +426,6 @@ namespace SkogsCRM
                     coordinates = tempCoords.Remove(tempCoords.Length - 1);
                 }
             }
-            Console.WriteLine(coordinates);
             string message = controller.AddForestEstate(coordinates, socialSecurityNbr);
             MessageBox.Show(message);
             listView.ItemsSource = controller.GetAllCustomers();

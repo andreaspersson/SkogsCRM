@@ -122,19 +122,5 @@ namespace SkogsCRM
 
             return message;
         }
-
-        public static string CoordinatesFormatter(LocationCollection polygon)
-        {
-            string coordinates = null;
-            if (polygon != null)
-            {
-                foreach (Location l in polygon)
-                {
-                    coordinates = String.Join(",", l.ToString());
-                }
-            }
-
-            return coordinates;
-        }
     }
 }

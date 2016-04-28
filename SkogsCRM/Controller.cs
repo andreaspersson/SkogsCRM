@@ -57,6 +57,7 @@ namespace SkogsCRM
                 }
                 catch (Exception e)
                 {
+                    //message = Utils.CheckExceptionType(e);
                     message = e.ToString();
                 }
             }

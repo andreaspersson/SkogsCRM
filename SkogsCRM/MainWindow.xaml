@@ -114,7 +114,7 @@
             <Image x:Name="logo_png" Height="134" Canvas.Left="10" Source="/Resources/logo.png" Stretch="Fill" Canvas.Top="10" Width="135"/>
         </Canvas>
 
-        <Grid x:Name="customerTableGrid" Margin="174,376,20,20" Panel.ZIndex="1">
+        <Grid x:Name="customerTableGrid" Margin="174,376,20,45" Panel.ZIndex="1">
             <Grid.Effect>
                 <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
             </Grid.Effect>
@@ -144,6 +144,14 @@
             <TextBox x:Name="textBox_customersListViewFind" TextChanged="SortListByCustomerTextBox" Height="23" Margin="45,7,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFB6BDC9" TabIndex="2147483642" Width="120" MinWidth="120" HorizontalAlignment="Left"/>
         </Grid>
 
+        <Grid x:Name="errorHandlingGrid" Margin="174,376,20,10" Panel.ZIndex="1" VerticalAlignment="Bottom">
+            <Grid.Effect>
+                <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+            </Grid.Effect>
+            <Label x:Name="label_response" Content="Response:" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="0,-1,0,0"/>
+            <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174"/>
+        </Grid>
+        
         <Grid x:Name="homeGrid" Background="#FF24384F" Visibility="Visible">
             <Grid Margin="174,20,20,0" VerticalAlignment="Top">
                 <Grid.Effect>
@@ -195,7 +203,7 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="forestEstatesGrid"  Background="#FF24384F" Visibility="Visible">
+        <Grid x:Name="forestEstatesGrid"  Background="#FF24384F" Visibility="Collapsed">
             <Grid HorizontalAlignment="Left" Height="346" Margin="174,20,0,0" VerticalAlignment="Top" Width="169">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
@@ -256,7 +264,7 @@
                 <Button x:Name="button_salesAgentGridClearEditSAFields" Style="{StaticResource CustomerGridButtonStyle}" Content="Clear fields" HorizontalAlignment="Left" Margin="10,303,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483641" Click="button_salesAgentGridClearEditFields"/>
             </Grid>
 
-            <Grid Margin="17,375,20,20">
+            <Grid Margin="17,375,20,45">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
                 </Grid.Effect>
