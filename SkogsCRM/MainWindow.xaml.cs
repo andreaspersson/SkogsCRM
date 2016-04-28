@@ -406,7 +406,7 @@ namespace SkogsCRM
             string surname = textBox_newCustomerSurname.Text;
             string employeeId = textBox_newCustomerSalesAgentID.Text;
             string message = controller.AddCustomer(socialSecurityNbr, firstName, surname, employeeId);
-            MessageBox.Show(message);
+            label_response.Content = "Response: " + message;
             listView.ItemsSource = controller.GetAllCustomers();
         }
 
@@ -427,7 +427,7 @@ namespace SkogsCRM
                 }
             }
             string message = controller.AddForestEstate(coordinates, socialSecurityNbr);
-            MessageBox.Show(message);
+            label_response.Content = "Response: " + message;
             listView.ItemsSource = controller.GetAllCustomers();
         }
     }//END OF MAINWINDOW

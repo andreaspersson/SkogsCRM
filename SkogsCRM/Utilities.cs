@@ -109,7 +109,7 @@ namespace SkogsCRM
 
             if (socialSecurityNbr == "")
             {
-                message = "Please choose a customer from the table below.";
+                message = "Please choose a customer from the table above.";
             }
             else
             {
