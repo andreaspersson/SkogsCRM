@@ -165,7 +165,7 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
+        <Grid x:Name="customersGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
             <Grid HorizontalAlignment="Left" Height="346" Margin="17,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
@@ -198,7 +198,7 @@
                 <TextBox x:Name="textBox_editCustomerSurname" HorizontalAlignment="Left" Height="23" Margin="86,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFB6BDC9" TabIndex="2147483638" MaxLines="2147483638"/>
                 <TextBox x:Name="textBox_editCustomerFirstName" HorizontalAlignment="Left" Height="23" Margin="86,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="Black" Background="#FFB6BDC9" TabIndex="2147483637" MaxLines="2147483637"/>
                 <TextBox x:Name="textBox_editCustomerSSN" HorizontalAlignment="Left" Height="23" Margin="86,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="Black" Background="#FFB6BDC9" TabIndex="2147483637" MaxLines="2147483637" IsEnabled="False"/>
-                <Button x:Name="button_customersGridEditCustomer" Style="{StaticResource CustomerGridButtonStyle}" Content="Save changes" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483640"/>
+                <Button x:Name="button_customersGridEditCustomer" Style="{StaticResource CustomerGridButtonStyle}" Content="Save changes" HorizontalAlignment="Left" Margin="10,265,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483640" Click="button_customersGridEditCustomer_Click"/>
                 <Button x:Name="button_customersGridClearEditCFields" Style="{StaticResource CustomerGridButtonStyle}" Content="Clear fields" HorizontalAlignment="Left" Margin="10,303,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" TabIndex="2147483641" Click="button_customersGridClearEditCFields_Click"/>
             </Grid>
         </Grid>

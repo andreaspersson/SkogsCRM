@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Data.Entity.Infrastructure;
 
 namespace SkogsCRM
 {
@@ -63,6 +64,27 @@ namespace SkogsCRM
 
             return message;
         }
+
+        public static string CheckMySqlException(DbUpdateException e)
+        {
+            string message = null;
+            MySql.Data.MySqlClient.MySqlException sqlError = e.InnerException.InnerException as MySql.Data.MySqlClient.MySqlException;
+            if (sqlError != null)
+            {
+                switch (sqlError.Number)
+                {
+                    //PK violation
+                    case 1062:
+                        message = "Primary Key violation. Duplicate entries are not allowed.";
+                        break;
+                    default:
+                        message = "Something went to shit with the database.";
+                        break;
+                }
+            }
+            return message;
+        }
+
         public static string CheckSalesAgentFieldsFormatting(string firstName, string surname, string employeeId, string telephoneNbr)
         {
             string message = null;

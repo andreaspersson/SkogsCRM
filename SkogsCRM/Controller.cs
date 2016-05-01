@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using Microsoft.Maps.MapControl.WPF;
 using System.Collections;
+using System.Data.Entity.Validation;
+using System.Data.Entity.Infrastructure;
 
 namespace SkogsCRM
 {
@@ -25,16 +27,52 @@ namespace SkogsCRM
                 c.firstName = firstName;
                 c.surname = surname;
                 c.employeeId = Int32.Parse(employeeId);
-                
-                try
-                {
-                    ctx.Customer.Add(c);
-                    ctx.SaveChanges();
-                    message = "Customer added.";
+
+                if (ctx.SalesAgent.Find(c.employeeId) != null) {
+                    try
+                    {
+                        ctx.Customer.Add(c);
+                        ctx.SaveChanges();
+                        message = "Customer " + socialSecurityNbr + " added.";
+                    }
+                    catch (DbUpdateException e)
+                    {
+                        message = Utilities.CheckMySqlException(e);
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    message = e.ToString();
+                    message = "No such sales agent in the database!";
+                }
+            }
+            return message;
+        }
+
+        public string EditCustomer(string socialSecurityNbr, string firstName, string surname, string employeeId)
+        {
+            string message = Utilities.CheckCustomerFieldsFormatting(socialSecurityNbr, firstName, surname, employeeId);
+            if (message == null)
+            {
+                Customer c = ctx.Customer.Find(socialSecurityNbr);
+                c.firstName = firstName;
+                c.surname = surname;
+                c.employeeId = Int32.Parse(employeeId);
+
+                if (ctx.SalesAgent.Find(c.employeeId) != null)
+                {
+                    try
+                    {
+                        ctx.SaveChanges();
+                        message = "Changes made to customer " + socialSecurityNbr + " saved.";
+                    }
+                    catch (DbUpdateException e)
+                    {
+                        message = Utilities.CheckMySqlException(e);
+                    }
+                }
+                else
+                {
+                    message = "No such sales agent in the database!";
                 }
             }
             return message;
@@ -55,9 +93,9 @@ namespace SkogsCRM
                     ctx.SaveChanges();
                     message = "Forest estate added.";
                 }
-                catch (Exception e)
+                catch (DbEntityValidationException e)
                 {
-                    //message = Utils.CheckExceptionType(e);
+                    //message = Utils.CheckSQLExceptionType(e); <--- felhantering som skall implementeras!!
                     message = e.ToString();
                 }
             }

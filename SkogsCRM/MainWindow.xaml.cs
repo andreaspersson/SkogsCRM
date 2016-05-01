@@ -115,7 +115,6 @@ namespace SkogsCRM
                 return ((item as Customer).firstName.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                     || ((item as Customer).surname.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0)
                     || ((item as Customer).socialSecurityNbr.IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-                  //|| ((item as Customer).SalesAgent.employeeId.ToString().IndexOf(textBox_customersListViewFind.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         private void SortListByCustomerTextBox(object sender, TextChangedEventArgs e)
@@ -179,6 +178,7 @@ namespace SkogsCRM
             homeButton.Style = styleActive;
             homeGridMap.Children.Clear();
             locations.Clear();
+            label_response.Content = "Response: ";
         }
 
         private void customersButton_Click(object sender, RoutedEventArgs e)
@@ -194,6 +194,7 @@ namespace SkogsCRM
             forestEstatesButton.Style = styleInActive;
             salesAgentButton.Style = styleInActive;
             customersButton.Style = styleActive;
+            label_response.Content = "Response: ";
         }
         private void forestEstatesButton_Click(object sender, RoutedEventArgs e)
         {
@@ -210,6 +211,7 @@ namespace SkogsCRM
             forestEstatesButton.Style = styleActive;
             forestEstatesGridMap.Children.Clear();
             locations.Clear();
+            label_response.Content = "Response: ";
         }
         private void salesAgentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -224,6 +226,7 @@ namespace SkogsCRM
             customersButton.Style = styleInActive;
             forestEstatesButton.Style = styleInActive;
             salesAgentButton.Style = styleActive;
+            label_response.Content = "Response: ";
         }
 
         ArrayList locations = new ArrayList();
@@ -427,6 +430,17 @@ namespace SkogsCRM
                 }
             }
             string message = controller.AddForestEstate(coordinates, socialSecurityNbr);
+            label_response.Content = "Response: " + message;
+            listView.ItemsSource = controller.GetAllCustomers();
+        }
+
+        private void button_customersGridEditCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            string socialSecurityNbr = textBox_editCustomerSSN.Text;
+            string firstName = textBox_editCustomerFirstName.Text;
+            string surname = textBox_editCustomerSurname.Text;
+            string employeeId = textBox_editCustomerSalesAgentId.Text;
+            string message = controller.EditCustomer(socialSecurityNbr, firstName, surname, employeeId);
             label_response.Content = "Response: " + message;
             listView.ItemsSource = controller.GetAllCustomers();
         }
