@@ -56,14 +56,16 @@ namespace SkogsCRM
                 Customer c = ctx.Customer.Find(socialSecurityNbr);
                 c.firstName = firstName;
                 c.surname = surname;
-                c.employeeId = Int32.Parse(employeeId);
+                
 
-                if (ctx.SalesAgent.Find(c.employeeId) != null)
+                if (ctx.SalesAgent.Find(Int32.Parse(employeeId)) != null)
                 {
+                    
                     try
                     {
+                        c.employeeId = Int32.Parse(employeeId);
                         ctx.SaveChanges();
-                        message = "Changes made to customer " + socialSecurityNbr + " saved.";
+                        message = "Changes made to customer " + socialSecurityNbr + " has been saved.";
                     }
                     catch (DbUpdateException e)
                     {
