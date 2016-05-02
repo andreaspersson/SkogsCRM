@@ -23,21 +23,6 @@ namespace SkogsCRM
         static Regex telephoneRegex = new Regex(telephonePattern);
         static Regex coordinatesRegex = new Regex(coordinatesPattern);
 
-        static string coordinates = null;
-
-        public static string Coordinates
-        {
-            get
-            {
-                return coordinates;
-            }
-
-            set
-            {
-                coordinates = value;
-            }
-        }
-
         public static string CheckCustomerFieldsFormatting(string socialSecurityNbr, string firstName, string surname, string employeeId)
         {
             string message = null;
