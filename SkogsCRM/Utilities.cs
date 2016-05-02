@@ -73,14 +73,26 @@ namespace SkogsCRM
             {
                 switch (sqlError.Number)
                 {
-                    //PK violation
+                    //PK duplicate violation
                     case 1062:
                         message = "Primary Key violation. Duplicate entries are not allowed.";
                         break;
+                    //PK Not Null violation
+                    case 1171:
+                        message = "Primary Key cannot be null.";
+                        break;
+                    //FK violation
+                    case 1216:
+                        message = "Cannot add or update a child row: a foreign key constraint fails.";
+                        break;
                     default:
-                        message = "Something went to shit with the database.";
+                        message = "Something went terribly wrong. MySQL Error code: " + sqlError.Number.ToString();
                         break;
                 }
+            }
+            else
+            {
+                message = "An unkown database error has occurred.";
             }
             return message;
         }
