@@ -57,10 +57,8 @@ namespace SkogsCRM
                 c.firstName = firstName;
                 c.surname = surname;
                 
-
                 if (ctx.SalesAgent.Find(Int32.Parse(employeeId)) != null)
                 {
-                    
                     try
                     {
                         c.employeeId = Int32.Parse(employeeId);
@@ -99,6 +97,68 @@ namespace SkogsCRM
                 {
                     //message = Utils.CheckSQLExceptionType(e); <--- felhantering som skall implementeras!!
                     message = e.ToString();
+                }
+            }
+            return message;
+        }
+
+        public string AddSalesAgent(string firstName, string surname, string employeeId, string telephoneNbr)
+        {
+            string message = Utilities.CheckSalesAgentFieldsFormatting(firstName, surname, employeeId, telephoneNbr);
+            if (message == null)
+            {
+                SalesAgent sA = new SalesAgent();
+                sA.firstName = firstName;
+                sA.surname = surname;
+                sA.telephoneNbr = telephoneNbr;
+                sA.employeeId = Int32.Parse(employeeId);
+
+                if (ctx.SalesAgent.Find(sA.employeeId) == null)
+                {
+                    try
+                    {
+                        ctx.SalesAgent.Add(sA);
+                        ctx.SaveChanges();
+                        message = "Sales Agent " + employeeId + " added.";
+                    }
+                    catch (DbUpdateException e)
+                    {
+                        message = Utilities.CheckMySqlException(e);
+                    }
+                }
+                else
+                {
+                    message = "A sales agent with that ID already exists.";
+                }
+            }
+            return message;
+        }
+
+        public string EditSalesAgent(string firstName, string surname, string employeeId, string telephoneNbr)
+        {
+            string message = Utilities.CheckSalesAgentFieldsFormatting(firstName, surname, employeeId, telephoneNbr);
+            if (message == null)
+            {
+                SalesAgent sA = ctx.SalesAgent.Find(Int32.Parse(employeeId));
+                sA.firstName = firstName;
+                sA.surname = surname;
+                sA.telephoneNbr = telephoneNbr;
+
+                if (ctx.SalesAgent.Find(sA.employeeId) != null)
+                {
+                    try
+                    {
+                        ctx.SaveChanges();
+                        message = "Changes made to Sales Agent " + employeeId + " has been saved.";
+                    }
+                    catch (DbUpdateException e)
+                    {
+                        message = Utilities.CheckMySqlException(e);
+                    }
+                }
+                else
+                {
+                    message = "No such sales agent in the database!";
                 }
             }
             return message;
@@ -189,8 +249,6 @@ namespace SkogsCRM
 
             ctx.SaveChangesAsync().Wait();
         }
-
-
 
     }//END OF CLASS
 

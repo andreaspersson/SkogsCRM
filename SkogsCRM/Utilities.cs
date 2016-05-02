@@ -81,8 +81,12 @@ namespace SkogsCRM
                     case 1171:
                         message = "Primary Key cannot be null.";
                         break;
-                    //FK violation
+                    //FK violation null
                     case 1216:
+                        message = "Cannot add or update a child row: invalid foreign key.";
+                        break;
+                    //FK violation mismatch
+                    case 1452:
                         message = "Cannot add or update a child row: a foreign key constraint fails.";
                         break;
                     default:

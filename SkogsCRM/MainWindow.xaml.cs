@@ -444,5 +444,27 @@ namespace SkogsCRM
             label_response.Content = "Response: " + message;
             listView.ItemsSource = controller.GetAllCustomers();
         }
+
+        private void button_salesAgentGridAddSalesAgent_Click(object sender, RoutedEventArgs e)
+        {
+            string firstName = textBox_newSalesAgentFirstName.Text;
+            string surname = textBox_newSalesAgentSurname.Text;
+            string employeeId = textBox_addNewSalesAgentID.Text;
+            string telephoneNbr = textBox_addNewSalesAgentTelephoneNbr.Text;
+            string message = controller.AddSalesAgent(firstName, surname, employeeId, telephoneNbr);
+            label_response.Content = "Response: " + message;
+            listViewSalesAgentGrid.ItemsSource = controller.GetAllSalesAgents();
+        }
+
+        private void button_salesAgentGridEditSalesAgent_Click(object sender, RoutedEventArgs e)
+        {
+            string firstName = textBox_editSalesAgentFirstName.Text;
+            string surname = textBox_editSalesAgentSurname.Text;
+            string employeeId = textBox_editSalesAgentId.Text;
+            string telephoneNbr = textBox_editSalesAgentTelephoneNbr.Text;
+            string message = controller.EditSalesAgent(firstName, surname, employeeId, telephoneNbr);
+            label_response.Content = "Response: " + message;
+            listViewSalesAgentGrid.ItemsSource = controller.GetAllSalesAgents();
+        }
     }//END OF MAINWINDOW
 }//END OF NAMESPACE
