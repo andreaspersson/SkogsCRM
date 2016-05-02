@@ -144,7 +144,7 @@ namespace SkogsCRM
             Customer c = obj as Customer;
             string id = c.socialSecurityNbr;
 
-            homeGridMap.Children.Clear();//Annars skapas polygonerna på nytt över varandra vid varje knapptryck
+            homeGridMap.Children.Clear(); //Annars skapas polygonerna på nytt över varandra vid varje knapptryck
             forestEstatesGridMap.Children.Clear();
 
             foreach (MapPolygon p in controller.DrawPolygons(id))
@@ -263,9 +263,6 @@ namespace SkogsCRM
                 foreach (Location loc in locations)
                 {
                     polygon.Locations.Add(loc);
-                    //coordinates += loc.Latitude.ToString().Replace(',', '.') + "," + loc.Longitude.ToString().Replace(',', '.') + ",";
-                    //Console.WriteLine(coordinates);
-
                 }
 
                 if (homeGrid.Visibility == Visibility.Visible)
@@ -401,18 +398,6 @@ namespace SkogsCRM
                 textBox_editSalesAgentId.Text = sa.employeeId.ToString();
             }
         }
-
-        private void button_customersGridAddCustomer_Click(object sender, RoutedEventArgs e)
-        {
-            string socialSecurityNbr = textBox_newCustomerSocNbr.Text;
-            string firstName = textBox_newCustomerFirstName.Text;
-            string surname = textBox_newCustomerSurname.Text;
-            string employeeId = textBox_newCustomerSalesAgentID.Text;
-            string message = controller.AddCustomer(socialSecurityNbr, firstName, surname, employeeId);
-            label_response.Content = "Response: " + message;
-            listView.ItemsSource = controller.GetAllCustomers();
-        }
-
         private void button_forestEstateGridAddForestEstate_Click(object sender, RoutedEventArgs e)
         {
             string socialSecurityNbr = textBox_addForestEstateSSN.Text;
@@ -431,9 +416,18 @@ namespace SkogsCRM
             }
             string message = controller.AddForestEstate(coordinates, socialSecurityNbr);
             label_response.Content = "Response: " + message;
-            listView.ItemsSource = controller.GetAllCustomers();
+            refreshTableData();
         }
-
+        private void button_customersGridAddCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            string socialSecurityNbr = textBox_newCustomerSocNbr.Text;
+            string firstName = textBox_newCustomerFirstName.Text;
+            string surname = textBox_newCustomerSurname.Text;
+            string employeeId = textBox_newCustomerSalesAgentID.Text;
+            string message = controller.AddCustomer(socialSecurityNbr, firstName, surname, employeeId);
+            label_response.Content = "Response: " + message;
+            refreshTableData();
+        }
         private void button_customersGridEditCustomer_Click(object sender, RoutedEventArgs e)
         {
             string socialSecurityNbr = textBox_editCustomerSSN.Text;
@@ -442,7 +436,7 @@ namespace SkogsCRM
             string employeeId = textBox_editCustomerSalesAgentId.Text;
             string message = controller.EditCustomer(socialSecurityNbr, firstName, surname, employeeId);
             label_response.Content = "Response: " + message;
-            listView.ItemsSource = controller.GetAllCustomers();
+            refreshTableData();
         }
 
         private void button_salesAgentGridAddSalesAgent_Click(object sender, RoutedEventArgs e)
@@ -453,7 +447,7 @@ namespace SkogsCRM
             string telephoneNbr = textBox_addNewSalesAgentTelephoneNbr.Text;
             string message = controller.AddSalesAgent(firstName, surname, employeeId, telephoneNbr);
             label_response.Content = "Response: " + message;
-            listViewSalesAgentGrid.ItemsSource = controller.GetAllSalesAgents();
+            refreshTableData();
         }
 
         private void button_salesAgentGridEditSalesAgent_Click(object sender, RoutedEventArgs e)
@@ -464,7 +458,17 @@ namespace SkogsCRM
             string telephoneNbr = textBox_editSalesAgentTelephoneNbr.Text;
             string message = controller.EditSalesAgent(firstName, surname, employeeId, telephoneNbr);
             label_response.Content = "Response: " + message;
+            refreshTableData();
+        }
+
+        private void refreshTableData()
+        {
+            listView.ItemsSource = controller.GetAllCustomers();
             listViewSalesAgentGrid.ItemsSource = controller.GetAllSalesAgents();
+            CollectionView viewCustomers = CollectionViewSource.GetDefaultView(listView.ItemsSource) as CollectionView;
+            CollectionView viewSalesAgents = CollectionViewSource.GetDefaultView(listViewSalesAgentGrid.ItemsSource) as CollectionView;
+            viewCustomers.Filter = CustomerFilter;
+            viewSalesAgents.Filter = SalesAgentFilter;
         }
     }//END OF MAINWINDOW
 }//END OF NAMESPACE

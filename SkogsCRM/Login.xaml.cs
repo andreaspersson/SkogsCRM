@@ -20,8 +20,8 @@ namespace SkogsCRM
     public partial class Login : Window
     {
         MainWindow mW = new MainWindow();
-        string username;
-        string password;
+        //string username;
+        //string password;
 
         private Controller controller = new Controller();
         public Login()
