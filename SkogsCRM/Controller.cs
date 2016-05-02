@@ -54,13 +54,12 @@ namespace SkogsCRM
             if (message == null)
             {
                 Customer c = ctx.Customer.Find(socialSecurityNbr);
-                c.firstName = firstName;
-                c.surname = surname;
-                
                 if (ctx.SalesAgent.Find(Int32.Parse(employeeId)) != null)
                 {
                     try
                     {
+                        c.firstName = firstName;
+                        c.surname = surname;
                         c.employeeId = Int32.Parse(employeeId);
                         ctx.SaveChanges();
                         message = "Changes made to customer " + socialSecurityNbr + " has been saved.";
@@ -93,10 +92,9 @@ namespace SkogsCRM
                     ctx.SaveChanges();
                     message = "Forest estate added.";
                 }
-                catch (DbEntityValidationException e)
+                catch (DbUpdateException e)
                 {
-                    //message = Utils.CheckSQLExceptionType(e); <--- felhantering som skall implementeras!!
-                    message = e.ToString();
+                    message = Utilities.CheckMySqlException(e);
                 }
             }
             return message;
@@ -140,16 +138,15 @@ namespace SkogsCRM
             if (message == null)
             {
                 SalesAgent sA = ctx.SalesAgent.Find(Int32.Parse(employeeId));
-                sA.firstName = firstName;
-                sA.surname = surname;
-                sA.telephoneNbr = telephoneNbr;
-
                 if (ctx.SalesAgent.Find(sA.employeeId) != null)
                 {
                     try
                     {
+                        sA.firstName = firstName;
+                        sA.surname = surname;
+                        sA.telephoneNbr = telephoneNbr;
                         ctx.SaveChanges();
-                        message = "Changes made to Sales Agent " + employeeId + " has been saved.";
+                        message = "Changes made to Sales Agent nbr " + employeeId + " has been saved.";
                     }
                     catch (DbUpdateException e)
                     {
@@ -163,6 +160,7 @@ namespace SkogsCRM
             }
             return message;
         }
+
         public ArrayList DrawPolygons(string id)
         {
             Customer c = new Customer();
@@ -208,14 +206,6 @@ namespace SkogsCRM
             return al;
         }
 
-        /// <summary>
-        /// Vid uppstart utan internetaccess:
-        /// 
-        /// An exception of type 'System.Data.Entity.Core.EntityException' occurred in EntityFramework.dll but was not handled in user code
-        /// Additional information: The underlying provider failed on Open.
-        /// 
-        /// I metoden nedan.
-        /// </summary>
         public ArrayList GetAllCustomers()
         {
             ArrayList al = new ArrayList();
@@ -227,6 +217,7 @@ namespace SkogsCRM
 
             return al;
         }
+
         public ArrayList GetAllSalesAgents()
         {
             ArrayList al = new ArrayList();

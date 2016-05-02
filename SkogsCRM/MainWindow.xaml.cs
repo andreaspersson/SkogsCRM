@@ -46,17 +46,17 @@ namespace SkogsCRM
             //Customer table
             gridViewCustomers.Columns.Add(new GridViewColumn
             {
-                Header = "Personr",
+                Header = "SSN",
                 DisplayMemberBinding = new Binding("socialSecurityNbr")
             });
             gridViewCustomers.Columns.Add(new GridViewColumn
             {
-                Header = "Förnamn",
+                Header = "First name",
                 DisplayMemberBinding = new Binding("firstName")
             });
             gridViewCustomers.Columns.Add(new GridViewColumn
             {
-                Header = "Efternamn",
+                Header = "Surname",
                 DisplayMemberBinding = new Binding("surname")
             });
             gridViewCustomers.Columns.Add(new GridViewColumn
@@ -107,6 +107,7 @@ namespace SkogsCRM
             controller.LogSQL();
 
         }//END OF MAINWINDOW
+
         private bool CustomerFilter(object item)
         {
             if (String.IsNullOrEmpty(textBox_customersListViewFind.Text))
@@ -196,6 +197,7 @@ namespace SkogsCRM
             customersButton.Style = styleActive;
             label_response.Content = "Response: ";
         }
+
         private void forestEstatesButton_Click(object sender, RoutedEventArgs e)
         {
             customersGrid.Visibility = Visibility.Collapsed;
@@ -213,6 +215,7 @@ namespace SkogsCRM
             locations.Clear();
             label_response.Content = "Response: ";
         }
+
         private void salesAgentButton_Click(object sender, RoutedEventArgs e)
         {
             customersGrid.Visibility = Visibility.Collapsed;
@@ -230,6 +233,7 @@ namespace SkogsCRM
         }
 
         ArrayList locations = new ArrayList();
+
         private void Map_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
         {
             e.Handled = true;
@@ -245,7 +249,7 @@ namespace SkogsCRM
                 locations.Add(loc);
             }
          }
-        
+
         private void Map_MouseUp(object sender, System.Windows.Input.MouseEventArgs e)
         {
             MapPolygon polygon = new MapPolygon();
@@ -336,6 +340,7 @@ namespace SkogsCRM
             textBox_newCustomerSocNbr.Clear();
             textBox_newCustomerFirstName.Clear();
             textBox_newCustomerSurname.Clear();
+            label_response.Content = "Response: ";
         }
 
         private void button_customersGridClearEditCFields_Click(object sender, RoutedEventArgs e)
@@ -344,10 +349,13 @@ namespace SkogsCRM
             textBox_editCustomerFirstName.Clear();
             textBox_editCustomerSurname.Clear();
             textBox_editCustomerSalesAgentId.Clear();
+            label_response.Content = "Response: ";
         }
+
         private void button_forestEstateGridClearSSNField_Click(object sender, RoutedEventArgs e)
         {
             textBox_addForestEstateSSN.Clear();
+            label_response.Content = "Response: ";
         }
 
         private void button_salesAgentGridClearAddFields_Click(object sender, RoutedEventArgs e)
@@ -356,6 +364,7 @@ namespace SkogsCRM
             textBox_newSalesAgentSurname.Clear();
             textBox_addNewSalesAgentID.Clear();
             textBox_addNewSalesAgentTelephoneNbr.Clear();
+            label_response.Content = "Response: ";
         }
 
         private void button_salesAgentGridClearEditFields(object sender, RoutedEventArgs e)
@@ -364,6 +373,7 @@ namespace SkogsCRM
             textBox_editSalesAgentSurname.Clear();
             textBox_editSalesAgentId.Clear();
             textBox_editSalesAgentTelephoneNbr.Clear();
+            label_response.Content = "Response: ";
         }
 
         private void MenuItem_Edit_Click(object sender, RoutedEventArgs e)
@@ -378,6 +388,7 @@ namespace SkogsCRM
                 customersButton_Click(sender, e);
             }
         }
+
         private void MenuItem_NewForestEstate_Click(object sender, RoutedEventArgs e)
         {
             if (listView.SelectedItem != null)
@@ -387,6 +398,7 @@ namespace SkogsCRM
                 forestEstatesButton_Click(sender, e);
             }
         }
+
         private void MenuItem_Edit_SalesAgent_Click(object sender, RoutedEventArgs e)
         {
             if (listViewSalesAgentGrid.SelectedItem != null)
@@ -398,6 +410,7 @@ namespace SkogsCRM
                 textBox_editSalesAgentId.Text = sa.employeeId.ToString();
             }
         }
+
         private void button_forestEstateGridAddForestEstate_Click(object sender, RoutedEventArgs e)
         {
             string socialSecurityNbr = textBox_addForestEstateSSN.Text;
@@ -418,6 +431,7 @@ namespace SkogsCRM
             label_response.Content = "Response: " + message;
             refreshTableData();
         }
+
         private void button_customersGridAddCustomer_Click(object sender, RoutedEventArgs e)
         {
             string socialSecurityNbr = textBox_newCustomerSocNbr.Text;
@@ -428,6 +442,7 @@ namespace SkogsCRM
             label_response.Content = "Response: " + message;
             refreshTableData();
         }
+
         private void button_customersGridEditCustomer_Click(object sender, RoutedEventArgs e)
         {
             string socialSecurityNbr = textBox_editCustomerSSN.Text;
@@ -470,5 +485,7 @@ namespace SkogsCRM
             viewCustomers.Filter = CustomerFilter;
             viewSalesAgents.Filter = SalesAgentFilter;
         }
+
     }//END OF MAINWINDOW
+
 }//END OF NAMESPACE

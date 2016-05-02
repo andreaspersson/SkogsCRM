@@ -159,7 +159,7 @@
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174" Margin="0,0,0,-4"/>
                 <m:Map x:Name="homeGridMap" Culture="en-au" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial"  Width="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="294" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Margin="10" VerticalAlignment="Top" />
-                <Button x:Name="buttonClearMap" Style="{StaticResource CustomerGridButtonStyle}" Content="Ta bort polygoner från kartan" Click="ManualMapReset" HorizontalAlignment="Left" Margin="10,309,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33"/>
+                <Button x:Name="buttonClearMap" Style="{StaticResource CustomerGridButtonStyle}" Content="Remove polygons from the map" Click="ManualMapReset" HorizontalAlignment="Left" Margin="10,309,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33"/>
                 <Button x:Name="buttonHomeMapAerialMapView" Style="{StaticResource CustomerGridButtonStyle}" Content="Aerial view" Click="MapAerialView" HorizontalAlignment="Right" Margin="210,309,10,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" Width="70"/>
                 <Button x:Name="buttonHomeMapRoadMapView" Style="{StaticResource CustomerGridButtonStyle}" Content="Road view" Click="MapRoadView" Margin="210,309,84,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Padding="1" FlowDirection="RightToLeft" HorizontalAlignment="Right" Width="70"/>
             </Grid>
@@ -221,13 +221,13 @@
                 </Grid.Effect>
                 <Border BorderBrush="#FF000000" BorderThickness="0" CornerRadius="8,8,8,8" Background="#FF2D5174" Margin="0" Height="346"/>
                 <m:Map x:Name="forestEstatesGridMap" Culture="en-au" Center="55.70707,13.164883" ZoomLevel="15"  Mode="Aerial" MouseRightButtonDown="Map_MouseDown" MouseRightButtonUp="Map_MouseUp"  Width="Auto" HorizontalContentAlignment="Stretch" VerticalAlignment="Top" VerticalContentAlignment="Stretch" CredentialsProvider="Zyg6fcKHdOQRZ3L11PQL~9HkEb_BKghO0eHPDm6MdAg~AhB3bH_MLbpqnDz2chNHMcQkh-DA79WfyH5gNT0DPucii47Z2_ABW-F65rhkFN7t" Margin="10,10,10,0" Height="288" />
-                <Button x:Name="buttonForestEstatesClearMap" Style="{StaticResource CustomerGridButtonStyle}" Content="Ta bort polygoner från kartan" Click="ManualMapReset" HorizontalAlignment="Left" Margin="10,303,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" HorizontalContentAlignment="Left"/>
+                <Button x:Name="buttonForestEstatesClearMap" Style="{StaticResource CustomerGridButtonStyle}" Content="Remove polygons from the map" Click="ManualMapReset" HorizontalAlignment="Left" Margin="10,303,0,0" VerticalAlignment="Top" Width="196" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" HorizontalContentAlignment="Left"/>
                 <Button x:Name="buttonForestEstateMapAerialMapView" Style="{StaticResource CustomerGridButtonStyle}" Content="Aerial view" Click="MapAerialView" HorizontalAlignment="Right" Margin="210,303,10,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" Width="70"/>
                 <Button x:Name="buttonForestEstateMapRoadMapView" Style="{StaticResource CustomerGridButtonStyle}" Content="Road view" Click="MapRoadView" Margin="210,303,84,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FFC7C8CB" Height="33" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" Padding="1" FlowDirection="RightToLeft" HorizontalAlignment="Right" Width="70"/>
             </Grid>
         </Grid>
 
-        <Grid x:Name="salesAgentsGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Visible">
+        <Grid x:Name="salesAgentsGrid" Margin="157,0,0,0" Background="#FF24384F" Visibility="Collapsed">
             <Grid HorizontalAlignment="Left" Height="346" Margin="17,20,0,0" VerticalAlignment="Top" Width="216">
                 <Grid.Effect>
                     <DropShadowEffect Opacity="0.5" BlurRadius="10"/>
