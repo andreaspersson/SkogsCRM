@@ -17,6 +17,8 @@ namespace SkogsCRM
         
         private SkogsDBEntities ctx = new SkogsDBEntities();
 
+        
+
         public string AddCustomer(string socialSecurityNbr, string firstName, string surname, string employeeId)
         {
             string message = Utilities.CheckCustomerFieldsFormatting(socialSecurityNbr, firstName, surname, employeeId);
@@ -34,6 +36,7 @@ namespace SkogsCRM
                         ctx.Customer.Add(c);
                         ctx.SaveChanges();
                         message = "Customer " + socialSecurityNbr + " added.";
+                      
                     }
                     catch (DbUpdateException e)
                     {
