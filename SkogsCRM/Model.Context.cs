@@ -340,5 +340,221 @@ namespace SkogsCRM
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateForestEstate", coordinatesParameter, socialSecurityNbrParameter, forestEstateIDParameter);
         }
+    
+        public virtual int usp_changeSalesAgent(string socialSecurityNbr, Nullable<int> employeeId)
+        {
+            var socialSecurityNbrParameter = socialSecurityNbr != null ?
+                new ObjectParameter("socialSecurityNbr", socialSecurityNbr) :
+                new ObjectParameter("socialSecurityNbr", typeof(string));
+    
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_changeSalesAgent", socialSecurityNbrParameter, employeeIdParameter);
+        }
+    
+        public virtual int usp_deleteLumbermill(string organizationNbr, string address)
+        {
+            var organizationNbrParameter = organizationNbr != null ?
+                new ObjectParameter("organizationNbr", organizationNbr) :
+                new ObjectParameter("organizationNbr", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_deleteLumbermill", organizationNbrParameter, addressParameter);
+        }
+    
+        public virtual int usp_deleteSales(Nullable<int> orderId, Nullable<int> forestEstate_forestEstateID)
+        {
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("orderId", orderId) :
+                new ObjectParameter("orderId", typeof(int));
+    
+            var forestEstate_forestEstateIDParameter = forestEstate_forestEstateID.HasValue ?
+                new ObjectParameter("ForestEstate_forestEstateID", forestEstate_forestEstateID) :
+                new ObjectParameter("ForestEstate_forestEstateID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_deleteSales", orderIdParameter, forestEstate_forestEstateIDParameter);
+        }
+    
+        public virtual int usp_deleteSalesAgent(Nullable<int> employeeId)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_deleteSalesAgent", employeeIdParameter);
+        }
+    
+        public virtual int usp_findLumbermill(string organizationNbr, string address)
+        {
+            var organizationNbrParameter = organizationNbr != null ?
+                new ObjectParameter("organizationNbr", organizationNbr) :
+                new ObjectParameter("organizationNbr", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_findLumbermill", organizationNbrParameter, addressParameter);
+        }
+    
+        public virtual int usp_findSales(Nullable<int> orderId, Nullable<int> forestEstate_forestEstateID)
+        {
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("orderId", orderId) :
+                new ObjectParameter("orderId", typeof(int));
+    
+            var forestEstate_forestEstateIDParameter = forestEstate_forestEstateID.HasValue ?
+                new ObjectParameter("ForestEstate_forestEstateID", forestEstate_forestEstateID) :
+                new ObjectParameter("ForestEstate_forestEstateID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_findSales", orderIdParameter, forestEstate_forestEstateIDParameter);
+        }
+    
+        public virtual int usp_findSalesAgent(Nullable<int> employeeId)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_findSalesAgent", employeeIdParameter);
+        }
+    
+        public virtual ObjectResult<usp_getAllLumbermills_Result> usp_getAllLumbermills()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllLumbermills_Result>("usp_getAllLumbermills");
+        }
+    
+        public virtual ObjectResult<usp_getAllSales_Result> usp_getAllSales()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllSales_Result>("usp_getAllSales");
+        }
+    
+        public virtual ObjectResult<usp_getAllSalesAgents_Result> usp_getAllSalesAgents()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllSalesAgents_Result>("usp_getAllSalesAgents");
+        }
+    
+        public virtual int usp_insertLumbermill(string organizationNbr, string address, string capacity, string telephoneNbr)
+        {
+            var organizationNbrParameter = organizationNbr != null ?
+                new ObjectParameter("organizationNbr", organizationNbr) :
+                new ObjectParameter("organizationNbr", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var capacityParameter = capacity != null ?
+                new ObjectParameter("capacity", capacity) :
+                new ObjectParameter("capacity", typeof(string));
+    
+            var telephoneNbrParameter = telephoneNbr != null ?
+                new ObjectParameter("telephoneNbr", telephoneNbr) :
+                new ObjectParameter("telephoneNbr", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_insertLumbermill", organizationNbrParameter, addressParameter, capacityParameter, telephoneNbrParameter);
+        }
+    
+        public virtual int usp_insertSales(Nullable<int> quantity, Nullable<int> orderId, Nullable<int> forestEstate_forestEstateID)
+        {
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("quantity", quantity) :
+                new ObjectParameter("quantity", typeof(int));
+    
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("orderId", orderId) :
+                new ObjectParameter("orderId", typeof(int));
+    
+            var forestEstate_forestEstateIDParameter = forestEstate_forestEstateID.HasValue ?
+                new ObjectParameter("ForestEstate_forestEstateID", forestEstate_forestEstateID) :
+                new ObjectParameter("ForestEstate_forestEstateID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_insertSales", quantityParameter, orderIdParameter, forestEstate_forestEstateIDParameter);
+        }
+    
+        public virtual int usp_insertSalesAgent(Nullable<int> employeeId, string telephoneNbr, string surname, string firstName)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(int));
+    
+            var telephoneNbrParameter = telephoneNbr != null ?
+                new ObjectParameter("telephoneNbr", telephoneNbr) :
+                new ObjectParameter("telephoneNbr", typeof(string));
+    
+            var surnameParameter = surname != null ?
+                new ObjectParameter("surname", surname) :
+                new ObjectParameter("surname", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_insertSalesAgent", employeeIdParameter, telephoneNbrParameter, surnameParameter, firstNameParameter);
+        }
+    
+        public virtual int usp_updateLumbermill(string organizationNbr, string address, string capacity, string telephoneNbr)
+        {
+            var organizationNbrParameter = organizationNbr != null ?
+                new ObjectParameter("organizationNbr", organizationNbr) :
+                new ObjectParameter("organizationNbr", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var capacityParameter = capacity != null ?
+                new ObjectParameter("capacity", capacity) :
+                new ObjectParameter("capacity", typeof(string));
+    
+            var telephoneNbrParameter = telephoneNbr != null ?
+                new ObjectParameter("telephoneNbr", telephoneNbr) :
+                new ObjectParameter("telephoneNbr", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateLumbermill", organizationNbrParameter, addressParameter, capacityParameter, telephoneNbrParameter);
+        }
+    
+        public virtual int usp_updateSales(Nullable<int> quantity, Nullable<int> orderId, Nullable<int> forestEstate_forestEstateID)
+        {
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("quantity", quantity) :
+                new ObjectParameter("quantity", typeof(int));
+    
+            var orderIdParameter = orderId.HasValue ?
+                new ObjectParameter("orderId", orderId) :
+                new ObjectParameter("orderId", typeof(int));
+    
+            var forestEstate_forestEstateIDParameter = forestEstate_forestEstateID.HasValue ?
+                new ObjectParameter("ForestEstate_forestEstateID", forestEstate_forestEstateID) :
+                new ObjectParameter("ForestEstate_forestEstateID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateSales", quantityParameter, orderIdParameter, forestEstate_forestEstateIDParameter);
+        }
+    
+        public virtual int usp_updateSalesAgent(Nullable<int> employeeId, string telephoneNbr, string surname, string firstName)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(int));
+    
+            var telephoneNbrParameter = telephoneNbr != null ?
+                new ObjectParameter("telephoneNbr", telephoneNbr) :
+                new ObjectParameter("telephoneNbr", typeof(string));
+    
+            var surnameParameter = surname != null ?
+                new ObjectParameter("surname", surname) :
+                new ObjectParameter("surname", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateSalesAgent", employeeIdParameter, telephoneNbrParameter, surnameParameter, firstNameParameter);
+        }
     }
 }

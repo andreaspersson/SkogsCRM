@@ -80,7 +80,14 @@ namespace SkogsCRM
             return message;
         }
 
+        public string changeAgent(string socialSecurityNbr, string firstName, string surname, string employeeId)
+        {
+            string message = Utilities.CheckCustomerFieldsFormatting(socialSecurityNbr, firstName, surname, employeeId);
 
+            //ctx.
+
+            return message;
+        }
 
         public string AddForestEstate(string coordinates, string socialSecurityNbr)
         {
