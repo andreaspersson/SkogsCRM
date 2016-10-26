@@ -465,6 +465,7 @@ namespace SkogsCRM
             string firstName = textBox_editCustomerFirstName.Text;
             string surname = textBox_editCustomerSurname.Text;
             string employeeId = textBox_editCustomerSalesAgentId.Text;
+            /*
             if (employeeId.Equals("1"))
             {
                 employeeId = "2";
@@ -473,7 +474,8 @@ namespace SkogsCRM
             {
                 employeeId = "1";
             }
-            string message = controller.EditCustomer(socialSecurityNbr, firstName, surname, employeeId);
+            */
+            string message = controller.changeAgent(socialSecurityNbr, firstName, surname, employeeId);
             label_response.Content = "Response: " + message;
             refreshTableData();
         }
