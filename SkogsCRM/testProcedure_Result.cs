@@ -10,14 +10,8 @@
 namespace SkogsCRM
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Sales
+    public partial class testProcedure_Result
     {
-        public int quantity { get; set; }
-        public int orderId { get; set; }
-        public int ForestEstate_forestEstateID { get; set; }
-    
-        public virtual ForestEstate ForestEstate { get; set; }
     }
 }

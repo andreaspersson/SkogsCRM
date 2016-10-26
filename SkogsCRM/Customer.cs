@@ -25,6 +25,7 @@ namespace SkogsCRM
         public string firstName { get; set; }
         public string surname { get; set; }
         public int employeeId { get; set; }
+        public string createdTime { get; set; }
     
         public virtual SalesAgent SalesAgent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

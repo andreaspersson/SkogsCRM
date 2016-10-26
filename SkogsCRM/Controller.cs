@@ -236,14 +236,15 @@ namespace SkogsCRM
         public void LogSQL()
         {
             ctx.Database.Log = Console.Write;
-
+            /*
             ctx.Customer.Find("");
             ctx.Estate.Find("");
             ctx.ForestEstate.Find("");
 
             ctx.SaveChangesAsync().Wait();
+            */
         }
-
+        
     }//END OF CLASS
 
 }//END OF NAMESPACE

@@ -17,16 +17,14 @@ namespace SkogsCRM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ForestEstate()
         {
-            this.Lumbermill = new HashSet<Lumbermill>();
             this.Sales = new HashSet<Sales>();
         }
     
         public string coordinates { get; set; }
         public string socialSecurityNbr { get; set; }
+        public int forestEstateID { get; set; }
     
         public virtual Customer Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lumbermill> Lumbermill { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sales> Sales { get; set; }
     }

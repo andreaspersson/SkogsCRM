@@ -17,8 +17,6 @@ namespace SkogsCRM
         public string organizationNbr { get; set; }
         public string address { get; set; }
         public string capacity { get; set; }
-        public string coordinates { get; set; }
-    
-        public virtual ForestEstate ForestEstate { get; set; }
+        public string telephoneNbr { get; set; }
     }
 }

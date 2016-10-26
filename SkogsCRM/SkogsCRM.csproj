@@ -119,6 +119,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TestClass.cs" />
+    <Compile Include="testProcedure_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
