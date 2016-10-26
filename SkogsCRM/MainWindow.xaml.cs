@@ -69,6 +69,12 @@ namespace SkogsCRM
                 Header = "Assigned agent's ID",
                 DisplayMemberBinding = new Binding("employeeId")
             });
+            gridViewCustomers.Columns.Add(new GridViewColumn
+            {
+                Header = "Date created",
+                DisplayMemberBinding = new Binding("createdTime")
+            });
+
 
             //Sales agent table
             gridViewSalesAgents.Columns.Add(new GridViewColumn
