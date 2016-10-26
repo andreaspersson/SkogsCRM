@@ -107,20 +107,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="testProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="usp_createCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
-          <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
-          <Parameter Name="firstName" Type="varchar" Mode="In" />
-          <Parameter Name="surname" Type="varchar" Mode="In" />
-          <Parameter Name="employeeId" Type="int" Mode="In" />
-        </Function>
-        <Function Name="usp_createestate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
-          <Parameter Name="address" Type="varchar" Mode="In" />
-          <Parameter Name="propertyDesignation" Type="varchar" Mode="In" />
-          <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="usp_createforestestate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
           <Parameter Name="coordinates" Type="varchar" Mode="In" />
           <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
@@ -146,17 +132,41 @@
         <Function Name="usp_deleteCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
           <Parameter Name="employeeId" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_deleteEstate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
+          <Parameter Name="address" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="usp_findCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
           <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
         </Function>
         <Function Name="usp_findCustomersBySalesAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
           <Parameter Name="employeeId" Type="int" Mode="In" />
         </Function>
+        <Function Name="usp_findEstate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
+          <Parameter Name="address" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_getAllCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced" />
+        <Function Name="usp_getAllEstates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced" />
+        <Function Name="usp_insertCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
+          <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="surname" Type="varchar" Mode="In" />
+          <Parameter Name="employeeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_insertEstate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="propertyDesignation" Type="varchar" Mode="In" />
+          <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="usp_updateCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
           <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
           <Parameter Name="firstName" Type="varchar" Mode="In" />
           <Parameter Name="surname" Type="varchar" Mode="In" />
           <Parameter Name="employeeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_updateEstate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SkogsDBAdvanced">
+          <Parameter Name="address" Type="varchar" Mode="In" />
+          <Parameter Name="propertyDesignation" Type="varchar" Mode="In" />
+          <Parameter Name="socialSecurityNbr" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="SkogsDBModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="SkogsDBAdvanced" store:Type="Tables" />
@@ -246,19 +256,43 @@
             <Parameter Name="firstName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_deleteCustomer">
-            <Parameter Name="employeeId" Mode="In" Type="Int32" />
+          <Parameter Name="employeeId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_findCustomer">
-            <Parameter Name="socialSecurityNbr" Mode="In" Type="String" />
+          <Parameter Name="socialSecurityNbr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_findCustomersBySalesAgent">
-            <Parameter Name="employeeId" Mode="In" Type="Int32" />
+          <Parameter Name="employeeId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="usp_updateCustomer">
             <Parameter Name="socialSecurityNbr" Mode="In" Type="String" />
             <Parameter Name="firstName" Mode="In" Type="String" />
             <Parameter Name="surname" Mode="In" Type="String" />
             <Parameter Name="employeeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_deleteEstate">
+            <Parameter Name="address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_findEstate" ReturnType="Collection(SkogsDBModel.usp_findEstate_Result)">
+            <Parameter Name="address" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_getAllCustomers" ReturnType="Collection(SkogsDBModel.usp_getAllCustomers_Result)" />
+          <FunctionImport Name="usp_getAllEstates" ReturnType="Collection(SkogsDBModel.usp_getAllEstates_Result)" />
+          <FunctionImport Name="usp_insertCustomer">
+            <Parameter Name="socialSecurityNbr" Mode="In" Type="String" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="surname" Mode="In" Type="String" />
+            <Parameter Name="employeeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_insertEstate">
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="propertyDesignation" Mode="In" Type="String" />
+            <Parameter Name="socialSecurityNbr" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_updateEstate">
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="propertyDesignation" Mode="In" Type="String" />
+            <Parameter Name="socialSecurityNbr" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Customer">
@@ -372,6 +406,9 @@
           </ReferentialConstraint>
         </Association>
         <ComplexType Name="testProcedure_Result" />
+        <ComplexType Name="usp_findEstate_Result" />
+        <ComplexType Name="usp_getAllCustomers_Result" />
+        <ComplexType Name="usp_getAllEstates_Result" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -390,12 +427,6 @@
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="SkogsDBModel.Customer">
               <ModificationFunctionMapping>
-                <InsertFunction FunctionName="SkogsDBModel.Store.usp_createCustomer">
-                  <ScalarProperty Name="employeeId" ParameterName="employeeId" />
-                  <ScalarProperty Name="surname" ParameterName="surname" />
-                  <ScalarProperty Name="firstName" ParameterName="firstName" />
-                  <ScalarProperty Name="socialSecurityNbr" ParameterName="socialSecurityNbr" />
-                </InsertFunction>
                 <UpdateFunction FunctionName="SkogsDBModel.Store.usp_updateCustomer">
                   <ScalarProperty Name="employeeId" ParameterName="employeeId" Version="Current" />
                   <ScalarProperty Name="surname" ParameterName="surname" Version="Current" />
@@ -405,6 +436,12 @@
                 <DeleteFunction FunctionName="SkogsDBModel.Store.usp_deleteCustomer">
                   <ScalarProperty Name="employeeId" ParameterName="employeeId" />
                 </DeleteFunction>
+                <InsertFunction FunctionName="SkogsDBModel.Store.usp_insertCustomer">
+                  <ScalarProperty Name="employeeId" ParameterName="employeeId" />
+                  <ScalarProperty Name="surname" ParameterName="surname" />
+                  <ScalarProperty Name="firstName" ParameterName="firstName" />
+                  <ScalarProperty Name="socialSecurityNbr" ParameterName="socialSecurityNbr" />
+                </InsertFunction>
               </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -415,6 +452,15 @@
                 <ScalarProperty Name="propertyDesignation" ColumnName="propertyDesignation" />
                 <ScalarProperty Name="address" ColumnName="address" />
               </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SkogsDBModel.Estate">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SkogsDBModel.Store.usp_insertEstate">
+                  <ScalarProperty Name="socialSecurityNbr" ParameterName="socialSecurityNbr" />
+                  <ScalarProperty Name="propertyDesignation" ParameterName="propertyDesignation" />
+                  <ScalarProperty Name="address" ParameterName="address" />
+                </InsertFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ForestEstate">
@@ -455,13 +501,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="testProcedure" FunctionName="SkogsDBModel.Store.testProcedure">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SkogsDBModel.testProcedure_Result" />
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_createCustomer" FunctionName="SkogsDBModel.Store.usp_createCustomer" />
-          <FunctionImportMapping FunctionImportName="usp_createestate" FunctionName="SkogsDBModel.Store.usp_createestate" />
           <FunctionImportMapping FunctionImportName="usp_createforestestate" FunctionName="SkogsDBModel.Store.usp_createforestestate" />
           <FunctionImportMapping FunctionImportName="usp_createlumbermill" FunctionName="SkogsDBModel.Store.usp_createlumbermill" />
           <FunctionImportMapping FunctionImportName="usp_createsales" FunctionName="SkogsDBModel.Store.usp_createsales" />
@@ -470,6 +509,25 @@
           <FunctionImportMapping FunctionImportName="usp_findCustomer" FunctionName="SkogsDBModel.Store.usp_findCustomer" />
           <FunctionImportMapping FunctionImportName="usp_findCustomersBySalesAgent" FunctionName="SkogsDBModel.Store.usp_findCustomersBySalesAgent" />
           <FunctionImportMapping FunctionImportName="usp_updateCustomer" FunctionName="SkogsDBModel.Store.usp_updateCustomer" />
+          <FunctionImportMapping FunctionImportName="usp_deleteEstate" FunctionName="SkogsDBModel.Store.usp_deleteEstate" />
+          <FunctionImportMapping FunctionImportName="usp_findEstate" FunctionName="SkogsDBModel.Store.usp_findEstate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SkogsDBModel.usp_findEstate_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_getAllCustomers" FunctionName="SkogsDBModel.Store.usp_getAllCustomers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SkogsDBModel.usp_getAllCustomers_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_getAllEstates" FunctionName="SkogsDBModel.Store.usp_getAllEstates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SkogsDBModel.usp_getAllEstates_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_insertCustomer" FunctionName="SkogsDBModel.Store.usp_insertCustomer" />
+          <FunctionImportMapping FunctionImportName="usp_insertEstate" FunctionName="SkogsDBModel.Store.usp_insertEstate" />
+          <FunctionImportMapping FunctionImportName="usp_updateEstate" FunctionName="SkogsDBModel.Store.usp_updateEstate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

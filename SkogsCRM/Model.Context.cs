@@ -204,5 +204,88 @@ namespace SkogsCRM
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateCustomer", socialSecurityNbrParameter, firstNameParameter, surnameParameter, employeeIdParameter);
         }
+    
+        public virtual int usp_deleteEstate(string address)
+        {
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_deleteEstate", addressParameter);
+        }
+    
+        public virtual ObjectResult<usp_findEstate_Result> usp_findEstate(string address)
+        {
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_findEstate_Result>("usp_findEstate", addressParameter);
+        }
+    
+        public virtual ObjectResult<usp_getAllCustomers_Result> usp_getAllCustomers()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllCustomers_Result>("usp_getAllCustomers");
+        }
+    
+        public virtual ObjectResult<usp_getAllEstates_Result> usp_getAllEstates()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllEstates_Result>("usp_getAllEstates");
+        }
+    
+        public virtual int usp_insertCustomer(string socialSecurityNbr, string firstName, string surname, Nullable<int> employeeId)
+        {
+            var socialSecurityNbrParameter = socialSecurityNbr != null ?
+                new ObjectParameter("socialSecurityNbr", socialSecurityNbr) :
+                new ObjectParameter("socialSecurityNbr", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("firstName", firstName) :
+                new ObjectParameter("firstName", typeof(string));
+    
+            var surnameParameter = surname != null ?
+                new ObjectParameter("surname", surname) :
+                new ObjectParameter("surname", typeof(string));
+    
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_insertCustomer", socialSecurityNbrParameter, firstNameParameter, surnameParameter, employeeIdParameter);
+        }
+    
+        public virtual int usp_insertEstate(string address, string propertyDesignation, string socialSecurityNbr)
+        {
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var propertyDesignationParameter = propertyDesignation != null ?
+                new ObjectParameter("propertyDesignation", propertyDesignation) :
+                new ObjectParameter("propertyDesignation", typeof(string));
+    
+            var socialSecurityNbrParameter = socialSecurityNbr != null ?
+                new ObjectParameter("socialSecurityNbr", socialSecurityNbr) :
+                new ObjectParameter("socialSecurityNbr", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_insertEstate", addressParameter, propertyDesignationParameter, socialSecurityNbrParameter);
+        }
+    
+        public virtual int usp_updateEstate(string address, string propertyDesignation, string socialSecurityNbr)
+        {
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var propertyDesignationParameter = propertyDesignation != null ?
+                new ObjectParameter("propertyDesignation", propertyDesignation) :
+                new ObjectParameter("propertyDesignation", typeof(string));
+    
+            var socialSecurityNbrParameter = socialSecurityNbr != null ?
+                new ObjectParameter("socialSecurityNbr", socialSecurityNbr) :
+                new ObjectParameter("socialSecurityNbr", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateEstate", addressParameter, propertyDesignationParameter, socialSecurityNbrParameter);
+        }
     }
 }

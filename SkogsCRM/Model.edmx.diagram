@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="SkogsDBModel.Estate" Width="1.5" PointX="5.25" PointY="3.75" />
         <EntityTypeShape EntityType="SkogsDBModel.ForestEstate" Width="1.5" PointX="5.25" PointY="1" />
         <EntityTypeShape EntityType="SkogsDBModel.Lumbermill" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SkogsDBModel.Sales" Width="1.5" PointX="7.5" PointY="1.125" />
+        <EntityTypeShape EntityType="SkogsDBModel.Sales" Width="2.625" PointX="7.5" PointY="1.125" />
         <EntityTypeShape EntityType="SkogsDBModel.SalesAgent" Width="1.5" PointX="0.75" PointY="2.375" />
         <AssociationConnector Association="SkogsDBModel.fk_Customer_SalesAgent" />
         <AssociationConnector Association="SkogsDBModel.fk_Estate_Customer1" />

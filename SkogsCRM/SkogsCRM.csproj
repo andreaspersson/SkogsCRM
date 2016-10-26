@@ -122,6 +122,15 @@
     <Compile Include="testProcedure_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_findEstate_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_getAllCustomers_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_getAllEstates_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
