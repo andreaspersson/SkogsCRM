@@ -459,7 +459,25 @@ namespace SkogsCRM
             label_response.Content = "Response: " + message;
             refreshTableData();
         }
-
+        private void button_customersGridEditCustomersAgent_Click(object sender, RoutedEventArgs e)
+        {
+            string socialSecurityNbr = textBox_editCustomerSSN.Text;
+            string firstName = textBox_editCustomerFirstName.Text;
+            string surname = textBox_editCustomerSurname.Text;
+            string employeeId = textBox_editCustomerSalesAgentId.Text;
+            if (employeeId.Equals("1"))
+            {
+                employeeId = "2";
+            }
+            else
+            {
+                employeeId = "1";
+            }
+            string message = controller.EditCustomer(socialSecurityNbr, firstName, surname, employeeId);
+            label_response.Content = "Response: " + message;
+            refreshTableData();
+        }
+        //button_customersGridEditCustomersAgent_Click
         private void button_salesAgentGridAddSalesAgent_Click(object sender, RoutedEventArgs e)
         {
             string firstName = textBox_newSalesAgentFirstName.Text;

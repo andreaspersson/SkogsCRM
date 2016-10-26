@@ -287,5 +287,58 @@ namespace SkogsCRM
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateEstate", addressParameter, propertyDesignationParameter, socialSecurityNbrParameter);
         }
+    
+        public virtual int usp_deleteForestEstate(Nullable<int> forestEstateID)
+        {
+            var forestEstateIDParameter = forestEstateID.HasValue ?
+                new ObjectParameter("forestEstateID", forestEstateID) :
+                new ObjectParameter("forestEstateID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_deleteForestEstate", forestEstateIDParameter);
+        }
+    
+        public virtual ObjectResult<usp_findForestEstate_Result> usp_findForestEstate(Nullable<int> forestEstateId)
+        {
+            var forestEstateIdParameter = forestEstateId.HasValue ?
+                new ObjectParameter("forestEstateId", forestEstateId) :
+                new ObjectParameter("forestEstateId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_findForestEstate_Result>("usp_findForestEstate", forestEstateIdParameter);
+        }
+    
+        public virtual ObjectResult<usp_getAllForestEstates_Result> usp_getAllForestEstates()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllForestEstates_Result>("usp_getAllForestEstates");
+        }
+    
+        public virtual int usp_insertForestEstate(string coordinates, string socialSecurityNbr)
+        {
+            var coordinatesParameter = coordinates != null ?
+                new ObjectParameter("coordinates", coordinates) :
+                new ObjectParameter("coordinates", typeof(string));
+    
+            var socialSecurityNbrParameter = socialSecurityNbr != null ?
+                new ObjectParameter("socialSecurityNbr", socialSecurityNbr) :
+                new ObjectParameter("socialSecurityNbr", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_insertForestEstate", coordinatesParameter, socialSecurityNbrParameter);
+        }
+    
+        public virtual int usp_updateForestEstate(string coordinates, string socialSecurityNbr, Nullable<int> forestEstateID)
+        {
+            var coordinatesParameter = coordinates != null ?
+                new ObjectParameter("coordinates", coordinates) :
+                new ObjectParameter("coordinates", typeof(string));
+    
+            var socialSecurityNbrParameter = socialSecurityNbr != null ?
+                new ObjectParameter("socialSecurityNbr", socialSecurityNbr) :
+                new ObjectParameter("socialSecurityNbr", typeof(string));
+    
+            var forestEstateIDParameter = forestEstateID.HasValue ?
+                new ObjectParameter("forestEstateID", forestEstateID) :
+                new ObjectParameter("forestEstateID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_updateForestEstate", coordinatesParameter, socialSecurityNbrParameter, forestEstateIDParameter);
+        }
     }
 }

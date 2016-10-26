@@ -212,12 +212,12 @@ namespace SkogsCRM
         public ArrayList GetAllCustomers()
         {
             ArrayList al = new ArrayList();
-
+            
             foreach (Customer c in ctx.Customer)
             {
                 al.Add(c);
             }
-
+                                          
             return al;
         }
 

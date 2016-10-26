@@ -26,6 +26,7 @@ namespace SkogsCRM
         public static string CheckMySqlException(DbUpdateException e)
         {
             string message = null;
+                  
             MySql.Data.MySqlClient.MySqlException sqlError = e.InnerException.InnerException as MySql.Data.MySqlClient.MySqlException;
             if (sqlError != null)
             {
