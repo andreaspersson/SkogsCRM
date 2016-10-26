@@ -84,7 +84,9 @@ namespace SkogsCRM
         {
             string message = Utilities.CheckCustomerFieldsFormatting(socialSecurityNbr, firstName, surname, employeeId);
 
-            //ctx.
+            int intsson = Int32.Parse(employeeId);
+
+            ctx.usp_changeSalesAgent(socialSecurityNbr, intsson);
 
             return message;
         }

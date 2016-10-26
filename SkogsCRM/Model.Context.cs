@@ -423,7 +423,7 @@ namespace SkogsCRM
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_findSalesAgent", employeeIdParameter);
         }
-    
+        /*
         public virtual ObjectResult<usp_getAllLumbermills_Result> usp_getAllLumbermills()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllLumbermills_Result>("usp_getAllLumbermills");
@@ -438,7 +438,7 @@ namespace SkogsCRM
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_getAllSalesAgents_Result>("usp_getAllSalesAgents");
         }
-    
+        */
         public virtual int usp_insertLumbermill(string organizationNbr, string address, string capacity, string telephoneNbr)
         {
             var organizationNbrParameter = organizationNbr != null ?
