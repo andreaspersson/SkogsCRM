@@ -48,6 +48,9 @@ namespace SkogsCRM
                     case 1452:
                         message = "Cannot add or update a child row: a foreign key constraint fails.";
                         break;
+                    case 1366:
+                        message = "Incorrect integer value";
+                        break;
                     default:
                         message = "Something went terribly wrong. MySQL error code: " + sqlError.Number.ToString();
                         break;

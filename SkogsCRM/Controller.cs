@@ -80,6 +80,8 @@ namespace SkogsCRM
             return message;
         }
 
+
+
         public string AddForestEstate(string coordinates, string socialSecurityNbr)
         {
             string message = Utilities.CheckForestEstateFieldsFormatting(coordinates, socialSecurityNbr);
