@@ -137,6 +137,15 @@
     <Compile Include="usp_getAllForestEstates_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_getAllLumbermills_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_getAllSalesAgents_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_getAllSales_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>

@@ -88,6 +88,8 @@ namespace SkogsCRM
 
             ctx.usp_changeSalesAgent(socialSecurityNbr, intsson);
 
+            message = "Salesagent changed";
+
             return message;
         }
 

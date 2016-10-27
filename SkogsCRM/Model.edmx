@@ -655,6 +655,24 @@
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SkogsDBModel.Sales">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SkogsDBModel.Store.usp_insertSales">
+                  <ScalarProperty Name="ForestEstate_forestEstateID" ParameterName="ForestEstate_forestEstateID" />
+                  <ScalarProperty Name="orderId" ParameterName="orderId" />
+                  <ScalarProperty Name="quantity" ParameterName="quantity" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="SkogsDBModel.Store.usp_updateSales">
+                  <ScalarProperty Name="ForestEstate_forestEstateID" ParameterName="ForestEstate_forestEstateID" Version="Current" />
+                  <ScalarProperty Name="orderId" ParameterName="orderId" Version="Current" />
+                  <ScalarProperty Name="quantity" ParameterName="quantity" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="SkogsDBModel.Store.usp_deleteSales">
+                  <ScalarProperty Name="ForestEstate_forestEstateID" ParameterName="ForestEstate_forestEstateID" />
+                  <ScalarProperty Name="orderId" ParameterName="orderId" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SalesAgent">
             <EntityTypeMapping TypeName="SkogsDBModel.SalesAgent">
@@ -664,6 +682,25 @@
                 <ScalarProperty Name="telephoneNbr" ColumnName="telephoneNbr" />
                 <ScalarProperty Name="employeeId" ColumnName="employeeId" />
               </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="SkogsDBModel.SalesAgent">
+              <ModificationFunctionMapping>
+                <InsertFunction FunctionName="SkogsDBModel.Store.usp_insertSalesAgent">
+                  <ScalarProperty Name="firstName" ParameterName="firstName" />
+                  <ScalarProperty Name="surname" ParameterName="surname" />
+                  <ScalarProperty Name="telephoneNbr" ParameterName="telephoneNbr" />
+                  <ScalarProperty Name="employeeId" ParameterName="employeeId" />
+                </InsertFunction>
+                <UpdateFunction FunctionName="SkogsDBModel.Store.usp_updateSalesAgent">
+                  <ScalarProperty Name="firstName" ParameterName="firstName" Version="Current" />
+                  <ScalarProperty Name="surname" ParameterName="surname" Version="Current" />
+                  <ScalarProperty Name="telephoneNbr" ParameterName="telephoneNbr" Version="Current" />
+                  <ScalarProperty Name="employeeId" ParameterName="employeeId" Version="Current" />
+                </UpdateFunction>
+                <DeleteFunction FunctionName="SkogsDBModel.Store.usp_deleteSalesAgent">
+                  <ScalarProperty Name="employeeId" ParameterName="employeeId" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="usp_deleteCustomer" FunctionName="SkogsDBModel.Store.usp_deleteCustomer" />
