@@ -94,6 +94,7 @@ namespace SkogsCRM
                         c.surname = surname;
                         int intsson = Int32.Parse(employeeId);
                         ctx.usp_changeSalesAgent(socialSecurityNbr, intsson);
+                        ctx.Entry(c).Reload(); //Reload the customer entity
                         message = "Agent bound to " + socialSecurityNbr + " has been changed.";
                     }
                     catch (DbUpdateException e)
