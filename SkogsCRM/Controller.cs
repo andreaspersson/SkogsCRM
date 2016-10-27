@@ -80,16 +80,32 @@ namespace SkogsCRM
             return message;
         }
 
-        public string changeAgent(string socialSecurityNbr, string firstName, string surname, string employeeId)
+        public string ChangeAgent(string socialSecurityNbr, string firstName, string surname, string employeeId)
         {
             string message = Utilities.CheckCustomerFieldsFormatting(socialSecurityNbr, firstName, surname, employeeId);
-
-            int intsson = Int32.Parse(employeeId);
-
-            ctx.usp_changeSalesAgent(socialSecurityNbr, intsson);
-
-            message = "Salesagent changed";
-
+            if (message == null)
+            {
+                Customer c = ctx.Customer.Find(socialSecurityNbr);
+                if (ctx.SalesAgent.Find(Int32.Parse(employeeId)) != null)
+                {
+                    try
+                    {
+                        c.firstName = firstName;
+                        c.surname = surname;
+                        int intsson = Int32.Parse(employeeId);
+                        ctx.usp_changeSalesAgent(socialSecurityNbr, intsson);
+                        message = "Agent bound to " + socialSecurityNbr + " has been changed.";
+                    }
+                    catch (DbUpdateException e)
+                    {
+                        message = Utilities.CheckMySqlException(e);
+                    }
+                }
+                else
+                {
+                    message = "No such sales agent in the database!";
+                }
+            }
             return message;
         }
 
